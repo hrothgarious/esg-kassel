@@ -1,0 +1,2704 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESG Kassel — Semesterplan WiSe 2026/27 · Print Studio</title>
+<style>
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Caveat';
+    src: url('fonts/Caveat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Caveat';
+    src: url('fonts/Caveat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Reenie Beanie';
+    src: url('fonts/ReenieBeanie-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Amatic SC';
+    src: url('fonts/AmaticSC-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  :root {
+    --ui-bg: #121417;
+    --ui-panel: #1A1D22;
+    --ui-panel-2: #22262D;
+    --ui-border: #2E333D;
+    --ui-text: #ECEEF2;
+    --ui-muted: #9AA2B1;
+    --ui-accent: #E30613;
+    --ui-accent-soft: rgba(227, 6, 19, 0.14);
+    --ui-ok: #34C77B;
+    --ui-warn: #F5A623;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    background: var(--ui-bg); color: var(--ui-text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    grid-template-rows: 54px 1fr;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* Top bar */
+  .topbar {
+    grid-column: 1 / -1;
+    background: var(--ui-panel);
+    border-bottom: 1px solid var(--ui-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    gap: 8px;
+    z-index: 20;
+    overflow-x: auto;
+  }
+  .brand-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .brand-badge {
+    background: var(--ui-accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+  .format-tabs {
+    display: flex;
+    gap: 3px;
+    background: var(--ui-bg);
+    padding: 3px;
+    border-radius: 8px;
+    border: 1px solid var(--ui-border);
+  }
+  .format-tab {
+    background: transparent;
+    color: var(--ui-muted);
+    border: none;
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 11.5px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .format-tab:hover { color: var(--ui-text); background: rgba(255,255,255,0.04); }
+  .format-tab.active {
+    background: var(--ui-panel-2);
+    color: #fff;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+  }
+
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn {
+    border: 1px solid var(--ui-border);
+    background: var(--ui-panel-2);
+    color: var(--ui-text);
+    padding: 6px 10px;
+    border-radius: 7px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 11.5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.14s ease;
+    white-space: nowrap;
+  }
+  .btn:hover { background: #2B3039; border-color: #424957; }
+  .btn-primary {
+    background: var(--ui-accent);
+    border-color: var(--ui-accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #C80510; border-color: #C80510; }
+  .btn-sm { padding: 5px 9px; font-size: 11px; }
+
+  /* Sidebar */
+  .sidebar {
+    background: var(--ui-panel);
+    border-right: 1px solid var(--ui-border);
+    overflow-y: auto;
+    padding: 14px 14px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb { background: #313641; border-radius: 3px; }
+
+  .sec {
+    background: var(--ui-panel-2);
+    border: 1px solid var(--ui-border);
+    border-radius: 10px;
+    padding: 11px 12px;
+  }
+  .sec-title {
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ui-muted);
+    margin: 0 0 9px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .seg {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+  .seg-btn {
+    border: 1px solid var(--ui-border);
+    background: var(--ui-panel);
+    color: var(--ui-muted);
+    padding: 7px 8px;
+    border-radius: 7px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 11.5px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.14s ease;
+  }
+  .seg-btn:hover { color: var(--ui-text); }
+  .seg-btn.active {
+    background: var(--ui-accent-soft);
+    border-color: var(--ui-accent);
+    color: #fff;
+  }
+
+  .theme-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .theme-card {
+    border: 1px solid var(--ui-border);
+    background: var(--ui-panel);
+    border-radius: 8px;
+    padding: 7px 8px;
+    cursor: pointer;
+    text-align: left;
+    color: var(--ui-text);
+    font-family: inherit;
+    transition: all 0.14s ease;
+  }
+  .theme-card:hover { border-color: #4A5263; }
+  .theme-card.active {
+    border-color: var(--ui-accent);
+    box-shadow: 0 0 0 1px var(--ui-accent);
+  }
+  .swatches {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 5px;
+  }
+  .swatch {
+    width: 15px; height: 15px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .theme-name { font-size: 11.5px; font-weight: 700; display: block; }
+  .theme-sub { font-size: 10px; color: var(--ui-muted); display: block; margin-top: 1px; }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    gap: 8px;
+  }
+  .toggle-row + .toggle-row { border-top: 1px solid rgba(255,255,255,0.05); }
+  .toggle-label { font-size: 12px; font-weight: 600; color: var(--ui-text); }
+  .toggle-sub { font-size: 10.5px; color: var(--ui-muted); display: block; }
+
+  .switch {
+    position: relative;
+    width: 36px; height: 20px;
+    flex-shrink: 0;
+  }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider {
+    position: absolute; inset: 0;
+    background: #363C48;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.18s;
+  }
+  .slider::before {
+    content: "";
+    position: absolute;
+    width: 14px; height: 14px;
+    left: 3px; top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.18s;
+  }
+  .switch input:checked + .slider { background: var(--ui-accent); }
+  .switch input:checked + .slider::before { transform: translateX(16px); }
+
+  select.ctrl-select {
+    width: 100%;
+    margin-top: 4px;
+    background: var(--ui-panel);
+    border: 1px solid var(--ui-border);
+    color: var(--ui-text);
+    padding: 7px 9px;
+    border-radius: 7px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .preflight {
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .pf-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--ui-muted);
+  }
+  .pf-val { font-weight: 700; color: var(--ui-text); }
+  .pf-ok { color: var(--ui-ok); font-weight: 700; }
+  .pf-warn { color: var(--ui-warn); font-weight: 700; }
+
+  /* Canvas Stage */
+  .stage-wrap {
+    position: relative;
+    overflow: auto;
+    background-color: #0E1013;
+    background-image:
+      radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 32px 72px;
+  }
+  .zoom-bar {
+    position: fixed;
+    bottom: 16px;
+    right: 20px;
+    background: rgba(26, 29, 34, 0.94);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--ui-border);
+    border-radius: 10px;
+    padding: 5px 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 30;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .zoom-val { font-size: 11.5px; font-weight: 700; min-width: 44px; text-align: center; }
+
+  .sheet-shadow {
+    box-shadow: 0 22px 60px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.08);
+    background: #fff;
+    line-height: 0;
+    transform-origin: top center;
+  }
+  .sheet-shadow svg {
+    display: block;
+  }
+
+  /* Modal / Event Editor */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.68);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 24px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--ui-panel);
+    border: 1px solid var(--ui-border);
+    border-radius: 12px;
+    width: min(880px, 95vw);
+    max-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .modal-head {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--ui-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .modal-body {
+    padding: 14px 18px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ev-edit-row {
+    display: grid;
+    grid-template-columns: 28px 92px 66px 1fr 1fr 64px;
+    gap: 8px;
+    align-items: center;
+    background: var(--ui-panel-2);
+    border: 1px solid var(--ui-border);
+    padding: 7px 9px;
+    border-radius: 8px;
+  }
+  .ev-edit-row input[type="text"] {
+    background: var(--ui-panel);
+    border: 1px solid var(--ui-border);
+    color: var(--ui-text);
+    padding: 5px 7px;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 11.5px;
+    width: 100%;
+  }
+  .ev-past-pill {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .ev-past-pill.past { background: rgba(255,255,255,0.08); color: var(--ui-muted); }
+  .ev-past-pill.upcoming { background: rgba(52, 199, 123, 0.16); color: var(--ui-ok); }
+
+  /* Hidden SVG text measurer */
+  #svg-measurer {
+    position: fixed;
+    left: -9999px;
+    top: -9999px;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Print CSS for direct browser test printing */
+  @media print {
+    body, html { background: #fff !important; height: auto !important; overflow: visible !important; }
+    .app { display: block !important; height: auto !important; }
+    .topbar, .sidebar, .zoom-bar, .modal-backdrop { display: none !important; }
+    .stage-wrap { padding: 0 !important; background: none !important; overflow: visible !important; display: block !important; }
+    .sheet-shadow { box-shadow: none !important; transform: none !important; }
+    .sheet-shadow svg { width: 100% !important; height: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand-title">
+      <span class="brand-badge">V43</span>
+      <span>ESG Kassel · WiSe 2026/27</span>
+    </div>
+
+    <div class="format-tabs" id="format-tabs">
+      <button class="format-tab active" data-fmt="a3">Plakat A3</button>
+      <button class="format-tab" data-fmt="a4">Handzettel A4</button>
+      <button class="format-tab" data-fmt="dl_front">DL Front</button>
+      <button class="format-tab" data-fmt="dl_back">DL Back</button>
+      <button class="format-tab" data-fmt="dl_spread">DL Spread</button>
+    </div>
+
+    <div class="topbar-actions">
+      <button class="btn" id="btn-edit-events" title="Termine prüfen & anpassen">Termine (21)</button>
+      <button class="btn" id="btn-print" title="Browser-Druck / Test-PDF">Drucken</button>
+      <button class="btn" id="btn-download-dl-both" style="display:none;" title="Vorder- und Rückseite als zwei Illustrator-SVGs laden">DL: 2 SVGs</button>
+      <button class="btn btn-primary" id="btn-download-svg">Download SVG</button>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <!-- Scope -->
+    <div class="sec">
+      <div class="sec-title">
+        <span>Zeitraum (Stand 18.11.2026)</span>
+      </div>
+      <div class="seg" id="scope-seg">
+        <button class="seg-btn active" data-scope="upcoming">Ab 19.11. (Aktuell)</button>
+        <button class="seg-btn" data-scope="full">Gesamtes Semester</button>
+      </div>
+      <div class="toggle-row" style="margin-top:8px;">
+        <div>
+          <span class="toggle-label">„AKTUELL · AB 19.11.“ Stempel</span>
+          <span class="toggle-sub">Für Schaukästen ab morgen</span>
+        </div>
+        <label class="switch"><input type="checkbox" id="opt-stamp" checked><span class="slider"></span></label>
+      </div>
+    </div>
+
+    <!-- Theme -->
+    <div class="sec">
+      <div class="sec-title"><span>Farbwelt / Preset</span></div>
+      <div class="theme-grid" id="theme-grid">
+        <button class="theme-card active" data-theme="riso" style="grid-column: 1 / -1;">
+          <div class="swatches">
+            <span class="swatch" style="background:#F2EEE6"></span>
+            <span class="swatch" style="background:#1B4596"></span>
+            <span class="swatch" style="background:#C81E24"></span>
+            <span class="swatch" style="background:#425B8C"></span>
+          </div>
+          <span class="theme-name">Riso Rot &amp; Kobalt</span>
+          <span class="theme-sub">Willkommensessen-Stil · Signatur-Preset</span>
+        </button>
+        <button class="theme-card" data-theme="atelier">
+          <div class="swatches">
+            <span class="swatch" style="background:#F3F2EF"></span>
+            <span class="swatch" style="background:#181818"></span>
+            <span class="swatch" style="background:#E30613"></span>
+            <span class="swatch" style="background:#C47B2B"></span>
+          </div>
+          <span class="theme-name">Atelier Warm</span>
+          <span class="theme-sub">Montagsessen-Stil</span>
+        </button>
+        <button class="theme-card" data-theme="winter">
+          <div class="swatches">
+            <span class="swatch" style="background:#F6F2EA"></span>
+            <span class="swatch" style="background:#1D252C"></span>
+            <span class="swatch" style="background:#1E5649"></span>
+            <span class="swatch" style="background:#C8372D"></span>
+          </div>
+          <span class="theme-name">Winter Editorial</span>
+          <span class="theme-sub">Tanne &amp; Beere</span>
+        </button>
+        <button class="theme-card" data-theme="office">
+          <div class="swatches">
+            <span class="swatch" style="background:#FFFFFF;border-color:#888"></span>
+            <span class="swatch" style="background:#181818"></span>
+            <span class="swatch" style="background:#E30613"></span>
+            <span class="swatch" style="background:#2D5F53"></span>
+          </div>
+          <span class="theme-name">Büro Print White</span>
+          <span class="theme-sub">Toner-sparend (A4)</span>
+        </button>
+        <button class="theme-card" data-theme="kraft">
+          <div class="swatches">
+            <span class="swatch" style="background:#EFE7DA"></span>
+            <span class="swatch" style="background:#1E1B18"></span>
+            <span class="swatch" style="background:#B83B28"></span>
+            <span class="swatch" style="background:#2F5061"></span>
+          </div>
+          <span class="theme-name">Kraft &amp; Terracotta</span>
+          <span class="theme-sub">Warm &amp; kontrastreich</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Illustration / Style -->
+    <div class="sec">
+      <div class="sec-title"><span>Illustration / Stil</span></div>
+      <div class="seg" id="decor-seg">
+        <button class="seg-btn active" data-decor="festive">Festlich (Willkommensessen)</button>
+        <button class="seg-btn" data-decor="minimal">Klar (Minimal)</button>
+      </div>
+    </div>
+
+    <!-- Branding / Logos -->
+    <div class="sec">
+      <div class="sec-title"><span>Logo &amp; QR-Code</span></div>
+      <label class="toggle-label" style="display:block;margin-bottom:2px;">ESG-Hahn Variante</label>
+      <select class="ctrl-select" id="opt-rooster">
+        <option value="red">Roter Hahn + ESG (Klassisch)</option>
+        <option value="rainbow">Regenbogenhahn + ESG</option>
+        <option value="rainbow_icon">Regenbogenhahn (ohne Schrift)</option>
+        <option value="none">Minimal (ohne Hahn)</option>
+      </select>
+
+      <div class="toggle-row" style="margin-top:8px;">
+        <div>
+          <span class="toggle-label">Vektor QR-Code</span>
+          <span class="toggle-sub">Scharf als Pfad (kein JPEG)</span>
+        </div>
+        <label class="switch"><input type="checkbox" id="opt-qr" checked><span class="slider"></span></label>
+      </div>
+      <div id="qr-target-wrap" style="margin-top:4px;">
+        <select class="ctrl-select" id="opt-qr-target">
+          <option value="insta">Instagram: @esg.kassel (Offizieller QR)</option>
+          <option value="web">Webseite: www.esg-kassel.de</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Print / Bleed -->
+    <div class="sec">
+      <div class="sec-title"><span>Druck, Beschnitt &amp; SVG</span></div>
+      <div class="toggle-row">
+        <div>
+          <span class="toggle-label">+3 mm Beschnitt &amp; Schnittmarken</span>
+          <span class="toggle-sub">Layer: Trim_Bleed_Guides</span>
+        </div>
+        <label class="switch"><input type="checkbox" id="opt-bleed" checked><span class="slider"></span></label>
+      </div>
+      <div class="toggle-row">
+        <div>
+          <span class="toggle-label">Sicherheitsrand-Hilfslinien</span>
+          <span class="toggle-sub">Cyan-Rahmen zur Kontrolle</span>
+        </div>
+        <label class="switch"><input type="checkbox" id="opt-safe"><span class="slider"></span></label>
+      </div>
+      <div class="toggle-row">
+        <div>
+          <span class="toggle-label">Papier-Verlauf (Gradient)</span>
+          <span class="toggle-sub">Deaktivieren für flache Vollfläche</span>
+        </div>
+        <label class="switch"><input type="checkbox" id="opt-gradient" checked><span class="slider"></span></label>
+      </div>
+    </div>
+
+    <!-- Preflight -->
+    <div class="sec">
+      <div class="sec-title"><span>Illustrator-Preflight</span></div>
+      <div class="preflight" id="preflight-box">
+        <div class="pf-item"><span>Format &amp; Maße</span><span class="pf-val" id="pf-dims">303 × 426 mm</span></div>
+        <div class="pf-item"><span>Ebenen (Layers)</span><span class="pf-ok" id="pf-layers">6 / 6 benannt</span></div>
+        <div class="pf-item"><span>Raster-Filter</span><span class="pf-ok" id="pf-filters">0 (100% Vektor)</span></div>
+        <div class="pf-item"><span>Editierbare &lt;text&gt;</span><span class="pf-val" id="pf-texts">—</span></div>
+        <div class="pf-item"><span>ESG-Textregeln</span><span class="pf-ok" id="pf-rules">✓ Kein HoPla / Spenden</span></div>
+        <div class="pf-item"><span>Satzspiegel</span><span class="pf-ok" id="pf-fit">✓ Kein Überlauf</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- STAGE -->
+  <main class="stage-wrap" id="stage-wrap">
+    <div class="sheet-shadow" id="sheet-container"></div>
+  </main>
+</div>
+
+<!-- ZOOM BAR -->
+<div class="zoom-bar">
+  <button class="btn btn-sm" id="zoom-out">−</button>
+  <span class="zoom-val" id="zoom-label">Fit</span>
+  <button class="btn btn-sm" id="zoom-in">+</button>
+  <button class="btn btn-sm" id="zoom-fit">Fit</button>
+  <button class="btn btn-sm" id="zoom-100">100%</button>
+</div>
+
+<!-- EVENT EDITOR MODAL -->
+<div class="modal-backdrop" id="modal-events">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <strong style="font-size:14px;">Termine &amp; Texte bearbeiten</strong>
+        <div style="font-size:11px;color:var(--ui-muted);margin-top:2px;">Änderungen werden lokal im Browser gespeichert · Notion-Sync Stand 18.11.2026</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-sm" id="btn-reset-events">Notion-Stand wiederherstellen</button>
+        <button class="btn btn-sm btn-primary" id="btn-close-modal">Fertig</button>
+      </div>
+    </div>
+    <div class="modal-body" id="modal-events-list"></div>
+  </div>
+</div>
+
+<!-- OFFSCREEN SVG TEXT MEASURER (1 unit = 1 mm) -->
+<svg id="svg-measurer" xmlns="http://www.w3.org/2000/svg" width="400mm" height="400mm" viewBox="0 0 400 400">
+  <text id="measurer-text" x="0" y="20"></text>
+</svg>
+
+<script>
+(() => {
+  'use strict';
+
+  // =========================================================================
+  // 1. VECTOR BRAND LOGOS (Extracted & normalized cleanly from aufbereitet/)
+  // =========================================================================
+  const LOGOS = {
+    viewBoxWithText: { w: 340.157, h: 283.465 },
+    viewBoxNoText: { w: 283.465, h: 283.465 },
+    redRoosterD: "M 139.742188 35.660156 C 134.941406 59.773438 157.113281 72.085938 172.949219 65.957031 C 165.347656 73.832031 173.066406 100.699219 173.363281 105.230469 C 174.199219 118.109375 165.15625 124.839844 154.0625 127.039062 C 163.785156 100.683594 148.949219 63.890625 118.796875 54.210938 C 92.453125 45.753906 63.054688 56.863281 51.007812 80.179688 C 41.585938 98.425781 41.144531 119.15625 51.007812 136.027344 C 61.738281 154.371094 76.746094 162.667969 96.453125 162.617188 C 78.953125 153.757812 83.625 123.496094 106.03125 123.800781 C 132.386719 124.160156 134.90625 157.21875 111.070312 164.777344 C 116.375 177.066406 131.886719 187.949219 144.527344 190.769531 L 144.507812 217.125 L 154.980469 220.679688 C 155.707031 210.632812 158.265625 199.050781 161.285156 191.921875 C 198.199219 188.402344 220.53125 165.402344 222.476562 138.53125 C 223.726562 121.289062 213.210938 104.773438 197 89.628906 C 193.796875 86.632812 191.222656 82.394531 189.882812 78.488281 C 188.082031 73.226562 188.898438 70.042969 190.5 67.125 C 199.113281 65.085938 203.152344 61.773438 203.324219 57.667969 C 199.679688 61.261719 196.796875 61.605469 193.90625 60.84375 C 194.652344 58.46875 196.191406 56.535156 197.992188 54.863281 C 197.917969 54.363281 197.820312 53.902344 197.539062 53.617188 C 194.132812 55.746094 192.15625 56.785156 190.042969 57.472656 C 187.9375 51.804688 193.355469 45.039062 200.800781 45.8125 C 197.660156 43.300781 193.128906 42.863281 189.09375 45.316406 C 190.164062 37.652344 186.335938 27.945312 179.746094 22.582031 C 194.816406 52.113281 144.535156 67.929688 139.742188 35.660156 M 178.472656 55.722656 C 178.472656 53.875 179.972656 52.375 181.824219 52.375 C 182.964844 52.375 183.96875 52.949219 184.574219 53.816406 C 184.382812 53.757812 184.195312 53.699219 183.988281 53.699219 C 182.871094 53.699219 181.964844 54.605469 181.964844 55.722656 C 181.964844 56.84375 182.871094 57.75 183.988281 57.75 C 184.195312 57.75 184.382812 57.6875 184.574219 57.628906 C 183.96875 58.5 182.964844 59.074219 181.824219 59.074219 C 179.972656 59.074219 178.472656 57.574219 178.472656 55.722656 M 191.613281 74.910156 C 191.613281 79.230469 195.117188 82.734375 199.441406 82.734375 C 203.761719 82.734375 207.269531 79.230469 207.269531 74.910156 C 207.269531 70.585938 203.761719 67.082031 199.441406 67.082031 C 195.117188 67.082031 191.613281 70.585938 191.613281 74.910156 ",
+    esgLettersD: "M 182.152344 211.015625 L 182.152344 259.421875 L 211.894531 259.421875 L 211.894531 251.339844 L 191.304688 251.339844 L 191.304688 238.972656 L 207.460938 238.972656 L 207.460938 230.890625 L 191.304688 230.890625 L 191.304688 219.09375 L 210.324219 219.09375 L 211.394531 211.015625 Z M 251.113281 211.730469 C 249.539062 211.015625 244.820312 210.085938 240.246094 210.085938 C 226.800781 210.085938 221.441406 217.164062 221.441406 225.027344 C 221.441406 239.757812 241.746094 236.96875 241.746094 245.191406 C 241.746094 249.410156 238.671875 252.199219 233.953125 252.199219 C 230.019531 252.199219 227.230469 251.195312 223.730469 249.125 L 219.4375 255.988281 C 221.296875 257.488281 226.445312 260.347656 233.453125 260.347656 C 245.605469 260.347656 251.113281 252.339844 251.113281 244.617188 C 251.113281 229.746094 230.804688 232.464844 230.804688 224.457031 C 230.804688 220.167969 234.523438 218.234375 239.671875 218.234375 C 242.460938 218.234375 245.535156 218.878906 248.179688 219.59375 Z M 295.542969 212.230469 C 293.683594 211.371094 289.679688 210.085938 284.390625 210.085938 C 267.515625 210.085938 259.363281 220.167969 259.363281 235.96875 C 259.363281 250.839844 265.296875 260.347656 280.8125 260.347656 C 287.390625 260.347656 292.398438 258.417969 294.828125 256.773438 L 294.828125 236.894531 L 285.886719 236.894531 L 285.886719 251.84375 C 284.601562 252.128906 283.171875 252.269531 281.671875 252.269531 C 273.664062 252.269531 268.945312 247.550781 269.015625 235.179688 C 269.085938 222.382812 276.09375 218.378906 283.742188 218.378906 C 287.175781 218.378906 289.894531 219.019531 292.398438 219.878906 Z M 295.542969 212.230469 ",
+    rainbowWithTextStripes: [
+      { fill: "#E30613", d: "M 206.707031 39.691406 L 26.785156 105.175781 L 16.289062 76.339844 L 196.210938 10.855469 Z M 206.707031 39.691406 " },
+      { fill: "#F28A1A", d: "M 217.136719 68.34375 L 37.214844 133.832031 L 26.71875 104.992188 L 206.640625 39.507812 Z M 217.136719 68.34375 " },
+      { fill: "#FEEB17", d: "M 227.757812 97.527344 L 47.835938 163.011719 L 37.148438 133.648438 L 217.070312 68.160156 Z M 227.757812 97.527344 " },
+      { fill: "#078136", d: "M 238.09375 125.921875 L 58.171875 191.40625 L 47.675781 162.570312 L 227.597656 97.082031 Z M 238.09375 125.921875 " },
+      { fill: "#3057A4", d: "M 248.851562 155.484375 L 68.933594 220.96875 L 57.953125 190.804688 L 237.875 125.316406 Z M 248.851562 155.484375 " },
+      { fill: "#6F2282", d: "M 259.148438 183.765625 L 79.226562 249.25 L 68.730469 220.414062 L 248.652344 154.929688 Z M 259.148438 183.765625 " }
+    ],
+    rainbowNoTextClipD: "M 150.046875 29.121094 C 143.773438 60.636719 172.746094 76.722656 193.4375 68.710938 C 176.832031 98.566406 216.808594 138.390625 168.761719 148.535156 C 197.113281 65.417969 78.308594 8.660156 34.09375 87.304688 C 7.441406 132.917969 40.359375 197.804688 93.476562 195.027344 C 70.613281 183.449219 76.714844 143.902344 105.992188 144.300781 C 140.433594 144.773438 143.726562 187.96875 112.578125 197.847656 C 119.507812 213.902344 139.777344 228.128906 156.300781 231.8125 L 156.273438 266.253906 L 169.957031 270.898438 C 170.910156 257.773438 174.25 242.636719 178.199219 233.316406 C 258.796875 225.472656 284.570312 148.265625 224.867188 99.648438 C 217.414062 92.9375 210.800781 78.285156 216.375 70.242188 C 227.625 67.578125 232.90625 63.246094 233.136719 57.882812 C 228.371094 62.578125 224.605469 63.027344 220.824219 62.035156 C 221.800781 58.925781 223.808594 56.402344 226.164062 54.21875 C 226.066406 53.5625 225.9375 52.964844 225.574219 52.589844 C 221.121094 55.371094 218.539062 56.726562 215.773438 57.628906 C 213.027344 50.222656 220.105469 41.382812 229.832031 42.390625 C 225.730469 39.109375 219.808594 38.535156 214.535156 41.742188 C 215.9375 31.726562 210.933594 19.042969 202.320312 12.035156 C 222.015625 50.621094 156.3125 71.292969 150.046875 29.121094 M 200.660156 55.339844 C 200.511719 51.144531 206.414062 49.378906 208.628906 52.851562 C 206.445312 52.191406 205.351562 53.765625 205.351562 55.34375 C 205.351562 56.921875 206.445312 58.496094 208.628906 57.832031 C 207.816406 59.109375 206.5 59.675781 205.171875 59.675781 C 202.890625 59.675781 200.566406 57.996094 200.660156 55.339844 M 217.832031 80.414062 C 217.636719 93.679688 238.480469 93.679688 238.285156 80.414062 C 238.382812 73.777344 233.21875 70.460938 228.058594 70.460938 C 222.894531 70.460938 217.734375 73.777344 217.832031 80.414062 ",
+    rainbowNoTextStripes: [
+      { fill: "#E30613", d: "M 241.605469 31.296875 L 7.160156 116.628906 L -6.808594 78.253906 L 227.636719 -7.078125 Z M 241.605469 31.296875 " },
+      { fill: "#F28A1A", d: "M 255.480469 69.425781 L 21.035156 154.753906 L 7.070312 116.382812 L 241.515625 31.050781 Z M 255.480469 69.425781 " },
+      { fill: "#FEEB17", d: "M 269.566406 108.125 L 35.121094 193.457031 L 20.949219 154.511719 L 255.394531 69.179688 Z M 269.566406 108.125 " },
+      { fill: "#078136", d: "M 283.367188 146.039062 L 48.921875 231.371094 L 34.957031 193 L 269.402344 107.667969 Z M 283.367188 146.039062 " },
+      { fill: "#3057A4", d: "M 297.722656 185.480469 L 63.277344 270.8125 L 48.691406 230.734375 L 283.136719 145.402344 Z M 297.722656 185.480469 " },
+      { fill: "#6F2282", d: "M 311.382812 223.015625 L 76.9375 308.34375 L 62.972656 269.972656 L 297.417969 184.640625 Z M 311.382812 223.015625 " }
+    ]
+  };
+
+
+  // =========================================================================
+  // 1B. WILLKOMMENSESSEN VECTOR MOTIFS (Extracted pure-vector paths from .ai)
+  // =========================================================================
+  const WILLKOMMEN_VECTORS = {
+    brushRingLarge: {"w":100.0,"h":92.6,"fr":"nonzero","d":"M77 87.2C90.8 78 98.7 61.3 97.1 44.8C96.3 36.1 92.8 27.8 87 21.3C85.8 20.1 84.3 18.6 83 17.4C73.2 8.6 60.8 3.7 47.6 5.9C24 9.8 5.1 35.5 10.1 59.2C11.1 63.9 13 68.5 15.6 72.6C16.1 73.3 16.7 74.1 17.2 74.8C17.5 75.3 18.5 76.5 18.9 77.1C19.6 77.9 20.6 79.1 21.3 79.9C21.3 79.9 22.6 81.2 22.6 81.2C23.4 82 24.5 83.1 25.4 83.8C26.3 84.6 27.3 85.5 28.2 86.2L29.7 87.4C30.2 87.7 30.8 88.1 31.3 88.4C33.4 89.8 35.7 90.9 38.1 91.9C38.4 92.1 38.2 92.6 37.9 92.5C34.6 91.8 31.6 90.7 28.6 89.2C26.9 88.3 25.1 87.1 23.6 86.1C22.6 85.4 21.3 84.4 20.4 83.7C19.9 83.3 18.6 82.2 18.1 81.8C17.6 81.3 16.4 80.2 15.9 79.7C15.5 79.2 14.3 78 13.9 77.5C0.1 61.9 0 40 11.6 23.2C20.3 10.4 34.9 1.4 50.5 0.5C60.1 0 69.8 2.9 77.9 8.3C82.3 11.3 86.2 14.9 89.8 18.9C93.6 23.6 96.5 29 98.2 34.8C98.8 37 99.3 39.3 99.6 41.6C99.7 42.2 99.8 43.9 99.8 44.6C100 48.5 99.8 52.5 99 56.4C97.2 65.4 92.8 73.9 86.4 80.5L85.1 81.9L83.6 83.2C81.6 84.9 79.5 86.4 77.3 87.7C77.2 87.8 77 87.8 76.9 87.6C76.8 87.5 76.8 87.3 77 87.2"},
+    brushRingSmall: {"w":88.6,"h":100.0,"fr":"nonzero","d":"M9.6 21.3C20.9 4.9 44.2 0 61.5 9.5C79.9 19 88.6 41.9 81.5 61.2C69 96.4 20.5 100 4.1 66.2C1.3 60.3 0 53.7 0.5 47.2C0.6 48.4 0.8 49.5 0.9 50.6C2.3 58.5 6 65.9 11.5 71.6C23.5 84.6 44.1 87.6 59.1 78.2C78.3 66.8 82.7 40 68.5 22.8C53.3 4.5 26 4.3 9.6 21.3"},
+    swooshCrescent: {"w":100.0,"h":86.4,"fr":"nonzero","d":"M0 49.8C6.4 61.2 15.4 71.3 28.4 75C51.1 81.6 78 66.7 85.3 44.4C86.6 40.4 87.2 36.2 87.2 32C87.1 31.5 87.1 30.6 87.1 30.2C87.1 29.4 86.9 28.5 86.9 27.7C86.8 26.8 86.5 25.6 86.4 24.7C84.6 15.6 80.1 7.5 74.7 0C83 6.8 89.7 16.1 92.3 26.7C100 58.2 69.2 86.4 38.7 84C18.9 82.4 4.8 68.5 0 49.8"},
+    swooshWing: {"w":100.0,"h":91.5,"fr":"nonzero","d":"M100 65.2C62.3 91.5 3.8 64.2 0.4 18.1C0 12 0.6 5.8 2.3 0C2.8 5.9 3.7 11.6 5.4 17.2C17.1 56.9 61.5 76.2 100 65.2"},
+    swooshVerticalS: {"w":30.9,"h":100.0,"fr":"nonzero","d":"M8.5 100C15.6 92.9 19.8 83.5 20.2 73.5C20.6 66.1 18.9 58.6 15.5 52.1C14 49.3 12.1 46.6 10 44.2C8.5 42.3 7.1 40.2 5.9 38.1C0.7 28.5 0 16.8 3.1 6.5C3.8 4.3 4.6 2.1 5.7 0C5 4.5 4.6 9 4.9 13.5C5.2 22.9 8.2 32.3 14.4 39.5C14.9 40 15.5 40.8 16 41.4C17.2 42.7 18.4 44.3 19.4 45.8C30.9 63.1 27.5 89.7 8.5 100"},
+    swooshArc: {"w":43.7,"h":100.0,"fr":"nonzero","d":"M4.2 0C3.3 2.3 3 4.8 4 7.2C4.5 8.3 5.2 9.3 6 10.2C6.9 11.1 7.8 11.9 8.7 12.7C12.7 15.7 17.1 18.2 21.2 21C30.1 26.8 37.6 34.2 40.1 44.8C43.7 54.6 42.5 66.1 37 75.7C31.1 86.3 20.9 94.5 9.4 98.1C6.7 99 4 99.6 1.2 99.9L0 100C6.2 98.8 12.2 96.3 17.4 93C27.8 86.3 36.1 75.9 38.5 63.6C39.4 59.1 39.4 54.5 38.5 50C38.2 48.5 37.8 47.1 37.3 45.6C37 44.4 36.7 43.2 36.2 42C33.4 33.8 26.9 27.8 20 22.8C16 19.8 11.7 17 7.9 13.7C6.5 12.4 5.1 10.9 4.2 9.2C2.4 6.2 2.6 3.1 4.2 0"},
+    fairyLightsRight: {"w":100.0,"h":47.9,"fr":"nonzero","d":"M0 0L2.2 3.4L4.1 5.9L6.7 8.7L11.9 13.5L17 17.4L22.4 21L31 25.9L38.5 29.6L44.1 32L51 34.6L58.3 37L66.4 39.2L73.9 40.7L82.5 41.9L86.7 42.2L92.6 42.2L95.6 42.1L99.8 41.6L100 41.7L100 41.9L99.7 42L97.4 42.4L93.5 42.6L89.7 42.7L83.5 42.4L74.7 41.3L67.3 39.8L58.1 37.4L51 35.1L42 31.6L34.9 28.4L28.1 24.9L22.2 21.3L14.6 16.1L9.8 12L6.2 8.5L2.9 4.7L0.6 1.2L0 0ZM41.1 36.7L40.2 36.1L39.7 35.3L39.5 34.5L39.8 33.7L40.7 32.8L42.1 32.2L42.9 31.2L43.3 31L43.7 31.1L43.9 31.3L44 31.8L43.8 32.8L44.5 33.6L44.7 34.6L44.7 35.2L44.5 36L43.9 36.7L43 37.1L41.6 37ZM42.9 35.2L42.7 35.4L42.5 35L42.1 35.2L42 34.9L41.5 35.2L41.4 34.7L41.1 34.9L40.9 34.8L40.9 34.5L41.2 34.4L41.8 33.8L42.5 32.7L41.9 32.7L40.7 33.1L40.2 33.5L39.8 34.1L39.8 34.8L40 35.5L40.5 36L41.5 36.6L42.1 36.8L43.3 36.7L43.9 36.4L44.3 35.9L44.5 34.9L44.1 33.6L43.4 33L43 34.1L42.9 35.2L42.8 34.9ZM41.6 34.9L42.2 34.5L42.3 34.6L42.2 34.9L42.6 34.7L42.8 34.7L42.9 33.8L43.3 33L42.7 32.7L41.7 34.2ZM42.3 32.4L42.6 32.3L43 31.3ZM71.2 43.5L70.6 44.5L69.4 45.2L68.1 45.1L67.7 44.9L67.1 44.1L66.8 43.2L67 42.3L67.4 41.6L68.4 41L68.9 39.9L69.2 39.5L69.8 39.4L70.3 39.8L70.1 41.3L71.2 42.4ZM69.8 41.7L69.7 43.2L69.9 43.8L69.8 44L69.3 43.9L68.8 44L68.6 43.8L68.1 44.1L67.9 43.7L68.6 42.3L68.7 41.5L68.1 41.5L67.5 41.9L67.1 42.6L67.1 43.2L67.2 43.7L67.6 44.4L68.5 44.8L69 44.9L69.5 44.7L70.4 44.2L70.8 43.2L70.8 42.8ZM69.3 41.7L69.2 41.5L68.8 41.5L68.6 42.4L68.1 43.6L68.1 43.9L68.7 43.2L68.9 43.7L69.5 43.5L69.7 41.6L69.4 41.6ZM69.9 40.3L69.8 40.7L69.9 40.3ZM27.2 29.9L26.5 29.4L25.9 28.8L25.6 28L25.6 27.1L25.9 26.5L26.3 26.1L26.8 25.8L27.7 25.7L28.6 24.7L29 24.6L29.6 24.7L29.9 25.2L30 25.7L29.7 27L29.9 27.6L29.8 28.4L29.2 29.3L28.5 30L27.8 30.1ZM27.3 25.9L26.8 26L26.2 26.4L25.9 27L25.9 27.8L26.1 28.5L26.7 29.2L27.5 29.6L28.2 29.7L28.8 29.4L29.4 28.6L29.6 27.7L29 26.7L28.5 28.9L28.3 28.5L27.9 28.8L27.7 28.6L27.4 28.7L27.5 28L27 28.2L26.9 28L27.8 27L28.2 26.2L27 26.1ZM28.5 28.3L28.9 26.6L28.4 26.3L27.4 27.7L27.7 27.9L27.5 28.4L27.9 28.2L28 28.2L27.9 28.6ZM29.3 25.3L29.1 25.7L29.3 25.3ZM29.4 24.9L29.4 24.9L29.5 25L29.4 24.9ZM82.4 47.9L81.5 47.7L81 47.4L80.4 46.6L80.2 45.7L80.4 45L80.9 44.2L82.1 43.5L82.7 41.5L83.2 41.4L83.4 41.6L83.7 43.6L84.6 44.3L84.9 44.7L85 45.8L84.7 46.9L84.2 47.4L83.7 47.7ZM82.5 46.3L82.2 46.7L81.9 46.1L81.6 46.3L82.2 44.9L82.3 43.8L81.2 44.1L80.8 44.5L80.4 45.7L80.6 46.6L81.3 47.3L82.5 47.7L83.8 47.4L84.3 46.9L84.7 45.8L84.5 44.7L84.2 44.3L83.3 43.9L83.5 45.2L83.7 46.1L84 46.1L83.9 46.3L83.2 46.6L83 46.2L82.7 46.5ZM82.8 46.1L83.2 45.8L83.3 46.2L83.5 46.1L83.2 43.9L82.7 43.8L82.5 44L82.4 44.9L82.1 46L82.2 46.4L82.5 45.9L82.6 45.9L82.8 46.1ZM83.2 42L83.1 43.5L83.3 43.5L83.3 43.3ZM83.1 41.7L82.8 41.9L83.1 41.7ZM82.5 42.9L82.5 43L82.5 43.2ZM82.4 43.3L82.3 43.6L82.4 43.5L82.4 43.3ZM55 41.2L54.4 40.9L53.7 40.1L53.6 39.7L53.6 38.7L54.3 37.8L55.6 37.5L56.2 36.2L56.4 35.9L57 35.9L57.2 36.3L57.1 37.6L58.1 38.7L58.2 39.7L58 40.2L57.4 41L57 41.2L55.9 41.4ZM56 39.8L56.5 39.4L56.4 38.7L56.5 37.9L55.8 37.8L55.6 38.6L55 39.2L54.9 39.1L55.4 38.5L55.7 37.8L55.2 37.7L54.5 37.8L53.8 38.5L53.7 39.4L54.1 40.2L54.9 40.8L55.9 41L57.2 40.7L57.8 40L57.8 38.9L57.3 38.2L56.7 38L56.6 38.1L56.5 38.9L56.9 39.9L56.8 39.9L56.6 39.6L56.1 40L55.9 40L55.8 39.6L55.3 40L55.3 39.3L54.7 39.5L55.6 39.1L55.6 39.3L55.4 39.8L55.9 39.4ZM56.9 37L56.7 37.6L56.9 37.5ZM56.8 36.1L56.9 36.4L56.8 36.1ZM17.5 21.7L16.5 22.4L15.2 22.5L14.1 21.9L13.8 21.5L13.5 20.6L13.6 19.7L14.1 19L14.8 18.5L16 18.3L16.9 17.5L17.3 17.3L17.9 17.5L18.1 18L17.4 19.3L17.9 20.7ZM16.9 19.5L16.2 20.8L16.2 21.5L16.1 21.6L15.6 21.3L15.1 21.2L15 20.9L14.4 21L14.4 20.6L15.6 19.5L16 18.8L15.5 18.6L14.7 18.7L14.1 19.3L13.9 19.7L13.8 20.2L13.9 21.1L14.5 21.8L15 22.1L15.5 22.2L16.4 22L17.3 21.3L17.5 20.9ZM16.5 19.3L16.5 19.1L16.1 18.9L15.6 19.7L14.6 20.5L14.5 20.8L15.3 20.5L15.3 21L15.9 21.1L16.8 19.4L16.6 19.2ZM17.6 18.3L17.3 18.6L17.6 18.3Z"},
+    fairyLightsLeft: {"w":100.0,"h":42.9,"fr":"nonzero","d":"M0 41.1L3.9 42L7 42.4L10.9 42.5L17.9 42.2L24.2 41.4L30.6 40.1L40.1 37.6L48 34.8L53.6 32.6L60.4 29.6L67.2 26.1L74.4 21.9L80.8 17.7L87.7 12.4L90.8 9.7L95.1 5.6L97.1 3.4L99.7 0.1L99.9 0L100 0.2L99.9 0.5L98.5 2.3L96 5.2L93.3 8L88.7 12.2L81.8 17.6L75.6 21.7L67.3 26.5L60.7 29.9L51.9 33.8L44.6 36.5L37.4 38.8L30.7 40.5L21.6 42.2L15.4 42.7L10.4 42.8L5.4 42.4L1.3 41.5L0 41.1ZM54.8 38.1L53.8 38.2L52.9 38L52.2 37.6L51.8 36.8L51.8 35.5L52.4 34.1L52.2 32.9L52.4 32.4L52.7 32.3L53 32.2L53.5 32.5L54 33.4L55 33.5L55.9 34L56.3 34.4L56.7 35.1L56.8 36.1L56.4 36.9L55.4 37.9ZM55.1 35.7L55 36L54.6 35.9L54.5 36.3L54.2 36.1L54.1 36.7L53.6 36.4L53.6 36.8L53.4 36.8L53.2 36.5L53.3 36.3L53.3 35.5L53 34.2L52.5 34.6L52 35.7L52 36.3L52.1 37L52.5 37.6L53.2 37.9L54 38L55.1 37.7L55.6 37.4L56.4 36.5L56.6 35.8L56.5 35.2L55.9 34.3L54.8 33.7L53.8 33.8L54.3 34.8L55.1 35.7L54.8 35.5ZM54 36.4L54 35.7L54.2 35.7L54.4 36L54.5 35.5L54.7 35.4L54.1 34.7L53.7 33.8L53.1 34.1L53.5 35.8ZM52.6 34.1L52.8 33.9L52.4 32.9ZM80.8 21.6L81.1 22.7L80.8 24L79.8 24.8L79.3 25L78.3 24.9L77.6 24.5L77.1 23.8L76.9 22.9L77.2 21.8L76.7 20.6L76.7 20.2L77.1 19.7L77.6 19.7L78.6 20.8L80.1 20.9ZM78.6 21.3L79.5 22.4L80.2 22.7L80.3 22.9L79.8 23.2L79.5 23.7L79.2 23.6L79.1 24.2L78.7 24.1L78.2 22.6L77.7 22L77.3 22.4L77.1 23.1L77.4 23.9L77.7 24.3L78.1 24.5L79 24.8L79.9 24.4L80.3 24.1L80.6 23.6L80.8 22.7L80.4 21.6L80.1 21.4ZM78.3 21.7L78.1 21.6L77.8 21.8L78.3 22.7L78.7 23.9L78.9 24.1L78.9 23.1L79.3 23.4L79.7 22.8L78.5 21.3L78.2 21.5ZM77.7 20.2L77.9 20.6L77.7 20.2ZM91.8 16.8L91 17.3L90.5 17.4L89.6 17.3L88.7 16.8L88.4 16.2L88.2 15.3L88.5 13.9L87.6 12.1L87.8 11.6L88.1 11.7L89.7 12.8L90.9 12.7L91.4 12.8L92.2 13.5L92.7 14.5L92.8 15.1L92.6 15.8ZM90.8 15.6L90.8 16.1L90.2 15.9L90.2 16.2L89.6 14.8L88.9 14L88.3 14.9L88.3 15.5L88.9 16.7L89.7 17.1L90.7 17.2L91.8 16.5L92.4 15.5L92.5 14.8L92 13.7L91.1 13.1L90.6 13L89.7 13.3L90.7 14.1L91.5 14.6L91.7 14.4L91.8 14.6L91.5 15.3L91.1 15.1L91.1 15.6ZM90.8 15.2L90.9 14.8L91.4 15L91.4 14.8L89.6 13.5L89.2 13.7L89.1 14L89.7 14.7L90.3 15.7L90.6 15.9L90.5 15.3L90.6 15.2ZM88.2 12.1L89.2 13.2L89.4 13.1L89.3 12.9ZM87.9 11.9L87.9 12.3L87.9 11.9ZM88.4 13.2L88.5 13.3L88.6 13.4ZM88.6 13.6L88.7 13.8L88.7 13.7L88.6 13.6ZM67.9 31.4L67.2 31.6L66.1 31.5L65.8 31.3L65 30.6L64.9 29.5L65.6 28.3L65.1 27L65.1 26.7L65.4 26.2L65.9 26.4L66.8 27.3L68.2 27.4L69 28.1L69.2 28.6L69.3 29.5L69.2 30L68.5 30.9ZM67.6 29.7L67.6 29.1L67 28.7L66.6 28L66 28.4L66.4 29.1L66.4 30L66.2 30L66.2 29.2L65.9 28.5L65.4 28.8L65.1 29.3L65.1 30.3L65.6 31L66.4 31.3L67.5 31.2L68.4 30.6L69 29.5L68.9 28.6L68.2 27.8L67.4 27.6L66.7 27.9L66.7 28.1L67.3 28.7L68.3 29.1L68.2 29.3L67.8 29.1L67.7 29.8L67.6 29.9L67.3 29.7L67.1 30.3L66.7 29.8L66.4 30.4L66.7 29.5L66.9 29.6L67.1 30.1L67.2 29.5ZM66.2 27.1L66.5 27.6L66.5 27.4ZM65.5 26.5L65.8 26.7L65.5 26.5Z"},
+    buntingLeft: {"w":100.0,"h":44.9,"fr":"nonzero","d":"M0.4 37.2L0.1 36.9L0.1 36.5L0.4 36.3L0.8 36.3L6.1 37.9L8.7 38.3L13.6 38.5L18.2 37.9L22.6 36.6L26.7 34.9L32.4 31.5L35.8 29L46.1 21L49.6 18.8L51.2 18.1L54.2 17.2L69.6 15L73.6 14.2L79.3 12.4L82.2 10.8L85 8.7L88.8 4.3L91.3 2.1L95.2 0.1L95.6 0.1L95.8 0.4L95.8 0.8L95.5 1.1L93 2.3L91 3.6L89.6 5L85.7 9.5L83.9 11L81.5 12.5L77.8 14L73.9 15.2L69.8 16L58 17.6L54.5 18.2L51.5 19.1L49.9 19.8L46.5 22L36.5 29.9L32.9 32.4L27.1 35.8L22.8 37.7L18.4 38.9L16 39.3L11.1 39.6L5.9 38.9L0.4 37.2ZM33.8 31.7L33.6 31.4L33.7 31L34.1 30.8L34.4 30.9L38.6 34.3L40.5 36.7L44.3 42.8L45 34.9L45.1 30L44.6 26.9L43.6 23.6L43.9 23.4L44.3 23.4L44.6 23.6L45.7 26.6L46.1 30.1L46 35.5L45 44.7L44.4 44.8L44.2 44.6L40 37.8L38 35.3L33.8 31.7ZM52.2 18.8L51.9 18.5L51.9 18.1L52.2 17.8L52.6 17.8L53.3 18.2L54.8 19.7L58.9 25.3L63.5 32.9L65.2 22.4L65.2 19.3L64.8 16L65.1 15.7L65.5 15.8L65.7 16.1L66.3 19.2L66.2 22.6L64.1 34.8L63.8 34.9L63.3 34.7L59.1 27.6L55.9 22.7L54.3 20.7L52.7 19L52.2 18.8ZM71.9 15.8L71.6 15.6L71.6 15.2L71.9 14.9L72.3 14.9L73.3 15.4L74.2 16.3L75.8 18.8L77.7 23.6L78.8 27.9L80.3 23.5L81.2 20L81.3 16.5L80.6 12.1L80.9 11.8L81.3 11.9L81.6 12.2L82.4 16.7L82.1 20.6L81 24.7L79 30.4L78.4 30.4L78.2 30.1L77.3 25.8L76.3 22.5L74.9 19.3L73.5 17.1L71.9 15.8ZM85.8 9.5L85.4 9.3L85.2 9L85.3 8.6L85.7 8.4L86.9 8.9L87.6 9.7L89.1 12.4L90.9 17.6L92.5 11.9L92.8 9.7L92.7 6.4L91.6 2.7L91.8 2.4L92.2 2.3L92.5 2.6L93.3 4.4L93.7 6.4L93.8 10.3L93.4 13L92.7 15.5L91.1 19.8L90.5 19.7L90.4 19.4L88.5 13.6L87.4 11.2L86.4 9.9L85.8 9.5ZM90.4 9.9L89.8 9.4L89.7 8.6L90.2 8L91.2 7.9L91.7 8.3L91.8 9.1L91.4 9.8L90.9 10ZM89 11.4L89.3 12.2L89.6 11.2L89.3 12.2L88.9 11.9L89 11.4ZM89.3 12.2L89.3 12.2L89.3 12.2ZM90.2 14.3L90.1 13.7L90.4 13.4L90.9 13.4L91.5 13.9L91.5 14.4L91.1 14.9L90.6 14.8L90.2 14.3ZM91.5 12.4L91.1 11.9L91.2 11.3L91.7 11L92.4 11.2L92.6 11.8L92.4 12.4L92 12.6L91.5 12.4ZM88.8 9.5L89 10.3L89.4 9.4L89 10.3L88.6 9.9L88.8 9.5ZM89 10.3L88.7 10.1L89 10.3ZM93.3 1.1L93.3 0.7L93.6 0.4L94 0.5L96.6 4.6L97 5.9L96.9 10.7L97.1 12.8L97.7 13.9L99.4 16L99.9 17.7L99.8 20.3L99.7 20.7L99.3 20.8L98.9 20.6L98.8 20.3L98.9 18.5L98.7 17.2L96.1 13.1L95.8 10.9L95.9 6.1L95.6 5L93.3 1.1ZM35.6 30.7L35.4 30.3L35.5 30L35.9 29.8L36.2 29.9L36.8 30.7L39.6 35.5L39.7 35.9L39.4 36.2L39 36.3L38.7 36L35.6 30.7ZM37.2 29.1L37.1 28.7L37.2 28.3L37.6 28.2L38 28.3L39 29.6L40.7 32.8L43.2 41.1L43.1 41.5L42.8 41.7L42.4 41.7L42.2 41.4L39.8 33.4L38.2 30.3L37.2 29.1ZM39.3 27.3L39.2 26.9L39.5 26.6L39.9 26.5L40.2 26.8L41.6 29.7L43.5 34.4L44.9 40L45.3 43.4L45.2 43.8L44.8 44L44.4 43.9L44.2 43.6L43.5 38.5L42.5 34.7L40.7 30.1L39.3 27.3ZM41.6 25.3L42.6 27.1L43.6 29.5L45.4 34.8ZM41.8 24.8L42.4 25.5L43.9 28.8L45.8 34.5L45.8 35.2L45.4 35.3L45 35.1L43 29.2L42.2 27.3L41.1 25.5L41.2 25ZM41.3 25.8L41.3 25.8L41.3 25.8ZM41.8 24.9L41.9 24.9L41.8 24.9ZM41.2 25L41.1 25.3L41.2 25ZM41.1 25.5L41.2 25.7L41.1 25.5ZM55.6 18.8L55.9 18.3L56.4 18.2L57 18.5L57.1 19.1L56.8 19.6L56.2 19.7L55.9 19.5L55.6 18.8ZM57.9 21.9L57.8 21.2L58.3 20.5L59.2 20.5L59.7 21.1L59.6 21.9L59.1 22.4L58.4 22.3L57.9 21.9ZM60.3 19.7L59.7 19.4L59.6 18.9L60 18.4L60.6 18.4L60.9 18.6L61 19L60.6 19.7L60.3 19.7ZM62.4 22.8L61.9 22.9L61.1 22.2L61.1 21.3L61.9 20.6L62.5 20.7L62.9 21.3L63 22.3ZM63.5 19.9L62.7 19.8L62.4 19.4L62.5 18.8L62.9 18.5L63.6 18.4L64 18.9L64.1 19.6L63.5 19.9ZM59.3 24.7L59.3 24.2L59.6 23.9L60.2 23.9L60.6 24.3L60.6 24.8L60.1 25.2L59.5 25.1L59.3 24.7ZM61.7 27.4L61.9 27.7L61.9 28.1L61.6 28.3L61.1 28.2L60.8 27.9L60.9 27.5L61.2 27.3ZM62.1 26.4L61.5 25.7L61.9 24.8L62.4 24.4L63.4 24.5L63.7 24.9L63.9 25.6L63.8 26.1L62.8 26.6ZM64.2 22.2L64.4 22.2L64.2 22.2ZM63.8 21.4L64.2 22.2L63.8 22L63.8 21.4ZM63.8 21.4L64 21.2L64.1 21.3L64.2 22.2L63.8 21.4ZM63.7 17.1L64 17.9L63.6 17.7L63.7 17.1ZM63.7 17.1L64 16.9L64 17L64 17.9L63.7 17.1ZM64 17.9L64.1 17.9L64 17.9ZM63 27.9L63.3 28.6L63.5 27.7L63.3 28.7L62.9 28.5L62.8 28.1L63 27.9ZM62.2 30.3L62.3 29.7L62.6 29.4L63.3 29.5L63.6 30L63.5 30.6L63 31L62.6 30.8L62.2 30.3ZM74.5 16.4L74.2 16.6L73.8 16.5L73.6 16.2L74.2 14.9L74.6 14.6L74.9 14.7L75.2 15L74.5 16.4ZM74.5 14.7L74.7 15.4L75.2 14.6L74.7 15.5L74.3 15.1L74.5 14.7ZM74.8 17.3L76.8 13.7L77.1 13.4L77.5 13.4L77.8 13.7L77.7 14.1L75.9 17.6L75.5 18.1L74.9 18.2L74.7 17.9L74.8 17.3ZM76.6 20.2L76.4 20.5L76 20.6L75.6 20.2L75.7 19.8L77.5 16.8L79.1 12.9L79.3 12.6L79.7 12.6L80 12.9L80 13.3L78.4 17.3L76.6 20.2ZM77.2 21.9L76.9 22.2L76.5 22.2L76.3 21.9L76.3 21.5L79.3 16.6L80.6 13.7L80.8 13.4L81.2 13.3L81.5 13.6L81.5 14L80.2 17L77.2 21.9ZM78 24.1L77.7 24.4L77.3 24.4L77 24L77 23.6L79.9 19.6L81.3 16.9L81.6 16.6L82 16.7L82.2 16.9L82.2 17.3L80.8 20L78 24.1ZM78.3 26.2L77.8 26.5L77.4 26.4L77.3 25.7L80.7 21.6L81 21.4L81.4 21.5L81.6 21.8L81.5 22.2L78.3 26.2Z"},
+    starFilled7pt: {"w":100.0,"h":98.7,"fr":"evenodd","d":"M34.3 5.8L44.3 20L49 28L50.8 28.5L66.3 15.4L74.7 9.6L72.6 20.3L65.1 35.6L64.4 38.9L65.8 39.6L68.9 39L74.7 41.4L85.7 47L93.9 52.5L83.4 55.1L72.5 55.9L72 56.5L70.2 56L67.6 56.7L60.7 56.2L59.4 56.7L57.3 88.9L53.6 83.9L46.3 67.3L45.7 67.3L45.7 66.1L44.4 65.3L44.7 62.2L42.1 60.8L37.6 64.8L24.6 73.4L24.2 74.3L23.5 74.2L13.4 81.8L20.1 65L23.4 58.9L25.4 51.4L24.8 50.4L12.8 43.5L6.9 36.9L18.9 35.3L30.7 37L30.1 35.9L30.6 35.5L32.2 35.5L32.9 13.9L33.6 5.9L34.3 5.8ZM32.2 0.7L31.2 1.5L29.2 32L23.6 31L16.4 30.8L2.8 32.9L0.3 34.7L0.4 37.7L9.2 46.4L13.2 49.4L22.3 53.6L13.6 71.3L7.2 87.7L8.3 89.5L11 88.5L41.3 66L43.7 74L48.8 85.5L54.8 94.8L57.5 98.1L58.5 97.8L59.2 98.7L61.3 96.3L62.4 86.4L62.3 74.6L62.6 72L63.2 72.2L62.8 60.6L86 58L98.9 54.4L100 53.5L98.4 50.4L94.4 48.4L85.3 42L85.1 42.5L77.9 38.7L78 38.2L69.8 35L76.6 20.5L78.8 12.7L78.5 8L76.7 5.2L75.1 5.6L65.5 12.3L52.5 23L51 23.3L43.5 10.4L42.6 10L40.6 6.1L37.2 1.8L34.9 0.1L32.2 0.2L32.2 0.7ZM38.1 16.2L49.3 33.1L50.6 33.5L62.4 23.5L68.8 19.1L67.1 27.3L61.4 38.9L61 41.4L62 42L64.4 41.5L68.7 43.3L77.1 47.5L83.3 51.7L75.4 53.7L66.8 54.8L57.1 54.9L55.5 79.4L52.7 75.6L47.2 63L45.7 61.5L46 59.1L44 58.1L22.2 74L29.8 56.6L31.3 50.9L21.7 44.9L17.2 39.9L26.4 38.6L35.3 39.9L35.2 38.8L36.4 38.8L37 22.4L37.5 16.3L38.1 16.2Z"},
+    starHollow7pt: {"w":100.0,"h":98.5,"fr":"nonzero","d":"M65.2 87.9L64 89.5L64.2 91.4L66.5 92.5L68.1 90.7L68.1 89.1L67.3 88.1L65.2 87.9ZM86.1 70.7L88.8 72.4L87.8 75.3L84.7 74.1L86.1 70.7ZM29 86.7L29 87.3L29.7 87.2L29.1 87.7L29.7 90.2L27 89L25.7 89.2L25.9 90.4L28.3 91.9L25.7 93.8L26.9 94.7L29.6 94L28.1 97L28.6 98.5L31 94.9L32.3 98.4L33.1 98.5L33.5 97.7L32.7 94.5L35.9 95.6L36.9 94.5L32.8 92.2L36.1 90.5L36.5 89.3L35 89L32.8 90L33.1 86.3L31.7 87.3L31.1 89.4L29.9 86.4L29 86.7ZM83.9 65.6L84.4 71.4L81.4 75.5L85.3 76.2L87.8 80.7L89 81.2L89.9 79.9L89.6 74.8L92.4 72L92.6 70.4L89 70.3L86.4 66.5L83.9 65.6ZM93.9 58L93.3 58.8L93.5 61L95.2 63.1L96 62L95.9 58.8L93.9 58ZM98.4 54.6L96.1 55.7L96.5 57.8L99.9 55.3L99.6 54.5L98.4 54.6ZM89.8 57.1L88.6 58L88.1 59.6L89.4 59.8L91.9 58.9L92.1 57.6L89.8 57.1ZM9.9 77.2L11.4 78L10 79.7L9.2 78.9ZM64 60.7L63.4 60.9L64.1 60.9L65.8 65.4L69.8 70.1L70.7 70.1L71.4 68.9L68.5 64.5L65.5 61L64 60.7ZM43.6 65.3L42.6 66.3L40.2 74.6L40.9 76.9L42 75.6L44.9 66.8L44.7 65.3L43.6 65.3ZM91.6 51L92.1 55.3L93.2 56.1L94 54.4L93.3 51.4L91.9 50.6L91.6 51ZM8.4 75.6L7.3 77.4L7.5 80.4L8.9 81.7L10.1 81.7L12.7 80L13.2 77L11.6 75.5L8.4 75.6ZM25.1 54.7L20.2 56.4L19 57L19 57.8L20.1 58.4L28.5 55.3L29.3 54.8L28.8 53.7L25.1 54.7ZM75.8 35.2L69.3 38L68.4 39.2L68.6 40.1L70 40.3L77.2 36.7L78 35.2L75.8 35.2ZM6.1 53L5.6 53.4L6.2 55.6L8.6 58.4L8 52.9L6.1 53ZM1.8 51.2L0.5 51.9L0.1 53.2L4.2 53L5 52.3L4.6 51.2L1.8 51.2ZM7.7 48.8L6.9 49.2L6.9 50.6L8.4 51.2L11.4 50.1L12.3 48.9L10 48.2L7.7 48.8ZM3.6 44.3L4.1 48.9L5.2 50.2L6.2 49.5L6.2 48.4L5.4 47.7L4.4 44.6L3.6 44.3ZM80.7 12.5L82.3 13.7L80.9 14.6L80.2 13.8L80.7 12.5ZM27.2 28.4L26.9 29.4L28.7 31.4L34.2 35.2L34.8 34.5L34.2 33.7L29.7 29.5L27.2 28.4ZM79.6 10.9L78.4 12.6L78.4 14.8L79.6 16.5L81.4 16.7L83.7 15L84.3 12.9L82.1 10.6L79.6 10.9ZM54.4 18.4L52.1 26.1L53.1 27.7L54 26.7L55.7 19.8L55.6 18.3L54.4 18.4ZM40.9 22.2L50.3 36.5L51.5 36.8L61.4 28.4L66.8 24.6L65.4 31.5L60.6 41.3L60.2 43.5L63.1 43.5L66.8 45.1L73.9 48.7L79.1 52.2L72.4 53.9L57 54.9L55.6 75.6L53.2 72.4L48.5 61.7L47.3 60.5L47.5 58.4L45.8 57.6L27.4 71.1L33.8 56.3L35.1 51.5L27 46.5L23.2 42.2L31 41.2L38.5 42.2L38.4 41.3L39.5 41.3L40 27.4L40.4 22.3L40.9 22.2ZM11.3 27.4L13.3 28.9L12.9 30.8L10.5 29.9L11.3 27.4ZM39.5 18.9L38.9 19.4L37.5 39L29.3 38.3L20.6 39.6L19 40.8L19.1 42.7L24.7 48.3L33.1 52.9L27.5 64.3L23.4 74.9L24.1 76L25.9 75.3L45.3 60.9L50.1 73.4L54 79.4L56.8 81.9L58.1 80.4L58.9 74L59.1 57.5L74 55.7L83 52.9L82 50.9L73.6 45.5L63.6 41L68 31.6L69.4 26.7L69.2 23.7L68.1 21.8L51.6 33.4L42.7 19.7L41.2 18.6L39.5 18.9ZM8.7 21.6L8.4 23.3L9.5 27.3L8.6 29.1L6.4 30.7L6.3 31.7L6.8 32.6L10.1 31.9L13.6 36.6L14.5 37L15.6 35.7L14.4 32.7L14.3 30.5L17 27L16.1 26.5L13.7 26.8L11 23.6L10.4 21.7L8.7 21.6ZM26.3 10.8L25.1 12L25.2 14.4L26.2 15.1L27.9 15L29.3 13.9L29.6 12.4L29.1 11.6L26.3 10.8ZM52.1 0.1L52.9 4.4L49.7 3.4L49 3.7L49.6 4.9L52.4 6.8L49 8.2L49 9.2L50.7 9.8L54.1 8.4L53.1 13.3L54.4 12.8L55.3 10.8L57.6 14.4L58.8 12.7L57.8 9.4L60.6 10.4L61.7 9.5L61.6 8.6L57.9 7.1L60.6 6.2L61.2 4.8L60 4.2L57.4 4.9L58.1 0.1L56.9 0.2L55.6 4.4L54 0.5L52.1 0.1Z"},
+    sparkles4pt: {"w":78.9,"h":100.0,"fr":"nonzero","d":"M65.9 76.5L66.1 77.9L67.7 74.4L69.5 71.5L71.8 69.3L74.6 67.8L72 66L70.2 64L69 61.7L68.3 59.1L67.4 61L65.8 62.8L63.3 64.7L59.2 66.9L61.1 67.8L63.6 69.8L65 72.1L65.9 76.5ZM56.1 66.2L61.7 63.4L64.7 61.3L66.1 59.3L67.6 54.2L68.6 53.5L69.5 54.4L70.3 59.1L71.5 62.5L73.9 65.1L78.2 67.2L78.8 68.3L78.5 68.8L75.7 69.5L72.3 71.4L69.8 74.7L66.8 81.7L65.8 82.4L64.9 81.6L63.4 73.7L62.4 71.3L60.2 69.5L55.8 67.7L55.7 66.6L56.1 66.2ZM15.2 4.6L13.4 8.1L10.5 10.6L13.1 12.6L14.4 15.3L16 13.2L19.6 10.7L16.8 8.9L15.6 6.5L15.2 4.6ZM22.6 11.3L17 14.9L16.2 16.3L15.3 19.7L14.3 20.4L13.4 19.6L12.8 16.5L11.8 14.3L10.2 12.6L7.3 11.4L6.7 10.4L6.9 9.8L8.9 9.2L11.1 7.8L13.2 4.1L14.4 0.7L15.3 0L16.3 0.7L17.5 6.1L18.3 7.6L19.7 8.7L22.8 9.8L23 10.9L22.6 11.3ZM11.9 86.7L13.1 89.7L13.6 92.8L14.7 89.9L16.4 87.4L20.3 84.1L25.2 81.1L20.1 78.9L18 77L16.5 74.4L15.9 72.6L15 67.1L13.6 71.6L11.6 75.5L8.6 78.6L4.3 80.8L8.5 83.1L10.4 84.7L11.9 86.7ZM0 80.5L0.9 79.6L4 78.8L6.6 77.6L8.6 76.1L10.1 74.2L12.3 69.5L14.2 62.2L15.2 61.5L16.1 62.2L17.5 70.5L19 75.1L19.9 76.2L22.2 77.8L28 79.8L28.7 80.6L28.3 81.6L21.4 85.6L17.9 88.7L15.6 92.8L14 99.2L13.1 100L12.4 99.8L12.1 99.2L11.4 91.2L10.2 87.6L8.3 85.5L5.9 83.8L0.7 81.5L0 80.5ZM36.7 59.6L37.7 54.6L39.9 50.2L44.6 45.4L53.3 39.4L49.6 38L46.7 36.3L44.5 34.4L42.9 32.2L40.9 27.2L38.7 15.6L36.1 23.9L33 30.8L31 33.6L28.7 35.9L26.1 37.8L23 39.1L28.9 42.8L31.1 44.9L32.8 47.2L35.1 52.7L36.7 59.6ZM18.8 38.7L19.7 37.9L23.4 36.9L26.6 35.1L29.2 32.7L31.4 29.6L34.9 21.5L37.8 11.3L38.7 10.6L39.7 11.3L42.9 26.9L44.9 31.7L46.6 33.7L48.9 35.4L52 36.9L55.9 38.1L56.6 38.9L56.2 39.9L46.9 46.1L41.9 50.7L39.7 54.9L37.6 65.3L36.6 66L36 65.8L35.6 65.2L33.9 55.8L32.9 52L31.5 48.9L29.6 46.1L27.1 43.7L23.7 41.7L19.5 39.8L18.8 38.7Z"},
+    confettiSpiral: {"w":66.4,"h":100.0,"fr":"nonzero","d":"M41.2 26.8L37.1 27L33.3 28.1L30 29.8L27.3 31.8L25.4 33.8L24.1 36L23.4 38.1L23.6 39.8L24 40.5L26.1 41.7L28.2 41.9L30.6 41.5L33.2 40.4L36.4 38.3L39 35.9L40.9 33.1L42.6 29.8L43.4 27ZM52.4 59.1L49.6 58.4L46.1 58.4L43 59.1L40.1 60.6L37.1 63.1L35 66.1L34.3 68.2L34.4 69.7L34.8 70.4L36.4 71.7L41.2 72.4L43.9 71.9L49.1 69.4L53.4 65.4L55.9 61.6L55.8 61.1L52.4 59.1ZM66 83.9L65.2 88.1L64.1 91.7L62.6 94.8L60.9 97.2L58.9 99.1L57.9 99.8L56.7 99.7L56.1 99L56.5 97.6L59.4 94.2L61.1 91L62.5 86.3L63.3 81.3L63.3 77.1L62.8 73.5L61.9 70.3L60.8 67.4L58.3 63.6L55.6 67.4L53.9 69.3L49.8 72.4L44.8 74.7L40.4 75.4L36.3 74.9L34.9 74.4L32.9 72.9L31.6 70.7L31.4 69.4L31.8 66.4L33.8 62.3L36.1 59.9L38.7 57.9L41.4 56.5L44.7 55.6L49.7 55.4L53.7 56.4L57.4 58.2L58.8 53.4L59 50L58.8 46.3L58.1 42.5L56.8 38.6L55.2 35.5L53.2 32.8L50.9 30.5L48.5 28.9L46.9 28.1L46.4 28.2L44.3 33.1L42.6 36.1L40.6 38.5L36.4 42.1L34.5 43.1L30.7 44.5L28.8 44.9L25 44.5L22.5 43.2L21.5 42.3L20.5 40.2L20.5 37.7L21.4 34.6L23.2 31.8L25.5 29.4L28.1 27.4L31.1 25.8L34.4 24.5L38 23.8L44.4 23.9L44.4 18.5L44 15.4L43.3 12.9L41.9 10.2L40 7.3L37.9 5.4L35.6 4.1L32.3 3.3L28.2 3.2L23.9 4.2L19.7 5.8L12.8 9.8L5.3 15.7L2.1 18.9L0.6 18.7L0 17.3L1.5 15.3L5.6 11.5L10.4 7.8L14.5 5.2L18.5 3.1L22.9 1.4L27.4 0.3L29.6 0.1L32.5 0.4L36.9 1.4L39.4 2.8L42.8 6L45.8 11.3L47 15L47.5 18.5L47.2 24.9L51.6 27.4L55.1 30.4L58.2 34.6L60.5 40L61.8 45.4L62 50.8L60.9 57.5L59.9 60.3L63.1 65.4L65.5 72L66.4 79.8Z"},
+    confettiZigzag: {"w":100.0,"h":62.7,"fr":"nonzero","d":"M99.8 51.8L98.6 52.8L87.8 54.2L68.5 58.3L54.9 62.4L52.4 61.6L52.8 60.2L54.3 58.8L86.1 39.7L46.9 51L36.6 52.7L33.7 51.9L33.4 50.1L35 48.5L74.3 29.4L56.2 33.6L24.7 43.2L17.1 45L15.2 45L14.8 43.2L15.8 42.1L20.4 39L64.2 13.4L64.9 11.9L50.8 15.7L22 25.9L6.5 30L4 29.8L3.1 28.4L3.4 27.6L31.3 7.4L11.5 14.7L6.3 17.1L1.1 20.6L0.5 20.4L0.1 19.2L1.3 17.2L8.7 13.1L41.9 0.2L42.8 0.7L42.9 1.7L41 4.1L10.6 25.2L12.8 25.7L21.8 23.1L42.4 15.6L58.6 10.6L67.1 8.9L69.2 10.6L69.2 12.3L64.5 16.1L28 37.9L26 39.7L36.4 37L58.5 29.9L78.4 25.5L82.6 25.4L83.2 25.6L83.6 27.5L82 29.5L48.7 45.1L47.2 46.1L46.2 47.9L56.7 45.4L76.3 39.2L87.6 36.4L91.4 37.2L91.6 39.5L90.7 40.6L69.9 52.7L68.8 54.2L69.7 54.7L89.2 50.6L95.5 49.8L98.8 50.2L99.8 51.8Z"},
+    confettiBurst: {"w":100.0,"h":62.3,"fr":"nonzero","d":"M63.8 30L66 2.3L64.7 0.5L62.3 0.6L61 2.5L62.1 8.8L60.4 27.9L58.4 32.6L52.8 34.1L44 25.3L42.9 25.2L41.1 26.7L42.2 29.4L50.4 36.3L14.5 50.8L9.5 52L2.6 52.2L1.3 53.1L0.3 56.1L1.9 57.4L4.6 57.1L19.8 52.7L52.1 39.8L57.5 43.2L54.8 51.9L56.1 53.4L59 52L60.7 45.4L86.6 60.3L90.3 61.4L91.6 59.1L91 58.1L63.9 43.5L62.3 40.4L63.1 35.6L64.5 33.7L74.8 29L90.7 23.4L98.3 22.7L100 20.4L95 19.8L85.6 21.1L63.8 30Z"},
+    confettiSwirl: {"w":100.0,"h":33.0,"fr":"nonzero","d":"M57.4 11.3L52.6 13.1L50.6 15L49.7 17.2L50 20.6L50.9 22.5L52.3 24.1L54.2 25.3L56 25.8L57.7 25.5L59.1 24.5L60.1 22.9L60.5 21.1L60.2 17L59.5 15ZM55.5 9.1L50.5 5.7L45.8 3.9L41 3L33.4 3.5L28.1 5L18.2 9.4L10.8 14L5.4 18.6L1.9 22.2L1.2 22.6L0.4 22.3L0 21.6L2.5 18.2L7.6 13.4L17.5 7.1L21.7 5L30.6 1.8L35.4 0.8L42.5 0.8L47.2 1.9L51.8 3.7L55.9 6.5L58.2 8.5L67.9 9L74.6 10.8L81.4 13.8L87.6 17.7L93.1 22.6L95.6 25.4L99.5 30.9L99.8 32L98.9 32.8L97.7 32L92.4 25.2L86 19.5L81.4 16.5L76.5 14.1L71.3 12.3L66 11.2L60.1 11L62.2 15.4L62.9 19.2L62.8 21.6L62.2 23.9L60.7 26.2L58.6 27.7L56.1 28.2L52.1 26.9L49.8 25L48.2 22.6L47.3 19.8L47.6 15.8L48.6 13.7L50.1 12L52.1 10.6L55.5 9.1Z"},
+    doodleGoblet: {"w":76.2,"h":100.0,"fr":"nonzero","d":"M42.5 62.3L41.3 82.8L47.9 82.9L51 83.8L53.5 85.8L54.9 91.3L52.5 96.7L49.2 98.5L43.3 99.2L30 99.1L24.3 98L20 96.1L17.7 93.8L17.1 91.4L17.9 89L19.9 86.8L26.4 84.1L30.3 83.9L31.6 61L22 60.5L14 58.8L7.9 54.3L5.7 50.6L2.8 38.2L1.2 15.4L1.6 12.3L3.4 8.5L6.4 5.4L10.2 3L14.1 1.8L34.7 0.5L55.1 1.8L65.2 4.6L68.9 6.8L73.5 13.2L74.8 17.3L75.2 27.8L72.9 41.4L69 54.2L67 56.5L60.8 59.9L49.1 62.2ZM69.1 16.3L68.5 14.2L65.9 11L60.2 8L56.2 6.9L48.5 5.8L28.1 5.1L20.4 5.6L11.7 8.8L8.2 11.7L6.2 16.7L8.2 17.2L12.2 16.1L11.8 14.7L13 12.4L20.2 9L24 11.2L27.7 11.8L35.9 11.4L43 12.6L51.5 10.2L56.7 12.5L62.2 11.6ZM70.3 23.5L68 22.6L62.3 17.7L55.2 17.5L51.6 15.5L42 17.5L26.1 17.4L18.9 13.8L9.4 20L6.6 24.1L6.2 26.7L6.8 29.6L8.4 32.3L11 34.5L17.1 37.4L33.5 40.8L50.4 41.8L63.8 38.1L65.6 36.7L69.3 31.4L71.5 22.8L71 21ZM12.3 52.6L12.1 40L7.4 38.1L9.7 49.8L12.3 52.6ZM21.9 55L20.5 44.2L18.2 41.8L15.9 41.7L17.1 55ZM65.5 42.9L63.8 43.1L62.5 45L63.1 52.6L64.7 51.4L65.2 49.3ZM31.6 44.1L25.6 44.1L25.9 50.5L28.6 56.2L30.1 56.1L30.6 55.1L31.6 44.1ZM41.3 45.3L37.2 45.4L35.4 47.3L35.1 53L35.7 55.8L37.1 57.4L38.8 57.5L40.5 56.4L40.3 50.8ZM48 45.3L46.4 47.3L45.4 51.3L45.3 55.3L46.8 57.4L48.9 56.6L50.2 51.9L50 46ZM58.2 45.3L56 45.5L55.2 47.7L54.6 56.2L59.4 54.9ZM36.5 62.2L36.5 79.8L34.1 87.1L22 90.7L27.4 93.7L48 93.7L49.6 91.8L48.6 88.2L46.3 87.2L40.5 87.3L37.8 86.3L37.7 72.5L39.1 64.4L38 62.3ZM13.4 23.1L19.4 21.1L23.5 21.7L29.2 23.9ZM22.7 28L36.1 30.8L34.3 31.4L29 31.1L23.3 29ZM45.5 26.9L43.4 27.4L40.1 26.4L42.9 25.4L45.3 26.1ZM43.3 20.5L48.2 19.6L51.5 20L56 22.1L44.2 21.2ZM63 27.6L60.1 30.2L53.9 31.8L58.1 29L62.1 27.3ZM40.2 34.9L42.1 34.2L45.3 35.2L42.8 36.1L40.5 35.7Z"},
+    doodlePitcher: {"w":88.8,"h":100.0,"fr":"nonzero","d":"M26.5 19.1L28.1 15.4L31.1 14L34.6 14.4L35.9 10.8L40.6 7.5L42.5 7.2L43 7.9L43.9 15.7L44.8 10.8L46.3 7.6L50.7 2.6L56 0.4L59.4 0.3L62.7 1.3L66.9 4.7L69 8.7L69.9 14.7L69.7 18.6L67.3 35.1L68.1 44.5L69.1 48.3L71.8 53.7L71.6 55.8L85.9 70.3L88.1 71.1L88.3 74.2L82.8 78.8L75.5 86.7L62.3 94.5L52.3 99.2L46 99.5L42.2 96.7L36.1 77.9L26.8 53.9L22.3 50.5L9.4 36.8L6.8 35.6L1.9 35.8L0.8 35.2L0.3 32.9L1.6 28.5L4.9 24.8L9.1 22.1L12.5 21.2L17.9 22.5L22.4 17.9L24.1 17.7L26.5 19.1ZM1.5 34.1L4.9 33.1L10.4 34L14.6 37.3L23.2 47.2L30 53.3L40.7 82.5L44.1 94.9L45.8 96.8L53.6 96.8L75.3 83.1L81.4 76.2L85.6 73L71.9 60.1L53.7 36.8L42.8 19.4L41.6 15.5L41.2 9.2L37.8 11.5L36 16.4L30.2 16.5L27.5 21.7L26.3 21.8L23.2 20.3L19.2 24.7L17.6 25.2L12.5 24.1L8.1 25.6L3.9 29.1L1.5 34.1ZM66 48.6L64.6 41.5L64.5 34.2L66.8 18.1L66.4 10.9L65 7.3L61.9 4.2L59.6 3.2L55.4 3.3L50.7 6.2L48.1 9.3L46 14.2L46.4 20.4L47 21.3L48.2 19.1L50.2 18.1L52.7 19.5L53.8 22.3L53.4 24.8L49.5 26.6L66 48.6ZM48.9 23.5L50.9 23.1L50.2 21.5L48.9 23.5ZM20.6 31.1L29.9 48L48.2 90.4L49.3 92.6L50.9 92.8L51.3 91.7L50.5 89.5L31.7 45L25.1 34.5L21.9 31L20.4 30.5L20.6 31.1ZM30.4 29L53.7 74.5L60.1 85L62.5 86L62.4 83.7L58.1 76.9L43.8 49.1L32.5 30.6L30.4 27.5L30.4 29ZM37.9 25.8L47.8 44.9L54 55L66.2 69.8L72.7 75.9L74.3 76.4L75 75.8L74.4 74.1L59.1 57.5L39.4 26.8L37.9 25.8ZM38.5 22.1L38.9 15.4L37.9 14.9L37.1 16.3L37.5 21.2Z"},
+    doodleStrawberry: {"w":71.6,"h":100.0,"fr":"evenodd","d":"M67.3 13.3L67.2 13.3L67.3 13.3ZM39.6 4.7L42.3 10.7L39.6 4.7ZM51.8 17.7L51.7 17.9L51.7 17.8L51.8 17.7ZM60.2 10.5L60.2 10.5L60.2 10.6ZM5.9 79.1L5.9 79.2L5.9 79.2L5.9 79.1ZM27.6 94.3L27.4 94.4L27.6 94.3ZM31.3 17L31.1 17L31.3 17ZM60.2 29.1L63.3 33L60.2 29.1ZM48.6 20.9L55 26.4L65.5 39L66.8 49.1L64.3 59.6L56.9 70.6L39.3 86.5L23.6 96.2L18.7 97.6L14.2 96.3L10.4 92.1L7.6 84L3.3 59.1L3.4 44.2L6.2 33.6L12.3 24.5L23.1 17.9L33.7 17.1ZM28.4 27L26.7 27.3L24.3 30.2L23.7 32.1L24.5 34.6L26.6 33.6L29.6 30.1L30 28.3L28.4 27ZM18.9 55.1L17.2 54.5L16 57L17.2 63.1L18.3 63.7L20.6 58.8L20.5 56.7L18.9 55.1ZM10.1 41.6L10.2 41.6L10.1 41.6ZM9.3 40.6L7.9 44.5L8.6 48.2L10 48.8L12.2 41.3L11.7 40.3L9.3 40.6ZM41.3 52.3L40.1 52.2L38 54.6L37 56.8L37.6 59.1L39 58.9L41.8 55.2L41.3 52.3ZM57.4 39.9L56.1 39.3L53.7 41.5L53.7 49.8L55.2 49.6L58.3 45.8L58.9 41.3L57.4 39.9ZM37.8 74.9L37.7 74.9L37.8 74.9ZM37.9 74.9L37.8 74.9L37.9 74.9ZM39.6 72.7L35.6 74L33.3 80.6L34.5 80.9L38.6 78L40.4 74.6ZM17.5 82.5L17.4 82.5L17.4 82.5L17.5 82.5ZM18.2 80.6L16.3 80.7L15.1 82.7L16.2 87.9L17.3 88.8L19.1 83.3L18.2 80.6ZM43.9 30.7L40.9 32.5L39.8 37.7L41.2 37.6L44.3 34L44.7 32.1L43.9 30.7ZM51.7 64L48.9 65.6L47.3 67.9L47.9 69.3L49.9 69.4L52.5 67.4L52.8 64.7ZM12.3 69.5L11.1 69.8L10.9 72.2L12.7 75.8L13.5 72.3ZM29.1 66.4L27.9 66.7L26.7 69.1L26.1 71.8L27 73L29.5 69.7ZM29.6 42.3L27.4 45.9L27.1 48.5L28.2 50.2L29.6 49.7L30.8 44.6L29.6 42.3ZM64.4 5.9L50.7 13.9L53.9 8.2L54.7 3.8L53.4 3.8L50.8 6.5L49.1 6.5L46.2 12.8L44.4 3.7L43.5 2.8L42 4.8L39.5 0.7L37.6 3L37.6 5.1L34.4 0L33.3 1.9L33.5 6.5L37.2 11.2L30.7 7L24.9 5.2L24.5 6.5L26.7 9.5L32.7 13.7L18 16.7L11.7 20.9L6.5 27.1L3.8 32.2L0.6 44.2L0.4 58.7L4.8 87.6L8.4 94.4L13.1 98.7L16.7 99.9L22.1 99.6L35.5 93.1L51.5 81.3L57.6 75.6L67.6 62.2L71.4 50.6L70.6 39.4L65.8 29.4L59.5 23L67.8 22.3L68.7 21.2L67.5 20.3L59.4 20L67.2 17L69.6 14.2L69.3 13L55.7 17.2L62.7 11L65.2 7.4Z"},
+    doodleLemon: {"w":100.0,"h":99.3,"fr":"nonzero","d":"M28.6 52.4L22.7 54.3L16.6 59.2L14.4 59.1L12.3 57.3L10.6 52.1L5.3 44L4.7 39.4L6.1 34.5L6.7 43.1L12.1 50.7L13.9 56L15 57.1L16.6 57.2L21.8 52.5L29.3 49.9L34.2 33.3L29.6 21.6L25.5 20.3L19.3 27.7L14.4 31.3L9.2 33.7L4.2 33.9L2.1 32.9L0.4 31L0.1 29L1.2 25.5L4.2 20.3L8.7 15.6L16.3 11.5L24.6 10.6L22 7.4L15.4 1.9L15.1 0.9L15.9 0.2L22 4.4L26.2 9.4L29.1 10.8L34.4 15.7L39.1 22L39.3 24.7L42.7 28.8L45.1 34.5L44.5 36L43.2 35.4L38.8 24.8L37.9 24.4L33.5 17.7L26.9 11.1L26.6 15.8L26.8 17.7L27.8 16.9L27.6 19.5L29.7 20L31.2 21.5L31.9 25.6L35.3 29.9L36.3 26.8L36.8 26L37.2 26.5L29.9 57.9L33.4 61.6L42.3 68.2L45.2 73.7L45.9 77.4L44.9 87.4L40.7 97.5L38.8 99.1L37 99.2L34.8 90.8L29.7 83.7L26.5 76.8L26.7 70.5L29.9 62.3L29.2 59.9L27.8 64.7L27.1 65.3L26.4 64.6L28.6 52.4ZM10.2 24.9L6.5 27.8L5.9 26.7L16.3 17.6L12.8 17.5L14.9 16.7L17.1 17.2L25.9 12.7L18.6 12.9L15.5 13.6L10.5 16.4L5.8 21.3L2 29.2L2.5 30.8L4.5 32.1L9.7 31.7L15.7 28.4L22.1 22.6L24.3 19L25.7 13.6L17.2 19.1ZM31.8 62.7L29.1 69.4L28.3 72.7L28.5 76.4L31.3 82.3L36.8 90.4L38.7 96.8L41 92.6L43.7 83.4L43.2 74.6L40.5 69.4L31.8 62.7ZM45.3 25.9L49 26.9L53.2 26.8L68.2 20.5L76.7 20.7L82 21.9L88.4 25.2L94.1 29.9L98.2 35.4L92.9 39.7L87.2 42.5L78.8 43.6L72.3 42.8L59.1 37.2L47.7 30.1L47 28L45.3 26.5L43.2 25.2L41.7 25.4L45.8 29L46.3 31.1L60.4 40.1L63.2 49.1L62.8 53.9L56.3 66.9L53.5 64.6L45.1 62.7L40.6 60.1L36 53.1L35.3 46.5L35.9 41.3L38.2 37.5L41.5 34.5L42.1 33.2L41.5 32.8L36.1 37.1L33.9 41.5L33.2 45.3L34 53.3L36.7 58.5L41.1 63.2L52.6 66.4L55.6 68.5L57.3 68.3L58.8 67L60.5 62.4L64.3 56.3L65.3 49.3L62.5 41.2L73.6 45.2L82.7 45.4L90.9 43.2L95 40.5L99.9 35.6L97 30.4L91.4 25.1L84.6 21.1L77.9 19.1L67.9 18.6L51.6 25.1L46.3 24.4L41 22.6L40.3 23.6ZM11.5 77.6L13.5 87.2L15.8 91L21.2 94.3L23.6 98.2L26.3 98.9L27.8 98.2L30 95.1L34 92.1L34.1 90.8L32.4 90.9L28.3 94L26.5 96.8L24.9 96.6L22.2 92.5L17.1 89.4L14.7 84.9L13.3 76.4L14.7 70.6L17.2 66.7L19.7 64.5L21.2 63.8L25.6 64L25.8 63.1L21.7 62.1L19.2 62.9L15 66.7L12.6 71.2L11.5 77.6ZM32.4 67L35.6 76.2L37 85.2L37.9 86.4L39 85.4L38.3 78.5L35.8 71.2L33.4 67.1L32.3 66.3L32.4 67ZM36.4 71.7L40.5 73.2L38.6 71.7L36.4 71.7ZM38.7 74.9L41.6 77L40.4 75.4L38.7 74.9ZM30.6 76L31.8 72.9L30.7 74.4L30.6 76ZM32 75.8L31.7 77.7L33 74.1ZM34.6 78L33.3 80.9L34.4 79.5L34.6 78ZM41.9 81L40.2 79.2L40.8 80.3L41.9 81ZM13.4 22.7L12.4 26.3L12.9 27.4L14.1 23.6L13.8 22L13.4 22.7ZM17.1 22.2L17.5 24.5L17.9 21.2L17.4 20.3ZM10.2 24.9L9.1 28.3L9.5 29.5ZM9.6 20.1L13.4 19.5L11.1 19.1L9.6 20.1ZM49.5 28.8L66.1 30.4L90.8 36.2L91.8 35.8L91 34.5L86.2 33.1L65.7 28.5L51.2 27.5L48.9 28.2L49.5 28.8Z"},
+    doodleCheese: {"w":100.0,"h":70.9,"fr":"nonzero","d":"M50.3 24.2L51.5 20.1L50.3 24.2ZM53.3 22.9L52.4 20.3L51.6 24.4L53.9 25L54.2 23.7ZM21.2 26.1L20.8 27.1L21.5 27.4L24.2 21.7L21.2 26.1ZM24.6 19.8L20.9 23.3L19.7 25.9L24.6 19.8ZM31 55.4L31.1 55.4L30.7 54.3L30.6 54.3ZM58.3 58.7L59.7 54.2L58.1 56.4L58.3 58.7ZM6.6 40.9L4.6 46.3L6.6 40.9ZM10 58.3L9.4 63.3L10.5 60.5L10 58.3ZM6.3 50.8L7.7 44.7L6 48.6L5.2 52.9L6.3 50.8ZM11.7 62.5L13.2 57.2L11.2 61L10.7 64.7L11.7 62.5ZM42.5 37.8L51.8 37.4L56.2 38.9L56.4 38.2L54.6 36.2L51.5 35.7L42.1 36.4L38.3 38L38.1 41.1L38.9 38.9L42.5 37.8ZM28.9 54.9L29.8 58.1L32.4 60.5L33.7 61.1L35.8 60.2L36.5 56.2L33.8 53L30.8 52.1L33 53.4L31.5 56.2L33.1 53.5L33.3 54.1L32.3 57.5L33.7 54.1L35.2 56.1L34 59.6L33.8 55.4L33.1 57.5L33.5 59.1L30.9 57L30 54.8L30.8 52.4L29.2 53.5L28.9 54.9ZM41.2 45.3L44.9 46L52.7 45L56 43.4L57.5 40.4L56.7 39.5L53.4 42.5L44.6 44.5L40.7 43.8L38.9 41.8L39.8 44.2L41.2 45.3ZM56.4 23L52.1 17.2L51 16.9L49.2 19.6L51 17.5L50.2 22.7L50.1 19.6L49.3 21.6L48.7 22.1L49 20.5L48.1 21.7L48.8 18.7L47.8 21.4L48 24.1L52 26.2L54.2 26L55.3 22.8L55.2 25.6L56.6 23.8L56.4 23ZM57.4 26L54.6 27.7L52.6 28L48.6 26.4L47 21.9L48.2 17.7L51.3 15.8L53.4 16.8L58.2 23.1L57.4 26ZM5.5 18.7L23.8 9.5L49 0.5L44.5 0.8L26.1 7.1L9.8 14.8L5 18.2L5.5 18.7ZM65.2 56.8L65.7 58L64.9 62.3L67.3 60.8L68.1 59L67.6 56.1L63 50.9L59.9 50.8L57.2 52.9L56.5 54.5L57.3 56.9L57.6 54.8L60.3 52.5L62.3 52.6L65 56.1L63.5 58.2L62.9 56.2L61.9 56.5L62 55.4L60.9 56.5L61.2 54.7L58.1 60.5L54.9 58.4L58.5 62.3L62 63.2L62.3 62L58.5 60.7L60.8 56.7L63 60.3ZM26 25.5L25.9 17.2L24.9 16.5L20.6 19.4L18.6 24.4L23.9 18.1L18.5 26.6L19.4 28.7L22.6 28.1L24.6 24.1L23.4 27.9L24.9 27.7L26 25.5ZM27.6 19.8L28.1 26.7L26.9 28.7L23.3 30L20.6 29.8L18.5 28.6L17.4 25.8L17.8 22.4L20 17.7L23.4 15.2L26 15L27.5 16.1L27.6 19.8ZM98.1 52L93.3 53.2L87 58L80.2 59.3L72.5 65.3L66 68.4L64.3 70.6L73.7 67L80.8 61.4L89.1 59ZM56.2 64.7L43.8 53L4.1 22.2L12.2 29.6L42.7 53.8L59 68.8L60.3 69.5ZM87.2 43.1L86.8 40.6L84.3 38.5L82.6 42.3L84.8 39.4L83.7 42.8L84.3 43.3L85.7 40.2L86.3 41.6L85.4 44.4L86 45.6ZM81.9 42.1L83.8 38.4L80.3 38.2L79.5 40.8L80.6 41.4L82.2 38.4L81 41.6ZM99.9 49.5L99.7 50.2L97.6 49.4L88.9 40L89.6 44.8L88.8 46.6L86.6 47.6L84.6 47.1L77.9 41.9L77.9 39.5L79.2 37.8L82.1 36.8L86.3 37L70 19.6L50.2 1.5L52.2 2.2L60 8.4L70.9 18.3L99.9 49.5ZM56.6 68.5L54.2 69.7L41.4 69.6L16.1 67.5L5 65.1L4 65.8L0.5 35.3L0.5 24.6L4.7 53.4L5.3 64.6L12 66L14.6 58.2L11.1 54L8.5 61.8L10.4 54.2L9.4 51.8L7.2 59.5L7.3 55.4L9.2 50.6L8.8 48.8L6.4 56.4L6.2 55L8.6 48.7L9 41.7L4.9 49.3L8.7 41.1L6.6 39.9L3.1 40.5L7 38.8L10.2 40.5L11.1 50.3L14.8 54.4L16.7 58.5L16.7 63.6L15.4 63.8L14.6 59.3L12.6 66L56.6 68.5Z"},
+    doodleCocktail: {"w":85.2,"h":100.0,"fr":"nonzero","d":"M81.5 43.2L63.1 97.2L57.3 98.2L49.5 98.3L32.1 95.7L15.1 90L7.9 86.3L1.9 81.8L12 20.8L14.6 22.8L25.5 27.7L29.9 32.9L33.4 30.4L63.1 37.7L78.1 39.4L82.9 39L81.5 43.2ZM63.4 97L63.4 97.1L63.4 97ZM12.9 18.8L18.4 18.1L23.8 25.5L15.1 21.4L12.7 19.4L12.9 18.8ZM19.6 18L19.3 17.5L19.9 17.5L19.6 18ZM27.2 28.4L29.2 29L28.5 30.1L27.2 28.4ZM29.8 31.9L29.2 31.1L30.6 29.5L31.8 29.9L29.8 31.9ZM11 6.2L9.7 4.5L13.9 2.2L18.9 1.1L23.9 1.5L30.4 5.1L33.9 9.5L35.9 15.1L36.2 19.7L35.1 24.4L32.8 28.7L31.4 28.2L33.2 24.1L34.8 17L34.6 13.6L31.7 7.9L26.4 4.3L23.1 3.2L21.9 3.7L29.9 8L32.9 13.5L32.7 20.2L29.9 27.7L25.6 26.1L23.3 22.9L31.1 23.5L31.4 22.1L22.1 21.3L21.5 20.6L31.8 15.1L20.7 19.4L26.7 8.4L26.2 7.5L25.4 7.2L20 17.2L18.4 4.8L16.7 4.5L18.2 16.1L11 6.2ZM55.9 25L72.1 30.3L80.4 34L83.6 36.8L80 37.7L67.2 36.8L34.4 29.2L36.7 25.1L37.8 20.6L55.9 25ZM83.6 36.7L83.6 36.6L83.6 36.7ZM85.2 37.3L84.5 35.3L81.5 33L68.9 27.4L37.8 19L36.5 11.9L34.6 8.5L29 3.4L22.4 0.9L18.8 0.6L11.5 2L8.1 4L17.2 16.5L12.7 17L11 18.6L0.2 81.1L0.6 82.5L5.5 86.4L12.5 90.3L29.7 96.6L48 99.6L56.4 99.8L63.4 98.8L65 97.5L85.2 37.3ZM70 66.4L60 95.7L41.2 94L31.2 92.2L21.5 89.3L12.2 85.3L6.2 80.8L12.9 37.3L30 44L46.8 48.5L62.5 51.8L74.4 53.2L70 66.4ZM13 36.3L13 36.3L13 36.3ZM13.1 36.3L13.1 36.3L13.1 36.3ZM13.1 36.5L13.1 36.5L13.1 36.5L13.1 36.5ZM15 35.8L22.1 36.6L53.6 43.7L70.1 49.1L75 51.5L64.9 51L34.4 44.1L16.3 38L13.2 36.4L15 35.8ZM76 51.3L67.3 47L40.9 39.3L17.6 34.7L12.4 34.8L5 78.8L5.4 81.3L10 85.3L14.3 87.6L30.2 93.2L46.9 96L61.1 96.9L76.3 52.5L76 51.3Z"},
+    doodleBread: {"w":100.0,"h":77.9,"fr":"nonzero","d":"M15.7 0.1L22.4 1.3L31.4 5.2L33 6.8L33.8 8.9L32.8 12.4L36.8 15.6L38.1 14.9L42.8 18.4L51.7 23.3L51.6 24.7L48.8 26.2L53.1 29.1L56.2 28.8L57.6 30.3L69.2 36.4L56.1 47.6L72.7 41.6L78.7 40.3L91.3 46.6L95.3 50L99.1 56.2L99.8 60L99.2 63.7L96.7 67.8L89.9 72.7L80.7 76.2L72.2 77.6L63.3 76.8L62.4 75.1L63.2 74.7L70 75.5L75.5 74.9L85.9 71.9L90.8 69.4L95.2 66L97.5 61.6L97.5 58.2L96.3 54.8L90.9 48.7L77.9 42.2L54.8 50.6L52.1 50.6L51.3 49.4L51.8 48.2L66.5 36.4L56.7 30.5L50.4 32L35.8 39.1L32.5 39.6L31.2 37.5L33.5 33.9L48.7 23.8L37.9 17.2L26.3 25.2L21.4 26.3L18.8 25.4L18.9 24.5L22.1 25L25.2 24L36.1 16.1L32.5 12.9L21.3 21.3L18.8 22L18.8 20.9L20.6 18.9L30.2 12.2L31.9 8.8L31.3 7.6L28.3 5.2ZM33.4 37.3L52.4 29.3L47.9 26.4L37.9 33L33.4 37.3ZM10.2 2.5L3.5 9.4L2 12L0.3 18L0.5 27L4.2 37.9L10.1 46.9L13.7 50.8L22 57.9L39 67.4L47.7 70.3L49.6 70L49.1 68.3L32.5 60.7L23.6 55.3L15.5 48.5L8.3 39.5L4.6 32.2L3.3 27.4L2.7 18.4L4.2 12.4L6.8 8.1L12.4 1.9L10.2 2.5ZM20.3 44L25.4 49.2L32.7 55L44.4 62.3L62.1 70.8L66.8 72.4L68.7 71.9L67.8 70.6L49.6 62.5L39 56.6L28.2 49.5L19.8 42.2L20.3 44ZM70.9 41L72.1 41.1L70.4 39.4L67.9 38.3Z"},
+    doodlePepper: {"w":72.5,"h":100.0,"fr":"nonzero","d":"M69.3 33.8L69.3 48.4L65.3 63L60.5 88.5L56.3 94L50.6 95.7L53.3 89.1L54.5 73.9L59.2 53.7L59.3 43.5L55.4 34L51.3 31L46.3 30L45 24.8L39.7 23L37.8 20.8L37.3 17.2L42.5 16.6L48.8 17.3L53 23.9L56.6 21.5L60.1 21.6L63.4 23.1L67.5 27.6L69.3 33.8ZM41.4 98.2L34.5 98.4L29.7 94.5L25.8 85.9L22.6 71.2L17.9 63.2L15.4 54.4L15.1 45.3L16.9 39.1L22.2 34.9L30.8 32L32.8 31.7L35.7 33.8L34.1 36.5L35.2 37.7L41.5 33.3L44.9 32.3L51.7 33.4L54.6 36.3L57.6 44.8L57.3 54.2L52.1 77.3L50.5 91.3L47.5 96.3L41.4 98.2ZM25.9 27.5L31 25.8L31.5 24.8L29.5 15.6L31.3 10.9L42.8 3.3L45.4 7.2L37.6 13.5L36.3 19.6L39.2 24.5L43.8 25.7L45.1 30.4L37.6 32.8L34.5 29.9L32.1 29.3L25.3 31.2L25.9 27.5ZM68.6 25L61.6 18.5L57.4 18.2L53.8 19.7L52.4 16.7L48.8 13.9L38.6 14.6L40.6 11.4L47.9 5.9L43.1 0.1L30.3 9.1L28.7 12.2L28.7 14.8L18.6 17.2L5.8 27.5L1 32.7L0 35L9.7 26.5L18.7 26.2L18.8 24.6L12.5 24L14.5 22L18.5 19.5L27.7 17.3L29.4 23.7L24 25.9L22.8 28.6L23.2 31.4L15.5 35.7L12.9 39.9L11.8 44.7L13.7 59.8L20.1 71.6L24.5 89.9L29.6 98.1L18.2 96.7L22.6 98.4L39.3 99.7L48.5 97.2L54.5 97L60.5 93.4L63.4 86.7L66.9 65.5L72.2 44.2L71.9 33.8L68.6 25Z"}
+  };
+
+  // =========================================================================
+  // 2. VECTOR QR CODE ENGINE (Official 29x29 Insta matrix + Dynamic ISO QR)
+  // =========================================================================
+  const OFFICIAL_INSTA_QR_MATRIX = (
+    "11111110010001000011101111111|" +
+    "10000010110111110110001000001|" +
+    "10111010011100111001101011101|" +
+    "10111010110100000101001011101|" +
+    "10111010001011001111001011101|" +
+    "10000010101001111100101000001|" +
+    "11111110101010101010101111111|" +
+    "00000000000011011000100000000|" +
+    "11111011111010110101010101010|" +
+    "01001000110000001111111110001|" +
+    "11010011110110011000111000000|" +
+    "11011000111100100000000101010|" +
+    "10011110110100011110000001100|" +
+    "10000001011011101111111010001|" +
+    "00001110001001111100001101100|" +
+    "01110100001011000001011110010|" +
+    "01010010011010111100100101100|" +
+    "10011100000000001011101110101|" +
+    "10010011100110011000110100100|" +
+    "10101101101100110001101110010|" +
+    "10011011111100010100111110111|" +
+    "00000000101011101000100011111|" +
+    "11111110100001111111101011100|" +
+    "10000010010011000001100010000|" +
+    "10111010100010100100111110100|" +
+    "10111010111000001011000101111|" +
+    "10111010100110010100001111110|" +
+    "10000010101100101000100101010|" +
+    "11111110100100000111010111100"
+  ).split("|").map(row => row.split("").map(Number));
+
+  const QR = (() => {
+    const EXP = new Uint8Array(512), LOG = new Uint8Array(256);
+    for (let i = 0, x = 1; i < 255; i++) {
+      EXP[i] = x; EXP[i + 255] = x; LOG[x] = i;
+      x = (x << 1) ^ (x & 128 ? 0x11d : 0);
+    }
+    const mul = (a, b) => (a && b) ? EXP[LOG[a] + LOG[b]] : 0;
+    function rsEncode(data, ecLen) {
+      let gen = [1];
+      for (let i = 0; i < ecLen; i++) {
+        const next = new Array(gen.length + 1).fill(0);
+        for (let j = 0; j < gen.length; j++) {
+          next[j] ^= gen[j];
+          next[j + 1] ^= mul(gen[j], EXP[i]);
+        }
+        gen = next;
+      }
+      const buf = data.concat(new Array(ecLen).fill(0));
+      for (let i = 0; i < data.length; i++) {
+        const coef = buf[i];
+        if (coef) for (let j = 0; j < gen.length; j++) buf[i + j] ^= mul(gen[j], coef);
+      }
+      return buf.slice(data.length);
+    }
+    const SPECS = {
+      1: [16, 10, 1, 16, 0, 0, []],
+      2: [28, 16, 1, 28, 0, 0, [6, 18]],
+      3: [44, 26, 1, 44, 0, 0, [6, 22]],
+      4: [64, 18, 2, 32, 0, 0, [6, 26]],
+      5: [86, 24, 2, 43, 0, 0, [6, 30]],
+      6: [108, 16, 4, 27, 0, 0, [6, 34]],
+    };
+    function formatBits(mask) {
+      let v = mask << 10;
+      const g = 0b10100110111;
+      for (let i = 14; i >= 10; i--) if ((v >> i) & 1) v ^= g << (i - 10);
+      return ((mask << 10) | v) ^ 0b101010000010010;
+    }
+    function encode(text) {
+      const bytes = Array.from(new TextEncoder().encode(text));
+      let ver = 1;
+      while (ver <= 6 && bytes.length + 2 > SPECS[ver][0]) ver++;
+      const [totalData, ecLen, g1B, g1D, g2B, g2D, align] = SPECS[ver];
+      const bits = [];
+      const pushBits = (val, n) => { for (let i = n - 1; i >= 0; i--) bits.push((val >> i) & 1); };
+      pushBits(0b0100, 4);
+      pushBits(bytes.length, 8);
+      for (const b of bytes) pushBits(b, 8);
+      const maxBits = totalData * 8;
+      for (let i = 0; i < 4 && bits.length < maxBits; i++) bits.push(0);
+      while (bits.length % 8 !== 0) bits.push(0);
+      const padBytes = [0xEC, 0x11];
+      for (let pi = 0; bits.length < maxBits; pi++) pushBits(padBytes[pi & 1], 8);
+      const dataBytes = [];
+      for (let i = 0; i < bits.length; i += 8) {
+        let b = 0; for (let j = 0; j < 8; j++) b = (b << 1) | bits[i + j];
+        dataBytes.push(b);
+      }
+      const blocks = [], ecs = [];
+      let off = 0;
+      for (let i = 0; i < g1B; i++) { const blk = dataBytes.slice(off, off + g1D); off += g1D; blocks.push(blk); ecs.push(rsEncode(blk, ecLen)); }
+      for (let i = 0; i < g2B; i++) { const blk = dataBytes.slice(off, off + g2D); off += g2D; blocks.push(blk); ecs.push(rsEncode(blk, ecLen)); }
+      const finalBytes = [];
+      const maxD = Math.max(g1D, g2D);
+      for (let i = 0; i < maxD; i++) for (const b of blocks) if (i < b.length) finalBytes.push(b[i]);
+      for (let i = 0; i < ecLen; i++) for (const e of ecs) finalBytes.push(e[i]);
+      const finalBits = [];
+      for (const b of finalBytes) for (let i = 7; i >= 0; i--) finalBits.push((b >> i) & 1);
+
+      const N = ver * 4 + 17;
+      const isFunc = Array.from({ length: N }, () => new Uint8Array(N));
+      const base = Array.from({ length: N }, () => new Uint8Array(N));
+      const setF = (r, c, v) => { if (r >= 0 && r < N && c >= 0 && c < N) { isFunc[r][c] = 1; base[r][c] = v ? 1 : 0; } };
+      const finder = (tr, tc) => {
+        for (let r = -1; r <= 7; r++) for (let c = -1; c <= 7; c++) {
+          const inside = r >= 0 && r <= 6 && c >= 0 && c <= 6;
+          const on = inside && (r === 0 || r === 6 || c === 0 || c === 6 || (r >= 2 && r <= 4 && c >= 2 && c <= 4));
+          setF(tr + r, tc + c, on);
+        }
+      };
+      finder(0, 0); finder(0, N - 7); finder(N - 7, 0);
+      for (let i = 8; i < N - 8; i++) { setF(6, i, i % 2 === 0); setF(i, 6, i % 2 === 0); }
+      setF(N - 8, 8, 1);
+      for (const ar of align) for (const ac of align) {
+        if ((ar === 6 && ac === 6) || (ar === 6 && ac === N - 7) || (ar === N - 7 && ac === 6)) continue;
+        for (let dr = -2; dr <= 2; dr++) for (let dc = -2; dc <= 2; dc++) {
+          setF(ar + dr, ac + dc, Math.abs(dr) === 2 || Math.abs(dc) === 2 || (dr === 0 && dc === 0));
+        }
+      }
+      for (let i = 0; i <= 8; i++) { if (i !== 6) { isFunc[8][i] = 1; isFunc[i][8] = 1; } }
+      for (let i = 0; i < 8; i++) { isFunc[8][N - 1 - i] = 1; isFunc[N - 1 - i][8] = 1; }
+
+      let bi = 0, up = true;
+      for (let col = N - 1; col > 0; col -= 2) {
+        if (col === 6) col--;
+        for (let i = 0; i < N; i++) {
+          const r = up ? N - 1 - i : i;
+          for (let dc = 0; dc < 2; dc++) {
+            const c = col - dc;
+            if (!isFunc[r][c]) base[r][c] = bi < finalBits.length ? finalBits[bi++] : 0;
+          }
+        }
+        up = !up;
+      }
+
+      const maskFns = [
+        (r, c) => (r + c) % 2 === 0,
+        (r, c) => r % 2 === 0,
+        (r, c) => c % 3 === 0,
+        (r, c) => (r + c) % 3 === 0,
+        (r, c) => (Math.floor(r / 2) + Math.floor(c / 3)) % 2 === 0,
+        (r, c) => ((r * c) % 2) + ((r * c) % 3) === 0,
+        (r, c) => (((r * c) % 2) + ((r * c) % 3)) % 2 === 0,
+        (r, c) => (((r + c) % 2) + ((r * c) % 3)) % 2 === 0,
+      ];
+      let bestM = null, bestScore = Infinity;
+      for (let m = 0; m < 8; m++) {
+        const grid = base.map((row, r) => row.map((v, c) => (!isFunc[r][c] && maskFns[m](r, c)) ? v ^ 1 : v));
+        const fb = formatBits(m);
+        const putFmt = (i, bit) => {
+          if (i < 6) grid[8][i] = bit;
+          else if (i === 6) grid[8][7] = bit;
+          else if (i === 7) grid[8][8] = bit;
+          else if (i === 8) grid[7][8] = bit;
+          else grid[14 - i][8] = bit;
+          if (i < 8) grid[N - 1 - i][8] = bit;
+          else grid[8][N - 15 + i] = bit;
+        };
+        for (let i = 0; i < 15; i++) putFmt(i, (fb >> (14 - i)) & 1);
+        let pen = 0, dark = 0;
+        for (let r = 0; r < N; r++) {
+          let runR = 1, runC = 1;
+          for (let c = 0; c < N; c++) {
+            dark += grid[r][c];
+            if (c > 0) { if (grid[r][c] === grid[r][c - 1]) runR++; else { if (runR >= 5) pen += runR - 2; runR = 1; } }
+            if (c > 0) { if (grid[c][r] === grid[c - 1][r]) runC++; else { if (runC >= 5) pen += runC - 2; runC = 1; } }
+            if (r < N - 1 && c < N - 1) {
+              const s = grid[r][c] + grid[r][c + 1] + grid[r + 1][c] + grid[r + 1][c + 1];
+              if (s === 0 || s === 4) pen += 3;
+            }
+          }
+          if (runR >= 5) pen += runR - 2;
+          if (runC >= 5) pen += runC - 2;
+        }
+        pen += Math.floor(Math.abs(dark * 100 / (N * N) - 50) / 5) * 10;
+        if (pen < bestScore) { bestScore = pen; bestM = grid; }
+      }
+      return bestM;
+    }
+    return { encode };
+  })();
+
+  const WEB_QR_MATRIX = QR.encode('https://www.esg-kassel.de/');
+
+  function qrMatrixToPathD(matrix, x, y, size) {
+    const N = matrix.length;
+    const mod = size / N;
+    let d = '';
+    for (let r = 0; r < N; r++) {
+      let c = 0;
+      while (c < N) {
+        if (matrix[r][c]) {
+          let run = 1;
+          while (c + run < N && matrix[r][c + run]) run++;
+          const rx = (x + c * mod).toFixed(3);
+          const ry = (y + r * mod).toFixed(3);
+          const rw = (run * mod).toFixed(3);
+          const rh = mod.toFixed(3);
+          d += `M${rx},${ry}h${rw}v${rh}h-${rw}z`;
+          c += run;
+        } else {
+          c++;
+        }
+      }
+    }
+    return d;
+  }
+
+  // =========================================================================
+  // 3. DATA MODEL (Synced from Notion 18.11.2026 — zero "HoPla" / "Spenden")
+  // =========================================================================
+  const DEFAULT_EVENTS = [
+    // Past (toggleable)
+    { id: 'v02', month: 'OKT', day: '16.10.', weekday: 'Fr', time: '18:00 Uhr', title: 'Willkommensessen', details: 'Saal / S1', past: true, kind: 'event', enabled: true },
+    { id: 'v04', month: 'OKT', day: '21.10.', weekday: 'Mi', time: '18:00 Uhr', title: 'Spieleabend', details: 'S1', past: true, kind: 'event', enabled: true },
+    { id: 'v05', month: 'OKT', day: '28.10.', weekday: 'Mi', time: '16:00 Uhr', title: 'Häkeln & Stricken', details: 'S1 / Saal · kostenfrei & ohne Anmeldung', past: true, kind: 'event', enabled: true },
+    { id: 'v06', month: 'NOV', day: '04.11.', weekday: 'Mi', time: '19:00 Uhr', title: 'Semesterstart-Gottesdienst', details: 'DBH Saal · mit Mentorat & KSB', past: true, kind: 'event', enabled: true },
+    { id: 'v07', month: 'NOV', day: '08.11.', weekday: 'So', time: '', title: 'Hochschulgottesdienst', details: 'Karlskirche', past: true, kind: 'event', enabled: true },
+    { id: 'v08', month: 'NOV', day: '11.11.', weekday: 'Mi', time: '18:00 Uhr', title: 'Krimi-Dinner', details: 'S1 / Saal', past: true, kind: 'event', enabled: true },
+    // Upcoming (from 19.11. onwards)
+    { id: 'v09', month: 'NOV', day: '19.11.', weekday: 'Do', time: '14:00 Uhr', title: 'Himmel, Hölle, Fegefeuer — Besuch des Kasseler Krematoriums', details: 'Treffpunkt: Tannhecker Weg 6, 13:55 Uhr · mit KSB & Mentorat', past: false, kind: 'event', enabled: true },
+    { id: 'v10', month: 'NOV', day: '22.11.', weekday: 'So', time: '17:00 Uhr', title: 'Dinner zum Erinnern', details: 'Saal & Andachtsraum', past: false, kind: 'event', enabled: true },
+    { id: 'v11', month: 'NOV', day: '26.11.', weekday: 'Do', time: '16:30 Uhr', title: 'Adventskränze basteln', details: 'S1 · mit ISZ · Anmeldung: welcome-centre@uni-kassel.de', past: false, kind: 'event', enabled: true },
+    { id: 'v12', month: 'DEZ', day: '02.12.', weekday: 'Mi', time: '', title: 'Ökumenischer Adventsgottesdienst', details: 'Auferstehungskirche · mit KHG', past: false, kind: 'event', enabled: true },
+    { id: 'v13', month: 'DEZ', day: '07.12.', weekday: 'Mo', time: '19:00 Uhr', title: 'Taizé-Andacht', details: 'DBH Andachtsraum · mit Mentorat', past: false, kind: 'event', enabled: true },
+    { id: 'v14', month: 'DEZ', day: '09.12.', weekday: 'Mi', time: '16:00 Uhr', title: 'Low-Budget-Geschenke basteln', details: 'S1 / Saal', past: false, kind: 'event', enabled: true },
+    { id: 'v15', month: 'DEZ', day: '10.12.', weekday: 'Do', time: '', title: 'Weihnachtsbäckerei', details: 'S1', past: false, kind: 'event', enabled: true },
+    { id: 'v16', month: 'DEZ', day: '13.12.', weekday: 'So', time: '', title: 'Hochschulgottesdienst', details: 'Karlskirche', past: false, kind: 'event', enabled: true },
+    { id: 'v17', month: 'DEZ', day: '16.12.', weekday: 'Mi', time: '18:00 Uhr', title: 'Christmas-Party', details: 'Ganzes Haus', past: false, kind: 'event', enabled: true },
+    { id: 'v19', month: 'JAN', day: '13.01.', weekday: 'Mi', time: '18:00 Uhr', title: 'Spieleabend', details: 'S1', past: false, kind: 'event', enabled: true },
+    { id: 'v20', month: 'JAN', day: '17.01.', weekday: 'So', time: '', title: 'Hochschulgottesdienst', details: 'Karlskirche', past: false, kind: 'event', enabled: true },
+    { id: 'v22', month: 'JAN', day: '24.01.', weekday: 'So', time: '10:00 Uhr', title: 'Flohmarkt', details: 'Ganzes Haus', past: false, kind: 'event', enabled: true },
+    { id: 'v23', month: 'JAN', day: '27.01.', weekday: 'Mi', time: '16:00 Uhr', title: 'Einmal Pause bitte', details: 'S1 / Foyer', past: false, kind: 'event', enabled: true },
+    { id: 'v24', month: 'FEB', day: '03.02.', weekday: 'Mi', time: '18:00 Uhr', title: 'Semesterabschluss-Gottesdienst', details: 'mit KSB & Mentorat', past: false, kind: 'event', enabled: true },
+    { id: 'v25', month: 'FEB', day: '10.02.', weekday: 'Mi', time: '18:00 Uhr', title: 'Filmabend', details: 'DBH', past: false, kind: 'event', enabled: true }
+  ];
+
+  const RECURRING = [
+    {
+      title: 'Montagsessen',
+      kicker: 'Jeden Montag im Semester',
+      time: '11:30–13:30 Uhr',
+      place: 'DBH Seminarraum (S1)',
+      note: 'Kostenfrei (ohne Anmeldung)',
+      stamp: 'KOSTENLOS'
+    },
+    {
+      title: 'K.u.H.-Zeit',
+      kicker: 'Kuchen und Heißgetränke',
+      time: 'Jeden Dienstag · 15:00–17:00 Uhr',
+      place: 'Dietrich-Bonhoeffer-Haus (DBH)',
+      note: 'Offener Treff im Haus',
+      stamp: 'DIENSTAGS'
+    }
+  ];
+
+  const FOOTER_INFO = {
+    org: 'Evangelische Studierendengemeinde (ESG) an der Universität Kassel',
+    addr: 'Dietrich-Bonhoeffer-Haus (DBH) · Mönchebergstraße 29 · 34125 Kassel',
+    contact: 'Web: www.esg-kassel.de  ·  Instagram: @esg.kassel  ·  Tel.: 0561 / 872075'
+  };
+
+  const MONTH_LABELS = {
+    OKT: 'OKTOBER 2026',
+    NOV: 'NOVEMBER 2026',
+    DEZ: 'DEZEMBER 2026',
+    JAN: 'JANUAR 2027',
+    FEB: 'FEBRUAR 2027'
+  };
+
+  const THEMES = {
+    riso: {
+      name: 'Riso Rot & Kobalt',
+      bgTop: '#F2EEE6',
+      bgMid: '#ECE6DB',
+      bgBot: '#E5DDD0',
+      cardBg: '#FAF7F1',
+      cardAlt: '#EDE7DB',
+      ink: '#1B4596',
+      muted: '#425B8C',
+      rule: '#C7BDAE',
+      accent: '#C81E24',
+      accent2: '#1B4596',
+      accentText: '#FFFFFF',
+      breakBg: '#EAE2D6',
+      roosterRed: '#C81E24',
+      starColor: '#1B4596',
+      decorColor: '#C81E24'
+    },
+    atelier: {
+      name: 'Atelier Warm',
+      bgTop: '#F3F2EF',
+      bgMid: '#EAE8E3',
+      bgBot: '#DFDCD6',
+      cardBg: '#FAF9F6',
+      cardAlt: '#F2EFE9',
+      ink: '#181818',
+      muted: '#535049',
+      rule: '#C9C4BA',
+      accent: '#E30613',
+      accent2: '#C47B2B',
+      accentText: '#FFFFFF',
+      breakBg: '#EAE3D6'
+    },
+    winter: {
+      name: 'Winter Editorial',
+      bgTop: '#F7F4EC',
+      bgMid: '#EFEAE0',
+      bgBot: '#E6DFD2',
+      cardBg: '#FCFBF7',
+      cardAlt: '#F2EDE3',
+      ink: '#1D252C',
+      muted: '#525E68',
+      rule: '#CBC4B6',
+      accent: '#1E5649',
+      accent2: '#C8372D',
+      accentText: '#FFFFFF',
+      breakBg: '#E4ECE8'
+    },
+    office: {
+      name: 'Büro Print White',
+      bgTop: '#FFFFFF',
+      bgMid: '#FFFFFF',
+      bgBot: '#FFFFFF',
+      cardBg: '#F6F5F2',
+      cardAlt: '#EFECE6',
+      ink: '#181818',
+      muted: '#4E4E4E',
+      rule: '#D0CDC6',
+      accent: '#E30613',
+      accent2: '#2D5F53',
+      accentText: '#FFFFFF',
+      breakBg: '#F1EFEA'
+    },
+    kraft: {
+      name: 'Kraft & Terracotta',
+      bgTop: '#F0E8DA',
+      bgMid: '#E8DEC9',
+      bgBot: '#DFD2BA',
+      cardBg: '#F9F5EE',
+      cardAlt: '#EFE6D7',
+      ink: '#1E1B18',
+      muted: '#5B534B',
+      rule: '#C7BAA7',
+      accent: '#B83B28',
+      accent2: '#2F5061',
+      accentText: '#FFFFFF',
+      breakBg: '#E4D8C5'
+    }
+  };
+
+  const FORMATS = {
+    a3:        { id: 'a3',        label: 'Plakat A3',          trimW: 297, trimH: 420, bleed: 3 },
+    a4:        { id: 'a4',        label: 'Handzettel A4',      trimW: 210, trimH: 297, bleed: 3 },
+    dl_front:  { id: 'dl_front',  label: 'Flyer DL Front',     trimW: 105, trimH: 210, bleed: 3 },
+    dl_back:   { id: 'dl_back',   label: 'Flyer DL Back',      trimW: 105, trimH: 210, bleed: 3 },
+    dl_spread: { id: 'dl_spread', label: 'Flyer DL Spread',    trimW: 105, trimH: 210, bleed: 3, gap: 10 }
+  };
+
+  // =========================================================================
+  // 4. APPLICATION STATE
+  // =========================================================================
+  let state = {
+    format: 'a3',
+    scope: 'upcoming', // 'upcoming' | 'full'
+    showStamp: true,
+    theme: 'riso',
+    decorStyle: 'festive', // 'festive' | 'minimal'
+    rooster: 'red',    // 'red' | 'rainbow' | 'rainbow_icon' | 'none'
+    qrEnabled: true,
+    qrTarget: 'insta', // 'insta' | 'web'
+    bleed: true,
+    safeGuides: false,
+    useGradient: true,
+    zoom: 'fit',       // 'fit' | number
+    events: loadEvents()
+  };
+
+  function loadEvents() {
+    try {
+      const saved = localStorage.getItem('esg_wise2627_events_v2');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {}
+    return structuredClone(DEFAULT_EVENTS);
+  }
+
+  function saveEvents() {
+    try {
+      localStorage.setItem('esg_wise2627_events_v2', JSON.stringify(state.events));
+    } catch (e) {}
+  }
+
+  // =========================================================================
+  // 5. SVG DOM & TEXT MEASUREMENT HELPERS (1 unit = 1 mm)
+  // =========================================================================
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const INKSCAPE_NS = 'http://www.inkscape.org/namespaces/inkscape';
+  const measurerText = document.getElementById('measurer-text');
+
+  function el(tag, attrs = {}, children = []) {
+    const node = document.createElementNS(SVG_NS, tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (v === undefined || v === null) continue;
+      if (k === 'inkscape:groupmode' || k === 'inkscape:label') {
+        node.setAttributeNS(INKSCAPE_NS, k, String(v));
+      } else {
+        node.setAttribute(k, String(v));
+      }
+    }
+    for (const c of children) {
+      if (c !== null && c !== undefined) {
+        node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+      }
+    }
+    return node;
+  }
+
+  function txt(content, x, y, opts = {}) {
+    const attrs = {
+      x: round(x),
+      y: round(y),
+      'font-family': opts.family || 'Inter',
+      'font-weight': opts.weight || '600',
+      'font-size': round(opts.size || 3.5),
+      fill: opts.fill || '#181818',
+    };
+    if (opts.anchor) attrs['text-anchor'] = opts.anchor;
+    if (opts.spacing) attrs['letter-spacing'] = round(opts.spacing);
+    if (opts.transform) attrs.transform = opts.transform;
+    if (opts.opacity !== undefined) attrs.opacity = opts.opacity;
+    if (opts.style) attrs.style = opts.style;
+    if (opts.id) attrs.id = opts.id;
+    return el('text', attrs, [content]);
+  }
+
+  function round(n) {
+    return Math.round(n * 1000) / 1000;
+  }
+
+  function measureWidth(str, size, family = 'Inter', weight = '600', spacing = 0) {
+    measurerText.setAttribute('font-family', family);
+    measurerText.setAttribute('font-weight', String(weight));
+    measurerText.setAttribute('font-size', String(size));
+    if (spacing) measurerText.setAttribute('letter-spacing', String(spacing));
+    else measurerText.removeAttribute('letter-spacing');
+    measurerText.textContent = str;
+    return measurerText.getComputedTextLength();
+  }
+
+  function wrapLines(str, maxWidthMm, size, family = 'Inter', weight = '600') {
+    if (!str) return [];
+    const words = str.trim().split(/\s+/);
+    const lines = [];
+    let current = '';
+    for (const w of words) {
+      const test = current ? `${current} ${w}` : w;
+      if (measureWidth(test, size, family, weight) <= maxWidthMm || !current) {
+        current = test;
+      } else {
+        lines.push(current);
+        current = w;
+      }
+    }
+    if (current) lines.push(current);
+    return lines;
+  }
+
+  // =========================================================================
+  // 6. BRAND LOGO & ILLUSTRATION VECTOR BUILDERS
+  // =========================================================================
+  function buildLogoGroup(variant, x, y, targetW, inkColor, clipIdSuffix = '', roosterRed = '#E30613') {
+    if (variant === 'none') return null;
+    const isNoText = variant === 'rainbow_icon';
+    const vb = isNoText ? LOGOS.viewBoxNoText : LOGOS.viewBoxWithText;
+    const scale = targetW / vb.w;
+    const g = el('g', {
+      transform: `translate(${round(x)}, ${round(y)}) scale(${round(scale)})`
+    });
+
+    if (variant === 'red') {
+      g.appendChild(el('path', {
+        'fill-rule': 'evenodd',
+        fill: roosterRed,
+        d: LOGOS.redRoosterD
+      }));
+      g.appendChild(el('path', {
+        'fill-rule': 'nonzero',
+        fill: inkColor,
+        d: LOGOS.esgLettersD
+      }));
+    } else if (variant === 'rainbow') {
+      const cid = `clip-rainbow-full${clipIdSuffix}`;
+      const stripeG = el('g', { 'clip-path': `url(#${cid})` });
+      for (const s of LOGOS.rainbowWithTextStripes) {
+        stripeG.appendChild(el('path', { 'fill-rule': 'nonzero', fill: s.fill, d: s.d }));
+      }
+      g.appendChild(stripeG);
+      g.appendChild(el('path', {
+        'fill-rule': 'nonzero',
+        fill: inkColor,
+        d: LOGOS.esgLettersD
+      }));
+    } else if (variant === 'rainbow_icon') {
+      const cid = `clip-rainbow-icon${clipIdSuffix}`;
+      const stripeG = el('g', { 'clip-path': `url(#${cid})` });
+      for (const s of LOGOS.rainbowNoTextStripes) {
+        stripeG.appendChild(el('path', { 'fill-rule': 'nonzero', fill: s.fill, d: s.d }));
+      }
+      g.appendChild(stripeG);
+    }
+    return g;
+  }
+
+  function addLogoDefs(defs, variant, clipIdSuffix = '') {
+    if (variant === 'rainbow') {
+      const cp = el('clipPath', { id: `clip-rainbow-full${clipIdSuffix}` });
+      cp.appendChild(el('path', { 'clip-rule': 'evenodd', d: LOGOS.redRoosterD }));
+      defs.appendChild(cp);
+    } else if (variant === 'rainbow_icon') {
+      const cp = el('clipPath', { id: `clip-rainbow-icon${clipIdSuffix}` });
+      cp.appendChild(el('path', { 'clip-rule': 'evenodd', d: LOGOS.rainbowNoTextClipD }));
+      defs.appendChild(cp);
+    }
+  }
+
+  // Subtle decorative vector botanical / winter star motif (100% pure paths, no filters)
+  function buildStarMotif(cx, cy, r, color, strokeW = 0.25, opacity = 0.28) {
+    const g = el('g', { opacity: String(opacity) });
+    g.appendChild(el('line', { x1: round(cx - r), y1: round(cy), x2: round(cx + r), y2: round(cy), stroke: color, 'stroke-width': strokeW, 'stroke-linecap': 'round' }));
+    g.appendChild(el('line', { x1: round(cx), y1: round(cy - r), x2: round(cx), y2: round(cy + r), stroke: color, 'stroke-width': strokeW, 'stroke-linecap': 'round' }));
+    const d = r * 0.58;
+    g.appendChild(el('line', { x1: round(cx - d), y1: round(cy - d), x2: round(cx + d), y2: round(cy + d), stroke: color, 'stroke-width': strokeW * 0.75, 'stroke-linecap': 'round' }));
+    g.appendChild(el('line', { x1: round(cx + d), y1: round(cy - d), x2: round(cx - d), y2: round(cy + d), stroke: color, 'stroke-width': strokeW * 0.75, 'stroke-linecap': 'round' }));
+    return g;
+  }
+
+  // Authentic Willkommensessen pure-vector motif renderer (zero filters, zero clipPaths)
+  function buildMotif(key, x, y, targetSize, fill, opts = {}) {
+    const m = WILLKOMMEN_VECTORS[key];
+    if (!m) return null;
+    const sx = opts.sizeMode === 'height' ? (targetSize / m.h) : (targetSize / m.w);
+    const sy = opts.targetH ? (opts.targetH / m.h) : sx;
+    const rw = m.w * sx;
+    const rh = m.h * sy;
+    let tfStr;
+    if (opts.rotate || opts.flipX) {
+      const cx = x + rw / 2;
+      const cy = y + rh / 2;
+      const parts = [`translate(${round(cx)}, ${round(cy)})`];
+      if (opts.rotate) parts.push(`rotate(${round(opts.rotate)})`);
+      if (opts.flipX) parts.push('scale(-1, 1)');
+      parts.push(`translate(${round(-rw / 2)}, ${round(-rh / 2)})`);
+      parts.push(`scale(${round(sx)}, ${round(sy)})`);
+      tfStr = parts.join(' ');
+    } else {
+      tfStr = `translate(${round(x)}, ${round(y)}) scale(${round(sx)}, ${round(sy)})`;
+    }
+    const gAttrs = { transform: tfStr };
+    if (opts.opacity !== undefined) gAttrs.opacity = String(opts.opacity);
+    return el('g', gAttrs, [
+      el('path', { fill, 'fill-rule': m.fr, d: m.d })
+    ]);
+  }
+
+  function appendMotif(parent, key, x, y, targetSize, fill, opts = {}) {
+    const node = buildMotif(key, x, y, targetSize, fill, opts);
+    if (node) parent.appendChild(node);
+    return node;
+  }
+
+  // =========================================================================
+  // 7. SHARED SECTION RENDERERS (Poster A3 / A4 & Flyer DL Front / Back)
+  // =========================================================================
+  function getActiveEvents() {
+    return state.events.filter(ev => ev.enabled && (state.scope === 'full' || !ev.past));
+  }
+
+  function buildRecurringCard(rec, x, y, w, h, T, cfg) {
+    const g = el('g');
+    const offset = cfg.shadowOffset;
+    // Tactile hard-offset ink shadow (pure vector, zero blur!)
+    g.appendChild(el('rect', {
+      x: round(x + offset), y: round(y + offset), width: round(w), height: round(h),
+      rx: round(cfg.radius), fill: T.ink
+    }));
+    // Card body
+    g.appendChild(el('rect', {
+      x: round(x), y: round(y), width: round(w), height: round(h),
+      rx: round(cfg.radius), fill: T.cardBg, stroke: T.ink, 'stroke-width': round(cfg.borderW)
+    }));
+    // Left accent stripe
+    g.appendChild(el('rect', {
+      x: round(x), y: round(y), width: round(cfg.stripeW), height: round(h),
+      rx: round(cfg.radius * 0.4), fill: rec.stamp === 'KOSTENLOS' ? T.accent : T.accent2
+    }));
+
+    const padX = x + cfg.stripeW + cfg.padX;
+    const contentW = w - cfg.stripeW - cfg.padX * 2;
+
+    // Stamp badge top-right
+    const stampColor = rec.stamp === 'KOSTENLOS' ? T.accent : T.accent2;
+    if (cfg.isFestive) {
+      const ringW = cfg.ringW || (cfg.stampW * 0.92);
+      const ringH = cfg.ringH || (cfg.stampH * 1.9);
+      const sx = x + w - ringW - cfg.padX * 0.7;
+      const sy = y + cfg.padY * 0.45;
+      const rg = el('g', {
+        transform: `translate(${round(sx + ringW / 2)}, ${round(sy + ringH / 2)}) rotate(-6) translate(${round(-ringW / 2)}, ${round(-ringH / 2)})`
+      });
+      appendMotif(rg, 'brushRingSmall', 0, 0, ringW, stampColor, { targetH: ringH });
+      rg.appendChild(txt(rec.stamp, ringW * 0.51, ringH * 0.62, {
+        family: 'Inter', size: cfg.stampSize * 0.79, weight: '800', fill: stampColor, anchor: 'middle', spacing: 0.14
+      }));
+      g.appendChild(rg);
+    } else {
+      const stampW = cfg.stampW;
+      const stampH = cfg.stampH;
+      const sx = x + w - stampW - cfg.padX * 0.85;
+      const sy = y + cfg.padY * 0.8;
+      const sg = el('g', {
+        transform: `translate(${round(sx + stampW / 2)}, ${round(sy + stampH / 2)}) rotate(${rec.stamp === 'KOSTENLOS' ? -5 : 0}) translate(${round(-stampW / 2)}, ${round(-stampH / 2)})`
+      });
+      sg.appendChild(el('rect', {
+        x: 0, y: 0, width: round(stampW), height: round(stampH), rx: 0.9,
+        fill: 'none', stroke: stampColor, 'stroke-width': round(cfg.borderW * 0.95)
+      }));
+      sg.appendChild(txt(rec.stamp, stampW / 2, stampH * 0.72, {
+        size: cfg.stampSize, weight: '800', fill: stampColor, anchor: 'middle', spacing: 0.25
+      }));
+      g.appendChild(sg);
+    }
+
+    // Kicker (Caveat)
+    g.appendChild(txt(rec.kicker, padX, y + cfg.padY + cfg.kickerSize * 0.88, {
+      family: 'Caveat', weight: '700', size: cfg.kickerSize, fill: stampColor
+    }));
+    // Title
+    const titleSizeUse = cfg.isFestive ? cfg.titleSize * 1.48 : cfg.titleSize;
+    const titleY = y + cfg.padY + cfg.kickerSize * 1.15 + titleSizeUse * (cfg.isFestive ? 0.86 : 0.96);
+    g.appendChild(txt(rec.title, padX, titleY, {
+      family: cfg.isFestive ? 'Amatic SC' : 'Inter',
+      weight: cfg.isFestive ? '700' : '800',
+      size: titleSizeUse,
+      fill: T.ink,
+      spacing: cfg.isFestive ? 0.35 * (cfg.tf || 1) : 0
+    }));
+    // Time & Place
+    const timeY = titleY + cfg.bodySize * (cfg.isFestive ? 1.55 : 1.65);
+    g.appendChild(txt(rec.time, padX, timeY, {
+      family: 'Inter', weight: '700', size: cfg.bodySize, fill: T.ink
+    }));
+    const placeY = timeY + cfg.bodySize * 1.42;
+    const placeLines = wrapLines(`${rec.place} · ${rec.note}`, contentW, cfg.subSize, 'Inter', '600');
+    placeLines.slice(0, 2).forEach((ln, idx) => {
+      g.appendChild(txt(ln, padX, placeY + idx * (cfg.subSize * 1.32), {
+        family: 'Inter', weight: '600', size: cfg.subSize, fill: T.muted
+      }));
+    });
+
+    return g;
+  }
+
+  function buildQRBlock(x, y, boxSize, caption, T, target) {
+    const g = el('g');
+    const pad = boxSize * 0.085;
+    const inner = boxSize - pad * 2;
+    g.appendChild(el('rect', {
+      x: round(x), y: round(y), width: round(boxSize), height: round(boxSize),
+      rx: 1.4, fill: '#FFFFFF', stroke: T.ink, 'stroke-width': 0.35
+    }));
+    const mat = target === 'insta' ? OFFICIAL_INSTA_QR_MATRIX : WEB_QR_MATRIX;
+    g.appendChild(el('path', {
+      fill: T.ink,
+      d: qrMatrixToPathD(mat, x + pad, y + pad, inner)
+    }));
+    g.appendChild(txt(caption, x + boxSize / 2, y + boxSize + 3.2, {
+      family: 'Inter', weight: '700', size: Math.max(2.2, boxSize * 0.115), fill: T.ink, anchor: 'middle'
+    }));
+    return g;
+  }
+
+  function buildTrimAndGuidesLayer(totalW, totalH, trimW, trimH, bleedMm, safeMarginMm, showBleed, showSafe) {
+    const g = el('g', {
+      id: 'Trim_Bleed_Guides',
+      'inkscape:groupmode': 'layer',
+      'inkscape:label': 'Trim_Bleed_Guides'
+    });
+    const ox = showBleed ? bleedMm : 0;
+    const oy = showBleed ? bleedMm : 0;
+
+    if (showBleed) {
+      const m = 2.6; // crop mark length inside 3mm bleed
+      const gap = 0.5;
+      const stroke = '#181818';
+      const sw = 0.18;
+      const corners = [
+        [ox, oy, -1, -1],
+        [ox + trimW, oy, 1, -1],
+        [ox, oy + trimH, -1, 1],
+        [ox + trimW, oy + trimH, 1, 1]
+      ];
+      for (const [cx, cy, dx, dy] of corners) {
+        g.appendChild(el('line', { x1: round(cx + dx * gap), y1: round(cy), x2: round(cx + dx * (gap + m)), y2: round(cy), stroke, 'stroke-width': sw }));
+        g.appendChild(el('line', { x1: round(cx), y1: round(cy + dy * gap), x2: round(cx), y2: round(cy + dy * (gap + m)), stroke, 'stroke-width': sw }));
+      }
+      // Subtle trim box guide
+      g.appendChild(el('rect', {
+        x: round(ox), y: round(oy), width: round(trimW), height: round(trimH),
+        fill: 'none', stroke: '#00A0E3', 'stroke-width': 0.16, 'stroke-dasharray': '2 1.5', opacity: 0.7
+      }));
+    }
+
+    if (showSafe) {
+      g.appendChild(el('rect', {
+        x: round(ox + safeMarginMm), y: round(oy + safeMarginMm),
+        width: round(trimW - safeMarginMm * 2), height: round(trimH - safeMarginMm * 2),
+        fill: 'none', stroke: '#00A0E3', 'stroke-width': 0.18, 'stroke-dasharray': '1.2 1.2', opacity: 0.85
+      }));
+    }
+    return g;
+  }
+
+  // =========================================================================
+  // 8. POSTER ENGINE (A3 & A4 share one clean parameterized renderer!)
+  // =========================================================================
+  function renderPosterPage(fmtKey) {
+    const spec = FORMATS[fmtKey];
+    const T = THEMES[state.theme];
+    const isFestive = state.decorStyle === 'festive';
+    const decorRed = T.decorColor || T.accent;
+    const starCol = T.starColor || T.accent2;
+    const b = state.bleed ? spec.bleed : 0;
+    const totalW = spec.trimW + b * 2;
+    const totalH = spec.trimH + b * 2;
+    const ox = b, oy = b;
+    const s = spec.trimW / 297; // scale factor relative to A3 (1.0 for A3, 0.707 for A4)
+    // Typography floor slightly boosted on A4 for crisp handzettel legibility
+    const tf = fmtKey === 'a4' ? 0.76 : 1.0;
+    const marginX = 16 * s;
+    const marginY = 14 * s;
+    const topPad = isFestive ? 21.5 * s : marginY;
+    const bottomDoodleH = isFestive ? 15.0 * s : 0;
+    const contentW = spec.trimW - marginX * 2;
+
+    const svg = el('svg', {
+      xmlns: SVG_NS,
+      'xmlns:inkscape': INKSCAPE_NS,
+      version: '1.1',
+      width: `${totalW}mm`,
+      height: `${totalH}mm`,
+      viewBox: `0 0 ${totalW} ${totalH}`
+    });
+
+    const defs = el('defs');
+    if (state.useGradient && state.theme !== 'office') {
+      const grad = el('linearGradient', { id: 'paper-bg', x1: '0%', y1: '0%', x2: '0%', y2: '100%' });
+      grad.appendChild(el('stop', { offset: '0%', 'stop-color': T.bgTop }));
+      grad.appendChild(el('stop', { offset: '55%', 'stop-color': T.bgMid }));
+      grad.appendChild(el('stop', { offset: '100%', 'stop-color': T.bgBot }));
+      defs.appendChild(grad);
+    }
+    addLogoDefs(defs, state.rooster);
+    svg.appendChild(defs);
+
+    // LAYER 1: Background
+    const gBg = el('g', { id: 'Background', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Background' });
+    gBg.appendChild(el('rect', {
+      x: 0, y: 0, width: totalW, height: totalH,
+      fill: (state.useGradient && state.theme !== 'office') ? 'url(#paper-bg)' : T.bgTop
+    }));
+    // Subtle editorial outer margin frame inside trim
+    gBg.appendChild(el('rect', {
+      x: round(ox + marginX * 0.55), y: round(oy + marginY * 0.55),
+      width: round(spec.trimW - marginX * 1.1), height: round(spec.trimH - marginY * 1.1),
+      fill: 'none', stroke: T.rule, 'stroke-width': round(0.28 * s), opacity: isFestive ? 0.22 : 0.55
+    }));
+    if (isFestive) {
+      // Top canopy: bunting, fairy lights, cobalt stars & confetti strictly above header
+      appendMotif(gBg, 'buntingLeft', ox + 2.5 * s, oy - 2.5 * s, 46 * s, decorRed, { rotate: 11 });
+      appendMotif(gBg, 'fairyLightsLeft', ox + 50 * s, oy - 9.5 * s, 74 * s, decorRed, { rotate: 13 });
+      appendMotif(gBg, 'fairyLightsRight', ox + 132 * s, oy - 18.5 * s, 96 * s, decorRed, { rotate: -15 });
+      appendMotif(gBg, 'starFilled7pt', ox + 114 * s, oy + 2.5 * s, 13.5 * s, starCol);
+      appendMotif(gBg, 'starHollow7pt', ox + 214 * s, oy + 1.5 * s, 14.5 * s, starCol);
+      appendMotif(gBg, 'confettiSpiral', ox + 96 * s, oy + 2.5 * s, 7.5 * s, decorRed);
+      appendMotif(gBg, 'confettiBurst', ox + 166 * s, oy + 2.0 * s, 6.5 * s, decorRed);
+      appendMotif(gBg, 'confettiSwirl', ox + 240 * s, oy + 5.5 * s, 10 * s, decorRed);
+
+      // Outer side margin accents (clear of content columns)
+      appendMotif(gBg, 'sparkles4pt', ox + 4.0 * s, oy + 36 * s, 8.5 * s, starCol);
+      appendMotif(gBg, 'confettiZigzag', ox + spec.trimW - 12 * s, oy + 66 * s, 8.5 * s, decorRed, { rotate: -18, opacity: 0.8 });
+      appendMotif(gBg, 'swooshArc', ox + spec.trimW - 11 * s, oy + 155 * s, 13 * s, decorRed, { opacity: 0.18 });
+      appendMotif(gBg, 'swooshArc', ox - 2 * s, oy + 245 * s, 13 * s, decorRed, { flipX: true, opacity: 0.18 });
+
+      // Bottom-margin food & table doodle parade
+      const doodles = ['doodleGoblet', 'doodlePitcher', 'doodleStrawberry', 'doodleLemon', 'doodleCheese', 'doodleCocktail', 'doodleBread', 'doodlePepper'];
+      const dHeights = [11.8, 12.2, 10.6, 12.4, 10.8, 12.0, 10.6, 12.0];
+      const dTilts = [-5, 4, -6, 3, -4, 5, -5, 6];
+      const baseY = oy + spec.trimH - 2.2 * s;
+      const spanStart = ox + 26 * s;
+      const spanStep = (spec.trimW - 52 * s) / (doodles.length - 1);
+      doodles.forEach((key, idx) => {
+        const m = WILLKOMMEN_VECTORS[key];
+        if (!m) return;
+        const th = dHeights[idx] * s;
+        const rw = m.w * (th / m.h);
+        const cx = spanStart + idx * spanStep;
+        appendMotif(gBg, key, cx - rw / 2, baseY - th, th, decorRed, { sizeMode: 'height', rotate: dTilts[idx] });
+      });
+      appendMotif(gBg, 'confettiBurst', ox + 75 * s, oy + spec.trimH - 9.5 * s, 4.5 * s, starCol, { opacity: 0.75 });
+      appendMotif(gBg, 'confettiBurst', ox + 220 * s, oy + spec.trimH - 9.5 * s, 4.5 * s, starCol, { opacity: 0.75 });
+    } else {
+      // Subtle decorative winter stars in margin
+      gBg.appendChild(buildStarMotif(ox + spec.trimW - marginX - 4 * s, oy + marginY + 3 * s, 2.4 * s, T.accent2, 0.25 * s, 0.35));
+      gBg.appendChild(buildStarMotif(ox + marginX + 2.5 * s, oy + spec.trimH - marginY - 31 * s, 1.8 * s, T.accent, 0.22 * s, 0.28));
+    }
+    svg.appendChild(gBg);
+
+    // LAYER 2: Header_Logos
+    const gHead = el('g', { id: 'Header_Logos', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Header_Logos' });
+    const hx = ox + marginX;
+    const hy = oy + topPad;
+    const logoW = (state.rooster === 'rainbow_icon' ? 38 : 50) * s;
+    const headerTextW = state.rooster === 'none' ? contentW : (contentW - logoW - 8 * s);
+
+    // Kicker
+    gHead.appendChild(txt('EVANGELISCHE STUDIERENDENGEMEINDE AN DER UNIVERSITÄT KASSEL', hx, hy + 4.2 * tf, {
+      family: 'Inter', weight: '700', size: (isFestive ? 3.35 : 3.45) * tf, fill: T.muted, spacing: 0.35 * tf
+    }));
+    // Main Headline
+    let titleSize = (isFestive ? 24.5 : 17.5) * tf;
+    let titleSpacing = (isFestive ? 0.85 : -0.3) * tf;
+    const titleFamily = isFestive ? 'Amatic SC' : 'Inter';
+    const titleWeight = isFestive ? '700' : '800';
+    let measuredTitleW = measureWidth('SEMESTERPLAN', titleSize, titleFamily, titleWeight, titleSpacing);
+    if (isFestive && measuredTitleW > headerTextW - 2 * s) {
+      const k = (headerTextW - 2 * s) / measuredTitleW;
+      titleSize *= k;
+      titleSpacing *= k;
+      measuredTitleW = measureWidth('SEMESTERPLAN', titleSize, titleFamily, titleWeight, titleSpacing);
+    }
+    const titleY = hy + (isFestive ? 5.2 : 5.5) * tf + titleSize * (isFestive ? 0.85 : 0.92);
+    gHead.appendChild(txt('SEMESTERPLAN', hx - 0.5 * tf, titleY, {
+      family: titleFamily, weight: titleWeight, size: titleSize, fill: T.ink, spacing: titleSpacing
+    }));
+    // Subtitle WiSe 2026/27 in Caveat
+    const subSize = (isFestive ? 13.8 : 13.5) * tf;
+    const subY = titleY + subSize * (isFestive ? 0.92 : 0.95);
+    const subText = 'Wintersemester 2026/27';
+    gHead.appendChild(txt(subText, hx, subY, {
+      family: 'Caveat', weight: '700', size: subSize, fill: isFestive ? decorRed : T.accent
+    }));
+    // Hand-drawn ink swoosh underline matched to actual measured Caveat width
+    const swooshW = measureWidth(subText, subSize, 'Caveat', '700');
+    if (isFestive) {
+      appendMotif(gHead, 'swooshWing', hx, subY + 0.8 * tf, swooshW, decorRed, { targetH: 4.0 * tf });
+    } else {
+      gHead.appendChild(el('path', {
+        d: `M ${round(hx)} ${round(subY + 2.1 * tf)} Q ${round(hx + swooshW * 0.48)} ${round(subY + 0.5 * tf)} ${round(hx + swooshW)} ${round(subY + 1.9 * tf)}`,
+        fill: 'none', stroke: T.accent2, 'stroke-width': round(0.75 * s), 'stroke-linecap': 'round'
+      }));
+    }
+
+    // Optional Upcoming Stamp placed cleanly to the right of measured headline/subtitle
+    if (state.scope === 'upcoming' && state.showStamp) {
+      if (isFestive) {
+        const minRight = Math.max(hx + measuredTitleW, hx + swooshW) + 7 * s;
+        const availStampW = (hx + headerTextW - 2 * s) - minRight;
+        if (availStampW >= 18 * tf) {
+          const ringD = Math.min(27.5 * tf, availStampW);
+          const ringH = ringD * (WILLKOMMEN_VECTORS.brushRingLarge.h / WILLKOMMEN_VECTORS.brushRingLarge.w);
+          const ringX = minRight + Math.max(0, (availStampW - ringD) * 0.25);
+          const centerBandY = (titleY - 12 * tf + subY + 3 * tf) / 2;
+          const ringY = centerBandY - ringH / 2;
+          const sg = el('g', {
+            transform: `translate(${round(ringX + ringD / 2)}, ${round(ringY + ringH / 2)}) rotate(-5) translate(${round(-ringD / 2)}, ${round(-ringH / 2)})`
+          });
+          appendMotif(sg, 'brushRingLarge', 0, 0, ringD, decorRed);
+          sg.appendChild(txt('AB 19.11.', ringD * 0.51, ringH * 0.45, {
+            family: 'Amatic SC', weight: '700', size: ringD * 0.21, fill: T.ink, anchor: 'middle', spacing: 0.18 * tf
+          }));
+          sg.appendChild(txt('AKTUELL', ringD * 0.51, ringH * 0.72, {
+            family: 'Amatic SC', weight: '700', size: ringD * 0.21, fill: T.ink, anchor: 'middle', spacing: 0.22 * tf
+          }));
+          gHead.appendChild(sg);
+        }
+      } else {
+        const stW = 46 * tf, stH = 8.4 * tf;
+        const stX = hx + swooshW + 7 * tf;
+        const stY = subY - stH * 0.78;
+        if (stX + stW <= hx + headerTextW + 2 * s) {
+          const sg = el('g', {
+            transform: `translate(${round(stX + stW / 2)}, ${round(stY + stH / 2)}) rotate(-3.5) translate(${round(-stW / 2)}, ${round(-stH / 2)})`
+          });
+          sg.appendChild(el('rect', { x: 0, y: 0, width: round(stW), height: round(stH), rx: 1, fill: T.cardBg, stroke: T.accent, 'stroke-width': round(0.45 * s) }));
+          sg.appendChild(txt('AB 19.11. · AKTUELL', stW / 2, stH * 0.68, {
+            family: 'Inter', weight: '800', size: 3.1 * tf, fill: T.accent, anchor: 'middle', spacing: 0.2 * tf
+          }));
+          gHead.appendChild(sg);
+        }
+      }
+    }
+
+    // Rooster Logo right
+    if (state.rooster !== 'none') {
+      const lx = ox + spec.trimW - marginX - logoW;
+      const ly = hy + (isFestive ? 1.5 : 2) * s;
+      gHead.appendChild(buildLogoGroup(state.rooster, lx, ly, logoW, T.ink, '', T.roosterRed || '#E30613'));
+    }
+
+    const headBottomY = subY + (isFestive ? 7.2 : 6.5) * s;
+    // Double editorial ink divider
+    gHead.appendChild(el('line', { x1: round(hx), y1: round(headBottomY), x2: round(hx + contentW), y2: round(headBottomY), stroke: isFestive ? decorRed : T.ink, 'stroke-width': round(0.65 * s) }));
+    gHead.appendChild(el('line', { x1: round(hx), y1: round(headBottomY + 1.1 * s), x2: round(hx + contentW), y2: round(headBottomY + 1.1 * s), stroke: T.ink, 'stroke-width': round(0.22 * s) }));
+    svg.appendChild(gHead);
+
+    // LAYER 3: Recurring
+    const gRec = el('g', { id: 'Recurring', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Recurring' });
+    const recY = headBottomY + 5.0 * s;
+    const recGap = 6.5 * s;
+    const recCardW = (contentW - recGap) / 2;
+    const recCardH = (isFestive ? 32.0 : 29.5) * tf;
+    const recCfg = {
+      isFestive,
+      tf,
+      shadowOffset: 1.0 * s,
+      radius: 1.6 * s,
+      borderW: 0.42 * s,
+      stripeW: 2.2 * s,
+      padX: 3.8 * s,
+      padY: 3.6 * tf,
+      kickerSize: 4.5 * tf,
+      titleSize: 5.7 * tf,
+      bodySize: 3.55 * tf,
+      subSize: 3.0 * tf,
+      stampW: 23 * tf,
+      stampH: 5.4 * tf,
+      stampSize: 2.55 * tf,
+      ringW: 23.5 * tf,
+      ringH: 11.2 * tf
+    };
+    gRec.appendChild(buildRecurringCard(RECURRING[0], hx, recY, recCardW, recCardH, T, recCfg));
+    gRec.appendChild(buildRecurringCard(RECURRING[1], hx + recCardW + recGap, recY, recCardW, recCardH, T, recCfg));
+    svg.appendChild(gRec);
+
+    // LAYER 4: Calendar (2 columns, dynamic fit & wrapping)
+    const gCal = el('g', { id: 'Calendar', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Calendar' });
+    const footerH = (isFestive ? 28.5 : 31) * tf;
+    const footerY = oy + spec.trimH - (isFestive ? (bottomDoodleH + 3.0 * s) : marginY) - footerH;
+    const calHeaderY = recY + recCardH + (isFestive ? 9.2 : 7.5) * s;
+
+    gCal.appendChild(txt('PROGRAMM & TERMINE', hx, calHeaderY, isFestive ? {
+      family: 'Amatic SC', weight: '700', size: 7.2 * tf, fill: T.ink, spacing: 0.45 * tf
+    } : {
+      family: 'Inter', weight: '800', size: 4.1 * tf, fill: T.ink, spacing: 0.5 * tf
+    }));
+    const scopeText = state.scope === 'upcoming' ? 'Kommende Veranstaltungen ab 19.11.2026' : 'Alle Termine im Wintersemester 2026/27';
+    gCal.appendChild(txt(scopeText, hx + contentW, calHeaderY, {
+      family: 'Caveat', weight: '700', size: (isFestive ? 5.0 : 4.8) * tf, fill: isFestive ? decorRed : T.muted, anchor: 'end'
+    }));
+    gCal.appendChild(el('line', {
+      x1: round(hx), y1: round(calHeaderY + 2.2 * s), x2: round(hx + contentW), y2: round(calHeaderY + 2.2 * s),
+      stroke: isFestive ? decorRed : T.ink, 'stroke-width': round((isFestive ? 0.4 : 0.35) * s)
+    }));
+
+    const calTopY = calHeaderY + 6.2 * s;
+    const calMaxY = footerY - 5 * s;
+    const availH = calMaxY - calTopY;
+    const colGap = 8 * s;
+    const colW = (contentW - colGap) / 2;
+
+    const events = getActiveEvents();
+    const { overflow } = renderTwoColumnCalendar(gCal, events, hx, calTopY, colW, colGap, availH, T, tf, s, isFestive);
+    svg.appendChild(gCal);
+
+    // LAYER 5: Footer_QR
+    const gFoot = el('g', { id: 'Footer_QR', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Footer_QR' });
+    gFoot.appendChild(el('line', {
+      x1: round(hx), y1: round(footerY), x2: round(hx + contentW), y2: round(footerY),
+      stroke: isFestive ? decorRed : T.ink, 'stroke-width': round(0.55 * s)
+    }));
+    const qrSize = (isFestive ? 21.5 : 22.5) * tf;
+    const qrX = hx + contentW - qrSize;
+    const qrY = footerY + 2.8 * tf;
+    if (state.qrEnabled) {
+      const cap = state.qrTarget === 'insta' ? '@esg.kassel' : 'esg-kassel.de';
+      gFoot.appendChild(buildQRBlock(qrX, qrY, qrSize, cap, T, state.qrTarget));
+    }
+    const textMaxW = state.qrEnabled ? (contentW - qrSize - 8 * s) : contentW;
+    const fTitleSize = 3.7 * tf;
+    const fBodySize = 3.25 * tf;
+    const fLineY1 = footerY + 8.0 * tf;
+    gFoot.appendChild(txt(FOOTER_INFO.org, hx, fLineY1, {
+      family: 'Inter', weight: '800', size: fTitleSize, fill: T.ink
+    }));
+    gFoot.appendChild(txt(FOOTER_INFO.addr, hx, fLineY1 + 5.6 * tf, {
+      family: 'Inter', weight: '600', size: fBodySize, fill: T.muted
+    }));
+    const contactLines = wrapLines(FOOTER_INFO.contact, textMaxW, fBodySize, 'Inter', '700');
+    contactLines.forEach((ln, idx) => {
+      gFoot.appendChild(txt(ln, hx, fLineY1 + 11.1 * tf + idx * (fBodySize * 1.4), {
+        family: 'Inter', weight: '700', size: fBodySize, fill: T.accent
+      }));
+    });
+    svg.appendChild(gFoot);
+
+    // LAYER 6: Trim_Bleed_Guides
+    svg.appendChild(buildTrimAndGuidesLayer(totalW, totalH, spec.trimW, spec.trimH, spec.bleed, 10 * s, state.bleed, state.safeGuides));
+
+    return { svg, totalW, totalH, trimW: spec.trimW, trimH: spec.trimH, overflow };
+  }
+
+  function layoutCalendarColumn(items, colW, T, scale, dense, isFestive = false) {
+    // Measure exact height of every block (month headers + event rows)
+    const dateColW = 20.5 * scale;
+    const textXOffset = dateColW + 3.2 * scale;
+    const textW = colW - textXOffset - 1.5 * scale;
+
+    const titleSize = (dense ? 3.55 : 3.95) * scale;
+    const detailSize = (dense ? 2.85 : 3.15) * scale;
+    const dateSize = (dense ? 3.55 : 3.85) * scale;
+    const daySize = (dense ? 2.55 : 2.75) * scale;
+    const monthSize = (isFestive ? (dense ? 4.8 : 5.5) : (dense ? 2.85 : 3.15)) * scale;
+    const lineHTitle = titleSize * 1.24;
+    const lineHDetail = detailSize * 1.26;
+
+    const measured = [];
+    let currentMonth = null;
+    for (const ev of items) {
+      if (ev.month !== currentMonth) {
+        currentMonth = ev.month;
+        measured.push({
+          type: 'month', month: currentMonth, label: MONTH_LABELS[currentMonth] || currentMonth,
+          h: monthSize + (isFestive ? 2.4 : 3.4) * scale, monthSize
+        });
+      }
+      if (ev.kind === 'break' || ev.kind === 'end') {
+        const bh = (ev.kind === 'break' ? 9.6 : 8.4) * scale;
+        measured.push({ type: 'banner', ev, h: bh, titleSize: titleSize * 0.96, dateSize: dateSize * 0.92 });
+      } else {
+        const tLines = wrapLines(ev.title, textW, titleSize, 'Inter', '700');
+        const dStr = [ev.time, ev.details].filter(Boolean).join('  ·  ');
+        const dLines = dStr ? wrapLines(dStr, textW, detailSize, 'Inter', '600') : [];
+        const contentH = tLines.length * lineHTitle + (dLines.length ? 0.9 * scale + dLines.length * lineHDetail : 0);
+        const minDateH = daySize + dateSize + 1.2 * scale;
+        const rowH = Math.max(contentH, minDateH) + 1.2 * scale;
+        measured.push({
+          type: 'event', ev, tLines, dLines,
+          h: rowH, titleSize, detailSize, dateSize, daySize, dateColW, textXOffset, lineHTitle, lineHDetail
+        });
+      }
+    }
+    return measured;
+  }
+
+  function renderTwoColumnCalendar(gCal, events, startX, startY, colW, colGap, availH, T, tf, s, isFestive = false) {
+    // Try natural density first; if full semester, check split point that balances both columns
+    const dense = events.length > 18;
+    const decorRed = T.decorColor || T.accent;
+    const starCol = T.starColor || T.accent2;
+    let bestSplit = Math.ceil(events.length / 2);
+    let bestDiff = Infinity;
+    for (let split = Math.max(1, Math.floor(events.length * 0.35)); split <= Math.min(events.length - 1, Math.ceil(events.length * 0.7)); split++) {
+      // Prefer breaking between months if close
+      const leftM = layoutCalendarColumn(events.slice(0, split), colW, T, tf, dense, isFestive);
+      const rightM = layoutCalendarColumn(events.slice(split), colW, T, tf, dense, isFestive);
+      const lh = leftM.reduce((a, b) => a + b.h, 0);
+      const rh = rightM.reduce((a, b) => a + b.h, 0);
+      const monthBoundaryBonus = (events[split].month !== events[split - 1].month) ? -6 : 0;
+      const diff = Math.abs(lh - rh) + monthBoundaryBonus;
+      if (diff < bestDiff) { bestDiff = diff; bestSplit = split; }
+    }
+
+    const leftItems = events.slice(0, bestSplit);
+    const rightItems = events.slice(bestSplit);
+
+    let leftMeasured = layoutCalendarColumn(leftItems, colW, T, tf, dense, isFestive);
+    let rightMeasured = layoutCalendarColumn(rightItems, colW, T, tf, dense, isFestive);
+
+    // Check fit & adapt spacing or scale
+    const leftBaseH = leftMeasured.reduce((a, b) => a + b.h, 0);
+    const rightBaseH = rightMeasured.reduce((a, b) => a + b.h, 0);
+    const maxBaseH = Math.max(leftBaseH, rightBaseH);
+
+    let shrink = 1.0;
+    if (maxBaseH > availH - 6 * tf) {
+      shrink = Math.max(0.84, (availH - 6 * tf) / maxBaseH);
+      leftMeasured = layoutCalendarColumn(leftItems, colW, T, tf * shrink, true, isFestive);
+      rightMeasured = layoutCalendarColumn(rightItems, colW, T, tf * shrink, true, isFestive);
+    }
+
+    const drawCol = (blocks, cx) => {
+      const sumH = blocks.reduce((a, b) => a + b.h, 0);
+      const extraTotal = Math.max(0, availH - sumH);
+      const gapCount = Math.max(1, blocks.length - 1);
+      const gap = Math.min(11.5 * tf, extraTotal / gapCount);
+      let cy = startY;
+
+      blocks.forEach((blk, idx) => {
+        if (blk.type === 'month') {
+          if (isFestive) {
+            const labelW = measureWidth(blk.label, blk.monthSize, 'Amatic SC', '700', 0.35 * tf);
+            const midY = cy + blk.monthSize * 0.56;
+            // Small rotated diamond star accent before month label
+            const dr = 1.15 * tf;
+            gCal.appendChild(el('path', {
+              d: `M ${round(cx + dr)} ${round(midY - dr)} L ${round(cx + dr * 2)} ${round(midY)} L ${round(cx + dr)} ${round(midY + dr)} L ${round(cx)} ${round(midY)} Z`,
+              fill: starCol
+            }));
+            gCal.appendChild(txt(blk.label, cx + 3.6 * tf, cy + blk.monthSize * 0.88, {
+              family: 'Amatic SC', weight: '700', size: blk.monthSize, fill: decorRed, spacing: 0.35 * tf
+            }));
+            gCal.appendChild(el('line', {
+              x1: round(cx + 3.6 * tf + labelW + 2.2 * s), y1: round(midY),
+              x2: round(cx + colW), y2: round(midY),
+              stroke: T.rule, 'stroke-width': round(0.28 * s)
+            }));
+          } else {
+            const pillW = measureWidth(blk.label, blk.monthSize, 'Inter', '800', 0.35 * tf) + 5.6 * tf;
+            const pillH = blk.monthSize + 2.3 * tf;
+            gCal.appendChild(el('rect', {
+              x: round(cx), y: round(cy), width: round(pillW), height: round(pillH),
+              rx: 0.9 * s, fill: T.ink
+            }));
+            gCal.appendChild(txt(blk.label, cx + 2.8 * tf, cy + pillH * 0.74, {
+              family: 'Inter', weight: '800', size: blk.monthSize, fill: '#FFFFFF', spacing: 0.35 * tf
+            }));
+            gCal.appendChild(el('line', {
+              x1: round(cx + pillW + 2 * s), y1: round(cy + pillH / 2),
+              x2: round(cx + colW), y2: round(cy + pillH / 2),
+              stroke: T.rule, 'stroke-width': round(0.28 * s)
+            }));
+          }
+        } else if (blk.type === 'banner') {
+          const isBreak = blk.ev.kind === 'break';
+          gCal.appendChild(el('rect', {
+            x: round(cx), y: round(cy), width: round(colW), height: round(blk.h),
+            rx: 1.2 * s,
+            fill: isBreak ? T.breakBg : T.cardAlt,
+            stroke: isBreak ? T.accent2 : T.ink,
+            'stroke-width': round(0.32 * s),
+            'stroke-dasharray': isBreak ? '1.6 1.1' : undefined
+          }));
+          const label = isBreak ? `${blk.ev.day}  ·  ${blk.ev.title}` : `${blk.ev.weekday}, ${blk.ev.day}  ·  ${blk.ev.title}`;
+          gCal.appendChild(txt(label, cx + colW / 2, cy + blk.h * 0.64, {
+            family: 'Inter', weight: '800', size: blk.titleSize, fill: isBreak ? T.accent2 : T.ink, anchor: 'middle'
+          }));
+        } else {
+          const ev = blk.ev;
+          const isPast = ev.past;
+          const op = isPast ? 0.62 : 1;
+          const rowG = el('g', op < 1 ? { opacity: '0.68' } : {});
+
+          // Date badge left
+          rowG.appendChild(el('rect', {
+            x: round(cx), y: round(cy + 0.3 * tf), width: round(blk.dateColW), height: round(blk.daySize + blk.dateSize + 1.8 * tf),
+            rx: 1.0 * s, fill: isPast ? T.cardAlt : T.cardBg, stroke: T.rule, 'stroke-width': round(0.26 * s)
+          }));
+          if (ev.weekday) {
+            rowG.appendChild(txt(ev.weekday.toUpperCase(), cx + blk.dateColW / 2, cy + blk.daySize + 0.7 * tf, {
+              family: 'Inter', weight: '800', size: blk.daySize * 0.88, fill: isPast ? T.muted : T.accent, anchor: 'middle', spacing: 0.25 * tf
+            }));
+          }
+          rowG.appendChild(txt(ev.day, cx + blk.dateColW / 2, cy + blk.daySize + blk.dateSize + 0.9 * tf, {
+            family: 'Inter', weight: '800', size: blk.dateSize, fill: T.ink, anchor: 'middle'
+          }));
+
+          // Title lines
+          const tx = cx + blk.textXOffset;
+          let ty = cy + blk.titleSize * 0.95;
+          blk.tLines.forEach((ln, li) => {
+            rowG.appendChild(txt(ln, tx, ty + li * blk.lineHTitle, {
+              family: 'Inter', weight: '700', size: blk.titleSize, fill: T.ink
+            }));
+          });
+          // Details lines
+          if (blk.dLines.length) {
+            const dy = ty + blk.tLines.length * blk.lineHTitle + 0.5 * tf;
+            blk.dLines.forEach((ln, li) => {
+              rowG.appendChild(txt(ln, tx, dy + li * blk.lineHDetail, {
+                family: 'Inter', weight: '600', size: blk.detailSize, fill: T.muted
+              }));
+            });
+          }
+          // Subtle hairline separator if next item is also an event
+          const next = blocks[idx + 1];
+          if (next && next.type === 'event') {
+            rowG.appendChild(el('line', {
+              x1: round(cx + blk.textXOffset), y1: round(cy + blk.h + gap * 0.45),
+              x2: round(cx + colW), y2: round(cy + blk.h + gap * 0.45),
+              stroke: T.rule, 'stroke-width': round(0.18 * s), opacity: 0.65
+            }));
+          }
+          gCal.appendChild(rowG);
+        }
+        cy += blk.h + gap;
+      });
+      return cy - gap;
+    };
+
+    const endL = drawCol(leftMeasured, startX);
+    const endR = drawCol(rightMeasured, startX + colW + colGap);
+    return { overflow: Math.max(endL, endR) > startY + availH + 1.5 };
+  }
+
+  // =========================================================================
+  // 9. FLYER DL ENGINE (Front Page, Back Page, and 2-Up Spread)
+  // =========================================================================
+  function renderDLFrontGroups(ox, oy, trimW, trimH, T, clipSuffix = '') {
+    const mx = 8.5, my = 8.5;
+    const cw = trimW - mx * 2;
+    const hx = ox + mx;
+    const isFestive = state.decorStyle === 'festive';
+    const decorRed = T.decorColor || T.accent;
+    const starCol = T.starColor || T.accent2;
+
+    // Background Layer Content
+    const bgItems = [];
+    bgItems.push(el('rect', {
+      x: round(ox + 4.5), y: round(oy + 4.5), width: round(trimW - 9), height: round(trimH - 9),
+      fill: 'none', stroke: T.rule, 'stroke-width': 0.25, opacity: isFestive ? 0.22 : 0.6
+    }));
+    if (isFestive) {
+      const pushM = (k, x, y, sz, f, o) => {
+        const n = buildMotif(k, x, y, sz, f, o);
+        if (n) bgItems.push(n);
+      };
+      pushM('buntingLeft', ox + 1.0, oy - 3.5, 34, decorRed, { rotate: 11 });
+      pushM('fairyLightsRight', ox + trimW - 38, oy - 6.0, 38, decorRed, { rotate: -12 });
+      pushM('starFilled7pt', ox + 8.5, oy + 25, 9.5, starCol);
+      pushM('sparkles4pt', ox + trimW - 17, oy + 23, 8.0, starCol);
+      pushM('confettiSpiral', ox + trimW - 13, oy + 11, 5.0, decorRed);
+
+      // Bottom-margin food doodle strip
+      const dlDoodles = ['doodleGoblet', 'doodleStrawberry', 'doodleCheese', 'doodleCocktail', 'doodleBread'];
+      const dlTilts = [-4, 4, -3, 5, -4];
+      const baseY = oy + trimH - 2.0;
+      const startX = ox + 13;
+      const stepX = (trimW - 26) / (dlDoodles.length - 1);
+      dlDoodles.forEach((key, idx) => {
+        const m = WILLKOMMEN_VECTORS[key];
+        if (!m) return;
+        const th = 9.8;
+        const rw = m.w * (th / m.h);
+        pushM(key, startX + idx * stepX - rw / 2, baseY - th, th, decorRed, { sizeMode: 'height', rotate: dlTilts[idx] });
+      });
+    } else {
+      bgItems.push(buildStarMotif(ox + trimW - 10, oy + 12, 2.2, T.accent2, 0.22, 0.35));
+      bgItems.push(buildStarMotif(ox + 10, oy + 68, 1.8, T.accent, 0.2, 0.28));
+    }
+
+    // Header_Logos
+    const gHead = el('g');
+    let curY = oy + (isFestive ? 11.5 : my + 1);
+    if (state.rooster !== 'none') {
+      const vb = state.rooster === 'rainbow_icon' ? LOGOS.viewBoxNoText : LOGOS.viewBoxWithText;
+      const lw = state.rooster === 'rainbow_icon' ? (isFestive ? 27 : 30) : (isFestive ? 33 : 38);
+      const lh = lw * (vb.h / vb.w);
+      gHead.appendChild(buildLogoGroup(state.rooster, ox + (trimW - lw) / 2, curY, lw, T.ink, clipSuffix, T.roosterRed || '#E30613'));
+      curY += lh + (isFestive ? 3.5 : 4);
+    } else {
+      curY += 4;
+    }
+
+    gHead.appendChild(txt('EVANGELISCHE STUDIERENDENGEMEINDE', ox + trimW / 2, curY, {
+      family: 'Inter', weight: '700', size: isFestive ? 2.55 : 2.65, fill: T.muted, anchor: 'middle', spacing: 0.35
+    }));
+    curY += 3.6;
+    gHead.appendChild(txt('AN DER UNIVERSITÄT KASSEL', ox + trimW / 2, curY, {
+      family: 'Inter', weight: '700', size: isFestive ? 2.55 : 2.65, fill: T.muted, anchor: 'middle', spacing: 0.35
+    }));
+
+    if (isFestive) {
+      curY += 15.2;
+      gHead.appendChild(txt('SEMESTERPLAN', ox + trimW / 2, curY, {
+        family: 'Amatic SC', weight: '700', size: 16.5, fill: T.ink, anchor: 'middle', spacing: 0.6
+      }));
+      curY += 10.0;
+      const hasStamp = state.scope === 'upcoming' && state.showStamp;
+      if (hasStamp) {
+        const subCx = ox + trimW / 2 - 11.5;
+        gHead.appendChild(txt('WiSe 2026/27', subCx, curY, {
+          family: 'Caveat', weight: '700', size: 10.2, fill: decorRed, anchor: 'middle'
+        }));
+        const subW = measureWidth('WiSe 2026/27', 10.2, 'Caveat', '700');
+        appendMotif(gHead, 'swooshWing', subCx - subW / 2, curY + 0.8, subW, decorRed, { targetH: 3.0 });
+
+        const ringD = 18.0;
+        const ringH = ringD * (WILLKOMMEN_VECTORS.brushRingLarge.h / WILLKOMMEN_VECTORS.brushRingLarge.w);
+        const ringX = Math.max(subCx + subW / 2 + 3.0, ox + trimW - 27.5);
+        const ringY = curY - 9.2;
+        const sg = el('g', {
+          transform: `translate(${round(ringX + ringD / 2)}, ${round(ringY + ringH / 2)}) rotate(-6) translate(${round(-ringD / 2)}, ${round(-ringH / 2)})`
+        });
+        appendMotif(sg, 'brushRingLarge', 0, 0, ringD, decorRed);
+        sg.appendChild(txt('AB 19.11.', ringD * 0.51, ringH * 0.45, {
+          family: 'Amatic SC', weight: '700', size: 3.9, fill: T.ink, anchor: 'middle', spacing: 0.14
+        }));
+        sg.appendChild(txt('AKTUELL', ringD * 0.51, ringH * 0.72, {
+          family: 'Amatic SC', weight: '700', size: 3.9, fill: T.ink, anchor: 'middle', spacing: 0.18
+        }));
+        gHead.appendChild(sg);
+        curY += 8.6;
+      } else {
+        gHead.appendChild(txt('WiSe 2026/27', ox + trimW / 2, curY, {
+          family: 'Caveat', weight: '700', size: 10.2, fill: decorRed, anchor: 'middle'
+        }));
+        const subW = measureWidth('WiSe 2026/27', 10.2, 'Caveat', '700');
+        appendMotif(gHead, 'swooshWing', ox + (trimW - subW) / 2, curY + 0.8, subW, decorRed, { targetH: 3.0 });
+        curY += 6.5;
+      }
+    } else {
+      curY += 10.5;
+      gHead.appendChild(txt('SEMESTERPLAN', ox + trimW / 2, curY, {
+        family: 'Inter', weight: '800', size: 10.4, fill: T.ink, anchor: 'middle', spacing: -0.2
+      }));
+      curY += 9.5;
+      gHead.appendChild(txt('WiSe 2026/27', ox + trimW / 2, curY, {
+        family: 'Caveat', weight: '700', size: 10.2, fill: T.accent, anchor: 'middle'
+      }));
+      gHead.appendChild(el('path', {
+        d: `M ${round(ox + trimW / 2 - 26)} ${round(curY + 1.8)} Q ${round(ox + trimW / 2)} ${round(curY + 0.4)} ${round(ox + trimW / 2 + 26)} ${round(curY + 1.6)}`,
+        fill: 'none', stroke: T.accent2, 'stroke-width': 0.55, 'stroke-linecap': 'round'
+      }));
+      curY += 5.5;
+
+      if (state.scope === 'upcoming' && state.showStamp) {
+        const stW = 38, stH = 6.2;
+        const stX = ox + (trimW - stW) / 2;
+        const sg = el('g', {
+          transform: `translate(${round(stX + stW / 2)}, ${round(curY + stH / 2)}) rotate(-2.5) translate(${round(-stW / 2)}, ${round(-stH / 2)})`
+        });
+        sg.appendChild(el('rect', { x: 0, y: 0, width: stW, height: stH, rx: 0.9, fill: T.cardBg, stroke: T.accent, 'stroke-width': 0.38 }));
+        sg.appendChild(txt('AB 19.11. · AKTUELL', stW / 2, stH * 0.68, {
+          family: 'Inter', weight: '800', size: 2.55, fill: T.accent, anchor: 'middle', spacing: 0.2
+        }));
+        gHead.appendChild(sg);
+        curY += stH + 3.5;
+      } else {
+        curY += 2;
+      }
+    }
+
+    // Double divider
+    gHead.appendChild(el('line', { x1: round(hx), y1: round(curY), x2: round(hx + cw), y2: round(curY), stroke: isFestive ? decorRed : T.ink, 'stroke-width': 0.5 }));
+    gHead.appendChild(el('line', { x1: round(hx), y1: round(curY + 0.9), x2: round(hx + cw), y2: round(curY + 0.9), stroke: T.ink, 'stroke-width': 0.18 }));
+
+    // Recurring Stack
+    const gRec = el('g');
+    const footerTopY = oy + trimH - (isFestive ? 51.0 : my + 35);
+    const recLabelY = curY + (isFestive ? 5.6 : 5.6);
+    gRec.appendChild(txt('WÖCHENTLICH IM SEMESTER', ox + trimW / 2, recLabelY, isFestive ? {
+      family: 'Amatic SC', weight: '700', size: 4.8, fill: T.muted, anchor: 'middle', spacing: 0.45
+    } : {
+      family: 'Inter', weight: '800', size: 2.55, fill: T.muted, anchor: 'middle', spacing: 0.45
+    }));
+    const recStartY = recLabelY + 3.2;
+    const availRecH = footerTopY - recStartY - 4.5;
+    const cardGap = isFestive ? 5.0 : 5.2;
+    const cardH = Math.min(29, (availRecH - cardGap) / 2);
+    const totalStackH = cardH * 2 + cardGap;
+    const recOffsetY = recStartY + Math.max(0, (availRecH - totalStackH) / 2);
+    const dlRecCfg = {
+      isFestive,
+      tf: 0.85,
+      shadowOffset: 0.85,
+      radius: 1.3,
+      borderW: 0.36,
+      stripeW: 1.8,
+      padX: 3.0,
+      padY: 3.2,
+      kickerSize: 4.0,
+      titleSize: 5.0,
+      bodySize: 3.1,
+      subSize: 2.6,
+      stampW: 20,
+      stampH: 4.5,
+      stampSize: 2.2,
+      ringW: 19.5,
+      ringH: 9.6
+    };
+    gRec.appendChild(buildRecurringCard(RECURRING[0], hx, recOffsetY, cw, cardH, T, dlRecCfg));
+    gRec.appendChild(buildRecurringCard(RECURRING[1], hx, recOffsetY + cardH + cardGap, cw, cardH, T, dlRecCfg));
+
+    // Footer_QR
+    const gFoot = el('g');
+    gFoot.appendChild(el('line', { x1: round(hx), y1: round(footerTopY), x2: round(hx + cw), y2: round(footerTopY), stroke: isFestive ? decorRed : T.ink, 'stroke-width': 0.45 }));
+    const qrSize = isFestive ? 21 : 22;
+    if (state.qrEnabled) {
+      const cap = state.qrTarget === 'insta' ? '@esg.kassel' : 'esg-kassel.de';
+      gFoot.appendChild(buildQRBlock(hx + cw - qrSize, footerTopY + 3.2, qrSize, cap, T, state.qrTarget));
+    }
+    const fMaxW = state.qrEnabled ? (cw - qrSize - 4) : cw;
+    let fy = footerTopY + 7.0;
+    const fOrgLines = wrapLines('Dietrich-Bonhoeffer-Haus (DBH)', fMaxW, 3.0, 'Inter', '800');
+    fOrgLines.forEach((ln, i) => gFoot.appendChild(txt(ln, hx, fy + i * 3.8, { family: 'Inter', weight: '800', size: 2.95, fill: T.ink })));
+    fy += fOrgLines.length * 3.8 + 1.2;
+    ['Mönchebergstraße 29', '34125 Kassel', 'www.esg-kassel.de', '@esg.kassel', 'Tel.: 0561 / 872075'].forEach((ln, idx) => {
+      gFoot.appendChild(txt(ln, hx, fy + idx * 3.7, {
+        family: 'Inter',
+        weight: idx >= 2 ? '700' : '600',
+        size: 2.65,
+        fill: idx >= 2 ? T.accent : T.muted
+      }));
+    });
+    gFoot.appendChild(txt('Programm auf der Rückseite →', ox + trimW / 2, oy + trimH - (isFestive ? 15.2 : my - 1.5), {
+      family: 'Caveat', weight: '700', size: isFestive ? 4.0 : 4.1, fill: T.muted, anchor: 'middle'
+    }));
+
+    return { bgItems, headItems: [gHead], recItems: [gRec], calItems: [], footItems: [gFoot], overflow: false };
+  }
+
+  function renderDLBackGroups(ox, oy, trimW, trimH, T) {
+    const mx = 7.5, my = 7.5;
+    const cw = trimW - mx * 2;
+    const hx = ox + mx;
+    const isFestive = state.decorStyle === 'festive';
+    const decorRed = T.decorColor || T.accent;
+
+    const bgItems = [];
+    bgItems.push(el('rect', {
+      x: round(ox + 4.2), y: round(oy + 4.2), width: round(trimW - 8.4), height: round(trimH - 8.4),
+      fill: 'none', stroke: T.rule, 'stroke-width': 0.22, opacity: isFestive ? 0.35 : 0.55
+    }));
+
+    const gHead = el('g');
+    const hy = oy + my + 3.5;
+    gHead.appendChild(txt('PROGRAMM', hx, hy, isFestive ? {
+      family: 'Amatic SC', weight: '700', size: 7.0, fill: T.ink, spacing: 0.35
+    } : {
+      family: 'Inter', weight: '800', size: 5.4, fill: T.ink, spacing: 0.2
+    }));
+    gHead.appendChild(txt(state.scope === 'upcoming' ? 'ab 19.11.2026' : 'WiSe 2026/27', hx + cw, hy, {
+      family: 'Caveat', weight: '700', size: 5.6, fill: isFestive ? decorRed : T.accent, anchor: 'end'
+    }));
+    gHead.appendChild(el('line', { x1: round(hx), y1: round(hy + 2.1), x2: round(hx + cw), y2: round(hy + 2.1), stroke: isFestive ? decorRed : T.ink, 'stroke-width': 0.5 }));
+    gHead.appendChild(el('line', { x1: round(hx), y1: round(hy + 3.0), x2: round(hx + cw), y2: round(hy + 3.0), stroke: T.ink, 'stroke-width': 0.18 }));
+
+    // Calendar single-column timeline
+    const gCal = el('g');
+    const events = getActiveEvents();
+    const calTopY = hy + 5.8;
+    const footTopY = oy + trimH - my - 7.5;
+    const availH = footTopY - calTopY - 2;
+    const dense = events.length > 17;
+
+    let scale = dense ? 0.66 : 0.78;
+    const buildSingleCol = (sc) => {
+      const dateColW = 15.5;
+      const txOff = dateColW + 2.4;
+      const textW = cw - txOff;
+      const titleSize = (dense ? 2.62 : 2.95) * (sc / (dense ? 0.66 : 0.78));
+      const detailSize = (dense ? 2.18 : 2.42) * (sc / (dense ? 0.66 : 0.78));
+      const dateSize = (dense ? 2.55 : 2.85) * (sc / (dense ? 0.66 : 0.78));
+      const daySize = (dense ? 1.9 : 2.1) * (sc / (dense ? 0.66 : 0.78));
+      const monthSize = (isFestive ? (dense ? 3.5 : 4.0) : (dense ? 2.25 : 2.55)) * (sc / (dense ? 0.66 : 0.78));
+      const lht = titleSize * 1.18;
+      const lhd = detailSize * 1.18;
+
+      const blocks = [];
+      let curM = null;
+      for (const ev of events) {
+        if (ev.month !== curM) {
+          curM = ev.month;
+          blocks.push({ type: 'month', label: MONTH_LABELS[curM] || curM, monthSize, h: monthSize + (isFestive ? 1.4 : 2.1) });
+        }
+        if (ev.kind === 'break' || ev.kind === 'end') {
+          blocks.push({ type: 'banner', ev, titleSize: titleSize * 0.95, h: ev.kind === 'break' ? 5.8 : 5.2 });
+        } else {
+          const tLines = wrapLines(ev.title, textW, titleSize, 'Inter', '700');
+          const dStr = [ev.time, ev.details].filter(Boolean).join(' · ');
+          const dLines = dStr ? wrapLines(dStr, textW, detailSize, 'Inter', '600') : [];
+          const ch = tLines.length * lht + (dLines.length ? 0.5 + dLines.length * lhd : 0);
+          const minH = daySize + dateSize + 0.8;
+          blocks.push({ type: 'event', ev, tLines, dLines, titleSize, detailSize, dateSize, daySize, dateColW, txOff, lht, lhd, h: Math.max(ch, minH) + 0.5 });
+        }
+      }
+      return blocks;
+    };
+
+    let blocks = buildSingleCol(scale);
+    let sumH = blocks.reduce((a, b) => a + b.h, 0);
+    if (sumH > availH) {
+      scale *= (availH / sumH) * 0.96;
+      blocks = buildSingleCol(scale);
+      sumH = blocks.reduce((a, b) => a + b.h, 0);
+    }
+
+    const extra = Math.max(0, availH - sumH);
+    const gap = Math.min(2.6, extra / Math.max(1, blocks.length - 1));
+    let cy = calTopY;
+    blocks.forEach((blk, idx) => {
+      if (blk.type === 'month') {
+        if (isFestive) {
+          const lw = measureWidth(blk.label, blk.monthSize, 'Amatic SC', '700', 0.25);
+          const midY = cy + blk.monthSize * 0.54;
+          gCal.appendChild(txt(blk.label, hx, cy + blk.monthSize * 0.86, {
+            family: 'Amatic SC', weight: '700', size: blk.monthSize, fill: decorRed, spacing: 0.25
+          }));
+          gCal.appendChild(el('line', {
+            x1: round(hx + lw + 1.8), y1: round(midY),
+            x2: round(hx + cw), y2: round(midY),
+            stroke: T.rule, 'stroke-width': 0.22
+          }));
+        } else {
+          const pw = measureWidth(blk.label, blk.monthSize, 'Inter', '800', 0.25) + 3.8;
+          const ph = blk.monthSize + 1.5;
+          gCal.appendChild(el('rect', { x: round(hx), y: round(cy), width: round(pw), height: round(ph), rx: 0.7, fill: T.ink }));
+          gCal.appendChild(txt(blk.label, hx + 1.9, cy + ph * 0.74, { family: 'Inter', weight: '800', size: blk.monthSize, fill: '#FFFFFF', spacing: 0.25 }));
+          gCal.appendChild(el('line', { x1: round(hx + pw + 1.5), y1: round(cy + ph / 2), x2: round(hx + cw), y2: round(cy + ph / 2), stroke: T.rule, 'stroke-width': 0.22 }));
+        }
+      } else if (blk.type === 'banner') {
+        const isBrk = blk.ev.kind === 'break';
+        gCal.appendChild(el('rect', {
+          x: round(hx), y: round(cy), width: round(cw), height: round(blk.h), rx: 0.9,
+          fill: isBrk ? T.breakBg : T.cardAlt, stroke: isBrk ? T.accent2 : T.ink, 'stroke-width': 0.26,
+          'stroke-dasharray': isBrk ? '1.3 0.9' : undefined
+        }));
+        const label = isBrk ? `${blk.ev.day} · ${blk.ev.title}` : `${blk.ev.weekday}, ${blk.ev.day} · ${blk.ev.title}`;
+        gCal.appendChild(txt(label, hx + cw / 2, cy + blk.h * 0.65, {
+          family: 'Inter', weight: '800', size: blk.titleSize, fill: isBrk ? T.accent2 : T.ink, anchor: 'middle'
+        }));
+      } else {
+        const ev = blk.ev;
+        const rowG = el('g', ev.past ? { opacity: '0.68' } : {});
+        rowG.appendChild(txt(ev.weekday ? `${ev.weekday},` : '', hx, cy + blk.daySize * 1.05, {
+          family: 'Inter', weight: '800', size: blk.daySize, fill: ev.past ? T.muted : T.accent
+        }));
+        rowG.appendChild(txt(ev.day, hx, cy + blk.daySize + blk.dateSize + 0.5, {
+          family: 'Inter', weight: '800', size: blk.dateSize, fill: T.ink
+        }));
+        const tx = hx + blk.txOff;
+        let ty = cy + blk.titleSize * 0.92;
+        blk.tLines.forEach((ln, li) => rowG.appendChild(txt(ln, tx, ty + li * blk.lht, { family: 'Inter', weight: '700', size: blk.titleSize, fill: T.ink })));
+        if (blk.dLines.length) {
+          const dy = ty + blk.tLines.length * blk.lht + 0.3;
+          blk.dLines.forEach((ln, li) => rowG.appendChild(txt(ln, tx, dy + li * blk.lhd, { family: 'Inter', weight: '600', size: blk.detailSize, fill: T.muted })));
+        }
+        const next = blocks[idx + 1];
+        if (next && next.type === 'event') {
+          rowG.appendChild(el('line', {
+            x1: round(hx), y1: round(cy + blk.h + gap * 0.45), x2: round(hx + cw), y2: round(cy + blk.h + gap * 0.45),
+            stroke: T.rule, 'stroke-width': 0.15, opacity: 0.6
+          }));
+        }
+        gCal.appendChild(rowG);
+      }
+      cy += blk.h + gap;
+    });
+
+    const overflow = (cy - gap) > (calTopY + availH + 1);
+
+    // Compact Footer_QR
+    const gFoot = el('g');
+    gFoot.appendChild(el('line', { x1: round(hx), y1: round(footTopY), x2: round(hx + cw), y2: round(footTopY), stroke: isFestive ? decorRed : T.ink, 'stroke-width': 0.35 }));
+    gFoot.appendChild(txt('ESG Kassel · DBH · Mönchebergstr. 29 · 34125 Kassel', ox + trimW / 2, footTopY + 3.4, {
+      family: 'Inter', weight: '700', size: 2.35, fill: T.ink, anchor: 'middle'
+    }));
+    gFoot.appendChild(txt('www.esg-kassel.de  ·  @esg.kassel  ·  0561 / 872075', ox + trimW / 2, footTopY + 6.6, {
+      family: 'Inter', weight: '600', size: 2.3, fill: T.accent, anchor: 'middle'
+    }));
+
+    return { bgItems, headItems: [gHead], recItems: [], calItems: [gCal], footItems: [gFoot], overflow };
+  }
+
+  function renderDLPage(mode) {
+    const spec = FORMATS[mode];
+    const T = THEMES[state.theme];
+    const b = state.bleed ? spec.bleed : 0;
+
+    if (mode === 'dl_spread') {
+      const pageW = spec.trimW + b * 2;
+      const gap = spec.gap;
+      const totalW = pageW * 2 + gap;
+      const totalH = spec.trimH + b * 2;
+
+      const svg = el('svg', {
+        xmlns: SVG_NS, 'xmlns:inkscape': INKSCAPE_NS, version: '1.1',
+        width: `${totalW}mm`, height: `${totalH}mm`, viewBox: `0 0 ${totalW} ${totalH}`
+      });
+      const defs = el('defs');
+      if (state.useGradient && state.theme !== 'office') {
+        const grad = el('linearGradient', { id: 'paper-bg', x1: '0%', y1: '0%', x2: '0%', y2: '100%' });
+        grad.appendChild(el('stop', { offset: '0%', 'stop-color': T.bgTop }));
+        grad.appendChild(el('stop', { offset: '55%', 'stop-color': T.bgMid }));
+        grad.appendChild(el('stop', { offset: '100%', 'stop-color': T.bgBot }));
+        defs.appendChild(grad);
+      }
+      addLogoDefs(defs, state.rooster, '-spread');
+      svg.appendChild(defs);
+
+      const front = renderDLFrontGroups(b, b, spec.trimW, spec.trimH, T, '-spread');
+      const back = renderDLBackGroups(pageW + gap + b, b, spec.trimW, spec.trimH, T);
+
+      const gBg = el('g', { id: 'Background', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Background' });
+      const bgFill = (state.useGradient && state.theme !== 'office') ? 'url(#paper-bg)' : T.bgTop;
+      gBg.appendChild(el('rect', { x: 0, y: 0, width: pageW, height: totalH, fill: bgFill }));
+      gBg.appendChild(el('rect', { x: pageW + gap, y: 0, width: pageW, height: totalH, fill: bgFill }));
+      front.bgItems.forEach(n => gBg.appendChild(n));
+      back.bgItems.forEach(n => gBg.appendChild(n));
+      svg.appendChild(gBg);
+
+      const gHead = el('g', { id: 'Header_Logos', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Header_Logos' });
+      front.headItems.forEach(n => gHead.appendChild(n));
+      back.headItems.forEach(n => gHead.appendChild(n));
+      svg.appendChild(gHead);
+
+      const gRec = el('g', { id: 'Recurring', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Recurring' });
+      front.recItems.forEach(n => gRec.appendChild(n));
+      svg.appendChild(gRec);
+
+      const gCal = el('g', { id: 'Calendar', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Calendar' });
+      back.calItems.forEach(n => gCal.appendChild(n));
+      svg.appendChild(gCal);
+
+      const gFoot = el('g', { id: 'Footer_QR', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Footer_QR' });
+      front.footItems.forEach(n => gFoot.appendChild(n));
+      back.footItems.forEach(n => gFoot.appendChild(n));
+      svg.appendChild(gFoot);
+
+      const gGuides = el('g', { id: 'Trim_Bleed_Guides', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Trim_Bleed_Guides' });
+      const g1 = buildTrimAndGuidesLayer(pageW, totalH, spec.trimW, spec.trimH, spec.bleed, 6, state.bleed, state.safeGuides);
+      const g2 = buildTrimAndGuidesLayer(pageW, totalH, spec.trimW, spec.trimH, spec.bleed, 6, state.bleed, state.safeGuides);
+      g2.setAttribute('transform', `translate(${pageW + gap}, 0)`);
+      while (g1.firstChild) gGuides.appendChild(g1.firstChild);
+      gGuides.appendChild(g2);
+      // Artboard labels above gutter
+      gGuides.appendChild(txt('SEITE 1 · VORDERSEITE', pageW / 2, 2.2, { family: 'Inter', weight: '700', size: 2.0, fill: '#00A0E3', anchor: 'middle' }));
+      gGuides.appendChild(txt('SEITE 2 · RÜCKSEITE', pageW + gap + pageW / 2, 2.2, { family: 'Inter', weight: '700', size: 2.0, fill: '#00A0E3', anchor: 'middle' }));
+      svg.appendChild(gGuides);
+
+      return { svg, totalW, totalH, trimW: spec.trimW * 2 + gap, trimH: spec.trimH, overflow: front.overflow || back.overflow };
+    }
+
+    // Single DL Page (Front or Back)
+    const totalW = spec.trimW + b * 2;
+    const totalH = spec.trimH + b * 2;
+    const svg = el('svg', {
+      xmlns: SVG_NS, 'xmlns:inkscape': INKSCAPE_NS, version: '1.1',
+      width: `${totalW}mm`, height: `${totalH}mm`, viewBox: `0 0 ${totalW} ${totalH}`
+    });
+    const defs = el('defs');
+    if (state.useGradient && state.theme !== 'office') {
+      const grad = el('linearGradient', { id: 'paper-bg', x1: '0%', y1: '0%', x2: '0%', y2: '100%' });
+      grad.appendChild(el('stop', { offset: '0%', 'stop-color': T.bgTop }));
+      grad.appendChild(el('stop', { offset: '55%', 'stop-color': T.bgMid }));
+      grad.appendChild(el('stop', { offset: '100%', 'stop-color': T.bgBot }));
+      defs.appendChild(grad);
+    }
+    if (mode === 'dl_front') addLogoDefs(defs, state.rooster);
+    svg.appendChild(defs);
+
+    const parts = mode === 'dl_front'
+      ? renderDLFrontGroups(b, b, spec.trimW, spec.trimH, T)
+      : renderDLBackGroups(b, b, spec.trimW, spec.trimH, T);
+
+    const gBg = el('g', { id: 'Background', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Background' });
+    gBg.appendChild(el('rect', {
+      x: 0, y: 0, width: totalW, height: totalH,
+      fill: (state.useGradient && state.theme !== 'office') ? 'url(#paper-bg)' : T.bgTop
+    }));
+    parts.bgItems.forEach(n => gBg.appendChild(n));
+    svg.appendChild(gBg);
+
+    const gHead = el('g', { id: 'Header_Logos', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Header_Logos' });
+    parts.headItems.forEach(n => gHead.appendChild(n));
+    svg.appendChild(gHead);
+
+    const gRec = el('g', { id: 'Recurring', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Recurring' });
+    parts.recItems.forEach(n => gRec.appendChild(n));
+    svg.appendChild(gRec);
+
+    const gCal = el('g', { id: 'Calendar', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Calendar' });
+    parts.calItems.forEach(n => gCal.appendChild(n));
+    svg.appendChild(gCal);
+
+    const gFoot = el('g', { id: 'Footer_QR', 'inkscape:groupmode': 'layer', 'inkscape:label': 'Footer_QR' });
+    parts.footItems.forEach(n => gFoot.appendChild(n));
+    svg.appendChild(gFoot);
+
+    svg.appendChild(buildTrimAndGuidesLayer(totalW, totalH, spec.trimW, spec.trimH, spec.bleed, 6, state.bleed, state.safeGuides));
+    return { svg, totalW, totalH, trimW: spec.trimW, trimH: spec.trimH, overflow: parts.overflow };
+  }
+
+  // =========================================================================
+  // 10. RENDER & ZOOM PIPELINE + PREFLIGHT CHECK
+  // =========================================================================
+  let currentRender = null;
+
+  function renderCurrent() {
+    const res = (state.format === 'a3' || state.format === 'a4')
+      ? renderPosterPage(state.format)
+      : renderDLPage(state.format);
+    currentRender = res;
+
+    const container = document.getElementById('sheet-container');
+    container.innerHTML = '';
+    container.appendChild(res.svg);
+    applyZoom();
+    updatePreflight(res);
+  }
+
+  function applyZoom() {
+    if (!currentRender) return;
+    const stage = document.getElementById('stage-wrap');
+    const svg = currentRender.svg;
+    const availW = stage.clientWidth - 72;
+    const availH = stage.clientHeight - 72;
+    // 1mm = 3.7795275591 CSS px
+    const pxW = currentRender.totalW * 3.7795275591;
+    const pxH = currentRender.totalH * 3.7795275591;
+
+    let factor = 1;
+    if (state.zoom === 'fit') {
+      factor = Math.min(availW / pxW, availH / pxH, 1.35);
+      document.getElementById('zoom-label').textContent = `${Math.round(factor * 100)}%`;
+    } else {
+      factor = state.zoom;
+      document.getElementById('zoom-label').textContent = `${Math.round(factor * 100)}%`;
+    }
+    svg.style.width = `${pxW * factor}px`;
+    svg.style.height = `${pxH * factor}px`;
+  }
+
+  function updatePreflight(res) {
+    const svg = res.svg;
+    const dimsEl = document.getElementById('pf-dims');
+    dimsEl.textContent = `${res.totalW} × ${res.totalH} mm`;
+
+    const requiredLayers = ['Background', 'Header_Logos', 'Recurring', 'Calendar', 'Footer_QR', 'Trim_Bleed_Guides'];
+    const present = requiredLayers.filter(id => svg.querySelector(`#${id}`)).length;
+    const layersEl = document.getElementById('pf-layers');
+    layersEl.textContent = `${present} / 6 benannt`;
+    layersEl.className = present === 6 ? 'pf-ok' : 'pf-warn';
+
+    const filters = svg.querySelectorAll('filter, foreignObject').length;
+    const filtersEl = document.getElementById('pf-filters');
+    filtersEl.textContent = filters === 0 ? '0 (100% Vektor)' : `${filters} Warnung`;
+    filtersEl.className = filters === 0 ? 'pf-ok' : 'pf-warn';
+
+    const textCount = svg.querySelectorAll('text').length;
+    document.getElementById('pf-texts').textContent = `${textCount} <text>`;
+
+    const allText = Array.from(svg.querySelectorAll('text')).map(t => t.textContent).join(' ');
+    const bad = /hopla|spenden/i.test(allText);
+    const rulesEl = document.getElementById('pf-rules');
+    rulesEl.textContent = bad ? '✗ Verbotener Begriff!' : '✓ Kein HoPla / Spenden';
+    rulesEl.className = bad ? 'pf-warn' : 'pf-ok';
+
+    const fitEl = document.getElementById('pf-fit');
+    fitEl.textContent = res.overflow ? '⚠ Text sehr eng' : '✓ Alles im Satzspiegel';
+    fitEl.className = res.overflow ? 'pf-warn' : 'pf-ok';
+  }
+
+  // =========================================================================
+  // 11. SVG EXPORT (Clean Illustrator-Ready Serialization)
+  // =========================================================================
+  function serializeSvgForDownload(svgNode) {
+    const clone = svgNode.cloneNode(true);
+    clone.removeAttribute('style');
+    const serializer = new XMLSerializer();
+    let str = serializer.serializeToString(clone);
+    if (!str.startsWith('<?xml')) {
+      str = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n' + str;
+    }
+    return str;
+  }
+
+  function triggerDownload(filename, content) {
+    const blob = new Blob([content], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+  }
+
+  function exportFilename(fmtKey) {
+    const scopeTag = state.scope === 'upcoming' ? 'ab19-11' : 'gesamt';
+    const bleedTag = state.bleed ? '_3mm' : '_trim';
+    const map = {
+      a3: `ESG_Semesterplan_WiSe2627_A3_${scopeTag}${bleedTag}.svg`,
+      a4: `ESG_Semesterplan_WiSe2627_A4_${scopeTag}${bleedTag}.svg`,
+      dl_front: `ESG_Semesterplan_WiSe2627_FlyerDL_Front_${scopeTag}${bleedTag}.svg`,
+      dl_back: `ESG_Semesterplan_WiSe2627_FlyerDL_Back_${scopeTag}${bleedTag}.svg`,
+      dl_spread: `ESG_Semesterplan_WiSe2627_FlyerDL_Spread_${scopeTag}${bleedTag}.svg`
+    };
+    return map[fmtKey];
+  }
+
+  // =========================================================================
+  // 12. UI BINDINGS & EVENT EDITOR MODAL
+  // =========================================================================
+  function bindUI() {
+    document.querySelectorAll('#format-tabs .format-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#format-tabs .format-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.format = btn.dataset.fmt;
+        const isDL = state.format.startsWith('dl_');
+        document.getElementById('btn-download-dl-both').style.display = isDL ? 'inline-flex' : 'none';
+        renderCurrent();
+      });
+    });
+
+    document.querySelectorAll('#scope-seg .seg-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#scope-seg .seg-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.scope = btn.dataset.scope;
+        renderCurrent();
+      });
+    });
+
+    document.querySelectorAll('#theme-grid .theme-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('#theme-grid .theme-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        state.theme = card.dataset.theme;
+        renderCurrent();
+      });
+    });
+
+    document.querySelectorAll('#decor-seg .seg-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#decor-seg .seg-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.decorStyle = btn.dataset.decor;
+        renderCurrent();
+      });
+    });
+
+    document.getElementById('opt-stamp').addEventListener('change', e => { state.showStamp = e.target.checked; renderCurrent(); });
+    document.getElementById('opt-rooster').addEventListener('change', e => { state.rooster = e.target.value; renderCurrent(); });
+    document.getElementById('opt-qr').addEventListener('change', e => {
+      state.qrEnabled = e.target.checked;
+      document.getElementById('qr-target-wrap').style.display = state.qrEnabled ? 'block' : 'none';
+      renderCurrent();
+    });
+    document.getElementById('opt-qr-target').addEventListener('change', e => { state.qrTarget = e.target.value; renderCurrent(); });
+    document.getElementById('opt-bleed').addEventListener('change', e => { state.bleed = e.target.checked; renderCurrent(); });
+    document.getElementById('opt-safe').addEventListener('change', e => { state.safeGuides = e.target.checked; renderCurrent(); });
+    document.getElementById('opt-gradient').addEventListener('change', e => { state.useGradient = e.target.checked; renderCurrent(); });
+
+    document.getElementById('zoom-fit').addEventListener('click', () => { state.zoom = 'fit'; applyZoom(); });
+    document.getElementById('zoom-100').addEventListener('click', () => { state.zoom = 1.0; applyZoom(); });
+    document.getElementById('zoom-in').addEventListener('click', () => {
+      const cur = state.zoom === 'fit' ? parseFloat(document.getElementById('zoom-label').textContent) / 100 : state.zoom;
+      state.zoom = Math.min(2.5, Math.round((cur + 0.15) * 100) / 100);
+      applyZoom();
+    });
+    document.getElementById('zoom-out').addEventListener('click', () => {
+      const cur = state.zoom === 'fit' ? parseFloat(document.getElementById('zoom-label').textContent) / 100 : state.zoom;
+      state.zoom = Math.max(0.25, Math.round((cur - 0.15) * 100) / 100);
+      applyZoom();
+    });
+    window.addEventListener('resize', () => { if (state.zoom === 'fit') applyZoom(); });
+
+    document.getElementById('btn-download-svg').addEventListener('click', () => {
+      if (!currentRender) return;
+      triggerDownload(exportFilename(state.format), serializeSvgForDownload(currentRender.svg));
+    });
+
+    document.getElementById('btn-download-dl-both').addEventListener('click', () => {
+      const f = renderDLPage('dl_front');
+      const b = renderDLPage('dl_back');
+      triggerDownload(exportFilename('dl_front'), serializeSvgForDownload(f.svg));
+      setTimeout(() => {
+        triggerDownload(exportFilename('dl_back'), serializeSvgForDownload(b.svg));
+      }, 220);
+    });
+
+    document.getElementById('btn-print').addEventListener('click', () => window.print());
+
+    // Event Editor Modal
+    const modal = document.getElementById('modal-events');
+    document.getElementById('btn-edit-events').addEventListener('click', () => {
+      populateEventsModal();
+      modal.classList.add('open');
+    });
+    document.getElementById('btn-close-modal').addEventListener('click', () => {
+      modal.classList.remove('open');
+      renderCurrent();
+    });
+    document.getElementById('btn-reset-events').addEventListener('click', () => {
+      state.events = structuredClone(DEFAULT_EVENTS);
+      saveEvents();
+      populateEventsModal();
+      renderCurrent();
+    });
+  }
+
+  function populateEventsModal() {
+    const list = document.getElementById('modal-events-list');
+    list.innerHTML = '';
+    state.events.forEach((ev, idx) => {
+      const row = document.createElement('div');
+      row.className = 'ev-edit-row';
+
+      const chk = document.createElement('input');
+      chk.type = 'checkbox';
+      chk.checked = ev.enabled;
+      chk.addEventListener('change', () => { ev.enabled = chk.checked; saveEvents(); renderCurrent(); });
+
+      const inDay = document.createElement('input');
+      inDay.type = 'text';
+      inDay.value = ev.weekday ? `${ev.weekday}, ${ev.day}` : ev.day;
+      inDay.addEventListener('input', () => {
+        const parts = inDay.value.split(',');
+        if (parts.length > 1) { ev.weekday = parts[0].trim(); ev.day = parts.slice(1).join(',').trim(); }
+        else { ev.weekday = ''; ev.day = inDay.value.trim(); }
+        saveEvents();
+      });
+
+      const inTime = document.createElement('input');
+      inTime.type = 'text';
+      inTime.placeholder = 'Uhrzeit';
+      inTime.value = ev.time;
+      inTime.addEventListener('input', () => { ev.time = inTime.value; saveEvents(); });
+
+      const inTitle = document.createElement('input');
+      inTitle.type = 'text';
+      inTitle.value = ev.title;
+      inTitle.addEventListener('input', () => { ev.title = inTitle.value; saveEvents(); });
+
+      const inDetails = document.createElement('input');
+      inDetails.type = 'text';
+      inDetails.placeholder = 'Ort / Hinweis';
+      inDetails.value = ev.details;
+      inDetails.addEventListener('input', () => { ev.details = inDetails.value; saveEvents(); });
+
+      const pill = document.createElement('span');
+      pill.className = `ev-past-pill ${ev.past ? 'past' : 'upcoming'}`;
+      pill.textContent = ev.past ? 'Vergangen' : 'Aktuell';
+
+      row.append(chk, inDay, inTime, inTitle, inDetails, pill);
+      list.appendChild(row);
+    });
+  }
+
+  // Expose helper for automated verification if needed
+  window.__ESG_STUDIO__ = {
+    getState: () => state,
+    setFormat: (f) => {
+      document.querySelector(`#format-tabs .format-tab[data-fmt="${f}"]`)?.click();
+    },
+    setScope: (sc) => {
+      document.querySelector(`#scope-seg .seg-btn[data-scope="${sc}"]`)?.click();
+    },
+    setTheme: (t) => {
+      document.querySelector(`#theme-grid .theme-card[data-theme="${t}"]`)?.click();
+    },
+    setDecorStyle: (d) => {
+      document.querySelector(`#decor-seg .seg-btn[data-decor="${d}"]`)?.click();
+    },
+    getExportSVG: () => currentRender ? serializeSvgForDownload(currentRender.svg) : ''
+  };
+
+  // Boot after fonts load so getComputedTextLength() uses exact Inter/Caveat metrics
+  bindUI();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => renderCurrent());
+  } else {
+    renderCurrent();
+  }
+})();
+</script>
+</body>
+</html>
